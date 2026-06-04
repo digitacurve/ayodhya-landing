@@ -10,7 +10,7 @@ import {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const FORMSPREE   = "https://formspree.io/f/xlgddeqp";
-const REDIRECT    = "https://ayodhyadharshan.com/thank-you-3/";
+const REDIRECT    = "/thank-you";
 
 const TOURS = [
   "Ayodhya Darshan",
@@ -285,7 +285,13 @@ function LeadForm() {
             });
           }
         }
-        window.location.href = REDIRECT;
+        const queryParams = new URLSearchParams({
+          name: fields.name,
+          phone: fields.phone,
+          tour: fields.tour,
+          date: date ? fmtDate(date) : "",
+        }).toString();
+        window.location.href = `${REDIRECT}?${queryParams}`;
       } else {
         setStatus("error");
       }
