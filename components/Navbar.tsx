@@ -60,7 +60,7 @@ export default function Navbar() {
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
-              <div className={`text-[9px] tracking-[0.24em] uppercase font-semibold ${scrolled ? "text-saffron-600" : "text-gold-400/80"}`}>
+              <div className={`text-[9px] tracking-[0.24em] uppercase font-semibold ${scrolled ? "text-saffron-600" : "text-gold-300"}`}>
                 Premium Pilgrimage
               </div>
             </div>

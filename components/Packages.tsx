@@ -235,7 +235,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
         }`}>
           {pkg.name}
         </h3>
-        <p className={`text-sm mb-5 ${isPopular ? "text-gold-400/80" : "text-gray-400"}`}>
+        <p className={`text-sm mb-5 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
           {pkg.subtitle}
         </p>
 
@@ -252,7 +252,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
                 <Icon size={16} style={{ color: isPopular ? "#D4AF37" : pkg.accent }} />
               </div>
               <span className={`text-[9px] font-medium text-center leading-tight ${
-                isPopular ? "text-white/45" : "text-gray-400"
+                isPopular ? "text-white/60" : "text-gray-400"
               }`}>
                 {label}
               </span>
@@ -294,7 +294,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
                 />
               </div>
               <span className={`text-[13px] leading-snug ${
-                isPopular ? "text-white/72" : "text-gray-600"
+                isPopular ? "text-white/80" : "text-gray-600"
               }`}>
                 {f}
               </span>
@@ -315,7 +315,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
 
         {/* Exclusions block inside card */}
         <div className={`mb-6 pt-4 border-t ${isPopular ? "border-white/10" : "border-gray-100"}`}>
-          <div className={`text-[10px] font-bold uppercase tracking-wider mb-2.5 ${isPopular ? "text-gold-300/80" : "text-gray-400"}`}>
+          <div className={`text-[10px] font-bold uppercase tracking-wider mb-2.5 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
             Exclusions & Important Notes:
           </div>
           <ul className="space-y-2 text-[11px] leading-tight">
