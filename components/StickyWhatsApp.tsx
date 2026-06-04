@@ -128,7 +128,7 @@ export default function StickyWhatsApp() {
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block" />
                 <p className="text-white text-xs font-medium">
-                  🙏 Ayodhya Packages from <span className="text-saffron-400 font-bold">₹6,999</span>
+                  🙏 Ayodhya Packages from <span className="text-saffron-400 font-bold">₹22,000 for Couple</span>
                 </p>
               </div>
               <button

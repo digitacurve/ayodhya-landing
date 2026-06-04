@@ -10,7 +10,7 @@ const quickAnswers = [
   {
     question: "Which Ayodhya tour package is best for a first-time pilgrim?",
     answer:
-      "If this is your first visit to Ayodhya, the Ayodhya Darshan Package (2 Nights / 3 Days, starting ₹6,999) covers everything essential — Ram Mandir darshan, Hanuman Garhi, Kanak Bhawan, and Saryu Ghat. You get a pre-arranged darshan pass, hotel near the temple, and a knowledgeable guide. No queuing, no logistics stress — just devotion.",
+      "If this is your first visit to Ayodhya, the Ayodhya Darshan Package (2 Nights / 3 Days, starting ₹22,000 for couple) covers everything essential — Ram Mandir darshan, Hanuman Garhi, Kanak Bhawan, and Saryu Ghat. You get a pre-arranged darshan pass, hotel near the temple, and a knowledgeable guide. No queuing, no logistics stress — just devotion.",
     icon: Star,
     accent: "#D4AF37",
     tag: "Best for beginners",
@@ -26,7 +26,7 @@ const quickAnswers = [
   {
     question: "Which tour covers Ayodhya, Varanasi and Prayagraj together?",
     answer:
-      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, ₹10,999 per person) is designed exactly for this. Day 1–2 in Ayodhya for Ram Mandir darshan, Day 3 in Prayagraj for Triveni Sangam, Day 4–5 in Varanasi for Kashi Vishwanath and Ganga Aarti. Everything is pre-arranged — hotels, AC transfers, darshan passes and a guide.",
+      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, ₹40,000 for couple) is designed exactly for this. Day 1–2 in Ayodhya for Ram Mandir darshan, Day 3 in Prayagraj for Triveni Sangam, Day 4–5 in Varanasi for Kashi Vishwanath and Ganga Aarti. Everything is pre-arranged — hotels, AC transfers, darshan passes and a guide.",
     icon: MapPin,
     accent: "#7C3AED",
     tag: "Triple circuit",
@@ -61,28 +61,28 @@ const packageMatrix = [
   {
     name: "Ayodhya Darshan",
     duration: "2N / 3D",
-    price: "₹6,999",
+    price: "₹22,000",
     best: "First-time pilgrims, short trips",
     includes: ["Ram Mandir darshan", "Hanuman Garhi", "Kanak Bhawan", "Saryu Ghat"],
   },
   {
     name: "Ayodhya – Varanasi",
     duration: "3N / 4D",
-    price: "₹9,999",
+    price: "₹32,000",
     best: "Most popular circuit",
     includes: ["Ram Mandir", "Kashi Vishwanath", "Ganga Aarti", "Sarnath"],
   },
   {
     name: "Ayodhya – Prayagraj – Varanasi",
     duration: "4N / 5D",
-    price: "₹10,999",
+    price: "₹40,000",
     best: "Three holy cities in one journey",
     includes: ["Ram Mandir", "Triveni Sangam", "Kashi Vishwanath", "Ganga Aarti"],
   },
   {
     name: "Full Ramayana Circuit",
     duration: "5N / 6D",
-    price: "₹14,999",
+    price: "₹50,000",
     best: "Ultimate pilgrimage experience",
     includes: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
   },
@@ -252,7 +252,7 @@ export default function SemanticContent() {
                     </td>
                     <td className="px-6 py-5">
                       <span className="font-playfair font-bold text-divine-dark text-[17px]">{pkg.price}</span>
-                      <span className="text-gray-300 text-[11px] ml-1">/person</span>
+                      <span className="text-gray-300 text-[11px] ml-1">/couple</span>
                     </td>
                     <td className="px-6 py-5">
                       <span className="text-saffron-600 text-[13px]">{pkg.best}</span>
@@ -278,7 +278,7 @@ export default function SemanticContent() {
           {/* Footer note */}
           <div className="px-6 sm:px-8 py-5 bg-gray-50/50 border-t border-gray-50">
             <p className="text-gray-400 text-[12px]">
-              * All prices are per adult on twin-sharing basis · inclusive of hotel, darshan pass, AC transport, meals (3N+ packages) and professional guide ·{" "}
+              * All prices are for a couple on double-sharing basis · inclusive of hotel, darshan pass, AC transport, meals (3N+ packages) and professional guide ·{" "}
               <span className="text-saffron-600 font-medium">
                 Same-day Ayodhya tour packages also available — WhatsApp us for details.
               </span>

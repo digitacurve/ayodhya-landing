@@ -9,6 +9,7 @@ const testimonials = [
     name: "Ramkumar Sharma",
     location: "Lucknow, Uttar Pradesh",
     initials: "RS",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
     rating: 5,
     package: "Ayodhya Varanasi Package",
     date: "March 2025",
@@ -20,6 +21,7 @@ const testimonials = [
     name: "Sunita Devi",
     location: "New Delhi",
     initials: "SD",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
     rating: 5,
     package: "Full Ramayana Circuit",
     date: "January 2025",
@@ -31,6 +33,7 @@ const testimonials = [
     name: "Anil Gupta",
     location: "Mumbai, Maharashtra",
     initials: "AG",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80",
     rating: 5,
     package: "Ayodhya Varanasi Package",
     date: "February 2025",
@@ -42,6 +45,7 @@ const testimonials = [
     name: "Priya & Rajesh Malhotra",
     location: "Chandigarh, Punjab",
     initials: "PM",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
     rating: 5,
     package: "Ayodhya Darshan Package",
     date: "April 2025",
@@ -53,6 +57,7 @@ const testimonials = [
     name: "Dr. Vikram Tiwari",
     location: "Bhopal, Madhya Pradesh",
     initials: "VT",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80",
     rating: 5,
     package: "Ayodhya Prayagraj Varanasi Package",
     date: "May 2025",
@@ -202,9 +207,18 @@ export default function Testimonials() {
                   {/* Reviewer row */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-saffron-700 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
-                        {active.initials}
-                      </div>
+                      {active.avatar ? (
+                        <img
+                          src={active.avatar}
+                          alt={active.name}
+                          className="w-12 h-12 rounded-full object-cover border border-gold-400/50 flex-shrink-0"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-saffron-700 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
+                          {active.initials}
+                        </div>
+                      )}
                       <div>
                         <div className="text-white font-semibold text-[15px]">{active.name}</div>
                         <div className="text-white/38 text-sm">{active.location}</div>
@@ -284,9 +298,18 @@ export default function Testimonials() {
                 &ldquo;{t.review}&rdquo;
               </p>
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-saffron-100 flex items-center justify-center text-saffron-700 text-[11px] font-bold flex-shrink-0">
-                  {t.initials}
-                </div>
+                {t.avatar ? (
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-8 h-8 rounded-full object-cover border border-saffron-200 flex-shrink-0"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-saffron-100 flex items-center justify-center text-saffron-700 text-[11px] font-bold flex-shrink-0">
+                    {t.initials}
+                  </div>
+                )}
                 <div>
                   <div className="text-divine-dark text-xs font-semibold leading-tight">{t.name}</div>
                   <div className="text-gray-400 text-[10px]">{t.location}</div>

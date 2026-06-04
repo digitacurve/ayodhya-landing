@@ -13,7 +13,8 @@ const packages = [
     subtitle: "Ideal for a short, focused pilgrimage",
     duration: "2 Nights / 3 Days",
     cities: ["Ayodhya"],
-    price: 6999,
+    price: 22000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: false,
     ctaText: "Get Tour Details",
@@ -33,10 +34,11 @@ const packages = [
   {
     id: "ayodhya-varanasi",
     name: "Ayodhya Varanasi",
-    subtitle: "Our most booked spiritual circuit",
+    subtitle: "Our most booked Ayodhya tour with Varanasi",
     duration: "3 Nights / 4 Days",
     cities: ["Ayodhya", "Varanasi"],
-    price: 9999,
+    price: 32000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
     popular: true,
     featured: false,
     ctaText: "Get Full Itinerary",
@@ -59,7 +61,8 @@ const packages = [
     subtitle: "The complete tirthdham circuit",
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi"],
-    price: 10999,
+    price: 40000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sangam_Allahabad.jpg/960px-Sangam_Allahabad.jpg",
     popular: false,
     featured: true,
     ctaText: "Get Full Itinerary",
@@ -82,7 +85,8 @@ const packages = [
     subtitle: "Heritage & devotion beautifully combined",
     duration: "3 Nights / 4 Days",
     cities: ["Lucknow", "Ayodhya"],
-    price: 8999,
+    price: 30000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bara_Imambara_Lucknow.jpg/960px-Bara_Imambara_Lucknow.jpg",
     popular: false,
     featured: false,
     ctaText: "Get Tour Details",
@@ -105,7 +109,8 @@ const packages = [
     subtitle: "Tracing the sacred path of Lord Ram",
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Varanasi", "Chitrakoot"],
-    price: 10999,
+    price: 40000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Mandakini_River.jpg/960px-Mandakini_River.jpg",
     popular: false,
     featured: false,
     ctaText: "Talk To Tour Expert",
@@ -128,7 +133,8 @@ const packages = [
     subtitle: "The ultimate Ramayana pilgrimage",
     duration: "5 Nights / 6 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
-    price: 14999,
+    price: 50000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: true,
     ctaText: "Talk To Tour Expert",
@@ -159,7 +165,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
   const inView  = useInView(cardRef, { once: true, margin: "-60px" });
 
   const waMsg = encodeURIComponent(
-    `Jai Shri Ram! 🙏 I'm interested in the "${pkg.name}" tour package (₹${pkg.price.toLocaleString("en-IN")}/person). Please share availability and full itinerary.`
+    `Jai Shri Ram! 🙏 I'm interested in the "${pkg.name}" tour package (₹${pkg.price.toLocaleString("en-IN")} for couple). Please share availability and full itinerary.`
   );
 
   const isPopular = pkg.popular;
@@ -188,12 +194,23 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
       {/* Featured badge (non-popular) */}
       {pkg.featured && !isPopular && (
         <div
-          className="absolute top-4 right-4 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full"
-          style={{ backgroundColor: `${pkg.accent}18`, color: pkg.accent, border: `1px solid ${pkg.accent}30` }}
+          className="absolute top-4 right-4 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md"
+          style={{ backgroundColor: `${pkg.accent}25`, color: pkg.accent, border: `1px solid ${pkg.accent}40` }}
         >
           ✦ Best Value
         </div>
       )}
+
+      {/* Package Image */}
+      <div className="relative h-48 w-full overflow-hidden bg-gray-100 flex-shrink-0">
+        <img
+          src={pkg.image}
+          alt={pkg.name}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      </div>
 
       <div className="flex flex-col flex-1 p-6 sm:p-7">
         {/* Duration + cities */}
@@ -252,11 +269,11 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
               ₹{pkg.price.toLocaleString("en-IN")}
             </span>
             <span className={`text-sm pb-1 ${isPopular ? "text-white/40" : "text-gray-400"}`}>
-              / person
+              / couple
             </span>
           </div>
           <p className={`text-[11px] mt-1 ${isPopular ? "text-white/30" : "text-gray-300"}`}>
-            Onwards · Per adult on sharing basis
+            Onwards · Double sharing basis (2 Adults)
           </p>
         </div>
 
@@ -287,7 +304,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
 
         {/* Urgency note */}
         {pkg.note && (
-          <div className={`mb-5 text-[12px] font-medium px-3.5 py-2.5 rounded-xl ${
+          <div className={`mb-4 text-[12px] font-medium px-3.5 py-2.5 rounded-xl ${
             isPopular
               ? "bg-saffron-500/15 text-saffron-300 border border-saffron-500/20"
               : "bg-amber-50 text-amber-700 border border-amber-100"
@@ -295,6 +312,33 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
             🔔 {pkg.note}
           </div>
         )}
+
+        {/* Exclusions block inside card */}
+        <div className={`mb-6 pt-4 border-t ${isPopular ? "border-white/10" : "border-gray-100"}`}>
+          <div className={`text-[10px] font-bold uppercase tracking-wider mb-2.5 ${isPopular ? "text-gold-300/80" : "text-gray-400"}`}>
+            Exclusions & Important Notes:
+          </div>
+          <ul className="space-y-2 text-[11px] leading-tight">
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✕</span>
+              <span className={isPopular ? "text-white/60" : "text-gray-500"}>
+                Transport tickets (Bus, Train, Flight) are NOT included
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✕</span>
+              <span className={isPopular ? "text-white/60" : "text-gray-500"}>
+                5% GST / Service Tax not included in package price
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-amber-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">⚠️</span>
+              <span className={isPopular ? "text-white/60" : "text-gray-500"}>
+                Darshan pass is ONLY provided with complete package
+              </span>
+            </li>
+          </ul>
+        </div>
 
         {/* CTA */}
         <a
@@ -368,6 +412,41 @@ export default function Packages() {
             <PackageCard key={pkg.id} pkg={pkg} index={i} />
           ))}
         </div>
+
+        {/* General Exclusions and Guidelines Disclaimer Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 bg-white border border-gray-100 rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto shadow-sm"
+        >
+          <h3 className="font-playfair font-bold text-lg sm:text-xl text-divine-dark text-center mb-6 flex items-center justify-center gap-2">
+            📋 Booking Guidelines & Package Exclusions
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-600 font-bold text-sm">✕</div>
+              <div>
+                <h4 className="font-semibold text-divine-dark text-[13px] mb-1">No Transport Tickets</h4>
+                <p className="text-gray-400 text-xs leading-relaxed">Any type of transportation tickets (like flights, train tickets, or interstate buses) are not included. Devotees must book their own travel, or we can assist at actual cost.</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-600 font-bold text-sm">✕</div>
+              <div>
+                <h4 className="font-semibold text-divine-dark text-[13px] mb-1">5% Tax Excluded</h4>
+                <p className="text-gray-400 text-xs leading-relaxed">A standard 5% GST/Service Tax is not included in the package prices shown. The final tax amount will be detailed clearly in your invoice before booking.</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0 text-amber-600 font-bold text-sm">⚠️</div>
+              <div>
+                <h4 className="font-semibold text-divine-dark text-[13px] mb-1">Darshan Pass Booking</h4>
+                <p className="text-gray-400 text-xs leading-relaxed">Ram Mandir darshan passes are arranged strictly as part of our complete tour packages. We do not provide or sell standalone passes without hotel/transport booking.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Custom nudge */}
         <motion.div

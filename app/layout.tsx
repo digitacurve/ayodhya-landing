@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ayodhya Tour Package with Hotel & Darshan | Varanasi Prayagraj Circuits | Starting ₹6,999",
+  title: "Ayodhya Tour Package with Hotel & Darshan | Varanasi Prayagraj Circuits | Starting ₹22,000 for Couple",
   description:
-    "Looking for the best Ayodhya tour package? We include Ram Mandir darshan pass, 3★/4★ hotel, airport pickup, AC transport and an expert guide — all starting at ₹6,999 per person. Choose from Ayodhya Varanasi, Ayodhya Prayagraj Varanasi, same-day tours, or the full Ramayana Circuit. Trusted by 50,000+ pilgrims. Book on WhatsApp in 2 minutes.",
+    "Looking for the best Ayodhya tour package? We include Ram Mandir darshan pass, 3★/4★ hotel, airport pickup, AC transport and an expert guide — all starting at ₹22,000 for a couple. Choose from Ayodhya Varanasi, Ayodhya Prayagraj Varanasi, same-day tours, or the full Ramayana Circuit. Trusted by 50,000+ pilgrims. Book on WhatsApp in 2 minutes.",
   keywords: [
     "Ayodhya tour packages",
     "Ayodhya trip package",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   classification: "Pilgrimage Tours",
   formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
-    title: "Ayodhya Tour Package with Hotel & Ram Mandir Darshan — Starting ₹6,999",
+    title: "Ayodhya Tour Package with Hotel & Ram Mandir Darshan — Starting ₹22,000 for Couple",
     description:
       "Complete Ayodhya pilgrimage packages: hotel stay, Ram Mandir darshan pass, AC transport, expert guide. Ayodhya Varanasi, Prayagraj circuits & same-day tours. 50,000+ pilgrims served since 2009.",
     type: "website",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayodhya Tour Package with Hotel & Darshan — Starting ₹6,999",
+    title: "Ayodhya Tour Package with Hotel & Darshan — Starting ₹22,000 for Couple",
     description:
       "Ram Mandir darshan + hotel + AC transport + expert guide. Ayodhya–Varanasi, Prayagraj circuits. Book on WhatsApp in 2 minutes.",
   },

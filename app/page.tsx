@@ -28,7 +28,7 @@ const organizationSchema = {
   logo: "https://ayodhyadharshan.com/logo.png",
   image: "https://ayodhyadharshan.com/logo.png",
   description:
-    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including Ram Mandir darshan pass, 3-star and 4-star hotel stays, AC transport, and expert guides. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹6,999 per person. We have served over 50,000 pilgrims since 2009.",
+    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including Ram Mandir darshan pass, 3-star and 4-star hotel stays, AC transport, and expert guides. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹22,000 for a couple. We have served over 50,000 pilgrims since 2009.",
   telephone: "+919235222399",
   email: "contact@ayodhyadharsha.com",
   address: {
@@ -88,7 +88,7 @@ const organizationSchema = {
           description: "2 Nights 3 Days Ayodhya tour with Ram Mandir darshan, hotel and transport",
           tripOrigin: { "@type": "TouristAttraction", name: "Ayodhya" },
         },
-        price: "6999",
+        price: "22000",
         priceCurrency: "INR",
       },
       {
@@ -98,7 +98,7 @@ const organizationSchema = {
           name: "Ayodhya Varanasi Tour Package",
           description: "3 Nights 4 Days Ayodhya and Varanasi tour package with Ram Mandir darshan and Ganga Aarti",
         },
-        price: "9999",
+        price: "32000",
         priceCurrency: "INR",
       },
       {
@@ -108,7 +108,7 @@ const organizationSchema = {
           name: "Ayodhya Prayagraj Varanasi Tour Package",
           description: "4 Nights 5 Days complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi",
         },
-        price: "10999",
+        price: "40000",
         priceCurrency: "INR",
       },
     ],
@@ -246,7 +246,7 @@ const tourSchema = {
           "Ayodhya tour package with Ram Mandir darshan, 3★/4★ hotel, airport pickup & drop, and professional guide.",
         offers: {
           "@type": "Offer",
-          price: "6999",
+          price: "22000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },
@@ -262,7 +262,7 @@ const tourSchema = {
           "Ayodhya and Varanasi tour package with Ram Mandir darshan, Kashi Vishwanath visit, 3★/4★ hotels and AC transfers.",
         offers: {
           "@type": "Offer",
-          price: "9999",
+          price: "32000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },
@@ -278,7 +278,7 @@ const tourSchema = {
           "Complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi with darshan pass, hotels and guide.",
         offers: {
           "@type": "Offer",
-          price: "10999",
+          price: "40000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },
@@ -294,7 +294,7 @@ const tourSchema = {
           "Heritage and pilgrimage tour covering Lucknow and Ayodhya with Ram Mandir darshan and hotel stay.",
         offers: {
           "@type": "Offer",
-          price: "8999",
+          price: "30000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },
@@ -310,7 +310,7 @@ const tourSchema = {
           "Ramayana pilgrimage circuit tracing Lord Ram's journey from Ayodhya through Chitrakoot to Varanasi.",
         offers: {
           "@type": "Offer",
-          price: "10999",
+          price: "40000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },
@@ -326,7 +326,7 @@ const tourSchema = {
           "The ultimate Ramayana pilgrimage covering all four sacred destinations with premium hotels and guided darshan.",
         offers: {
           "@type": "Offer",
-          price: "14999",
+          price: "50000",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
         },

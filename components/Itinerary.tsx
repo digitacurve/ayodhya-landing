@@ -94,7 +94,7 @@ const itineraries: ItineraryItem[] = [
   },
   {
     id: "varanasi",
-    destination: "Varanasi",
+    destination: "Ayodhya & Varanasi",
     duration: "3N / 4D",
     package: "Ayodhya Varanasi Tour Package",
     days: [
@@ -182,7 +182,7 @@ const itineraries: ItineraryItem[] = [
   },
   {
     id: "prayagraj",
-    destination: "Prayagraj",
+    destination: "Ayodhya, Prayagraj & Varanasi",
     duration: "4N / 5D",
     package: "Ayodhya Prayagraj Varanasi Package",
     days: [
@@ -289,7 +289,7 @@ const itineraries: ItineraryItem[] = [
   },
   {
     id: "chitrakoot",
-    destination: "Chitrakoot",
+    destination: "Ayodhya, Varanasi & Chitrakoot",
     duration: "4N / 5D",
     package: "Ayodhya Varanasi Chitrakoot Package",
     days: [

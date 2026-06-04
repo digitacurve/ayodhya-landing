@@ -30,7 +30,7 @@ export const faqData = [
   {
     question: "Which Ayodhya tour package includes Varanasi and Prayagraj?",
     answer:
-      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, starting ₹10,999 per person) covers all three sacred cities in one journey — Ram Mandir darshan in Ayodhya, Triveni Sangam at Prayagraj, and the Ganga Aarti at Dashashwamedh Ghat in Varanasi. For travellers who also want to visit Chitrakoot, our Full Ramayana Circuit (5 Nights / 6 Days) covers all four tirthdham destinations. Both packages include 3★/4★ hotels, AC transfers, a darshan pass, and an expert guide.",
+      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, starting ₹40,000 for couple) covers all three sacred cities in one journey — Ram Mandir darshan in Ayodhya, Triveni Sangam at Prayagraj, and the Ganga Aarti at Dashashwamedh Ghat in Varanasi. For travellers who also want to visit Chitrakoot, our Full Ramayana Circuit (5 Nights / 6 Days) covers all four tirthdham destinations. Both packages include 3★/4★ hotels, AC transfers, a darshan pass, and an expert guide.",
   },
   {
     question: "Can I do Ayodhya and Varanasi in 3 days?",
@@ -64,12 +64,12 @@ export const faqData = [
   {
     question: "What is the starting price of Ayodhya tour packages with hotel?",
     answer:
-      "Ayodhya tour packages with hotel start at ₹6,999 per person for the 2 Nights / 3 Days Ayodhya Darshan Package, which includes 3-star hotel stay, Ram Mandir darshan pass, AC transport, airport/station pickup and drop, and a professional guide. The 3 Nights / 4 Days Ayodhya Varanasi package starts at ₹9,999 per person, and the premium Full Ramayana Circuit (5 Nights / 6 Days) starts at ₹14,999 per person. All prices are per adult on twin-sharing basis. WhatsApp us for group discounts.",
+      "Ayodhya tour packages with hotel start at ₹22,000 for couple for the 2 Nights / 3 Days Ayodhya Darshan Package, which includes 3-star hotel stay, Ram Mandir darshan pass, AC transport, airport/station pickup and drop, and a professional guide. The 3 Nights / 4 Days Ayodhya Varanasi package starts at ₹32,000 for couple, and the premium Full Ramayana Circuit (5 Nights / 6 Days) starts at ₹50,000 for couple. All prices are on a double-sharing basis for couples. WhatsApp us for group discounts.",
   },
   {
     question: "Which is the most popular Ayodhya tour package?",
     answer:
-      "The Ayodhya Varanasi Tour Package (3 Nights / 4 Days, ₹9,999 per person) is our most-booked package. It combines Ram Mandir in Ayodhya with the ancient ghats of Varanasi, covering the two most visited pilgrimage cities in Uttar Pradesh in one seamless journey. It consistently receives 5-star reviews for its organisation, darshan arrangements, and the emotional impact of the Ganga Aarti experience at Dashashwamedh Ghat.",
+      "The Ayodhya Varanasi Tour Package (3 Nights / 4 Days, ₹32,000 for couple) is our most-booked package. It combines Ram Mandir in Ayodhya with the ancient ghats of Varanasi, covering the two most visited pilgrimage cities in Uttar Pradesh in one seamless journey. It consistently receives 5-star reviews for its organisation, darshan arrangements, and the emotional impact of the Ganga Aarti experience at Dashashwamedh Ghat.",
   },
   {
     question: "What is the best time to visit Ayodhya for a pilgrimage?",

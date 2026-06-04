@@ -1,7 +1,7 @@
 "use client";
 
 const announcements = [
-  "✨ New Ayodhya Varanasi packages now available from ₹9,999",
+  "✨ New Ayodhya Varanasi couple packages available from ₹32,000",
   "🙏 Ram Mandir darshan pre-arranged — skip the queue",
   "⭐ 4.9★ on Google · 2,847 verified reviews",
   "🏨 3★ & 4★ hotels pre-confirmed near Ram Mandir",

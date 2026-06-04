@@ -21,6 +21,7 @@ const hotels = [
     iconColor: "text-orange-600",
     pattern: "M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z",
     badgeColor: "bg-orange-100 text-orange-700",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
     amenities: [
       { icon: Wind, label: "AC Rooms" },
       { icon: Wifi, label: "Free Wi-Fi" },
@@ -38,7 +39,7 @@ const hotels = [
       "Laundry service available",
     ],
     usedIn: ["Ayodhya Darshan Package", "Lucknow Ayodhya Package"],
-    priceNote: "Included in packages starting ₹6,999",
+    priceNote: "Included in packages starting ₹22,000 / couple",
   },
   {
     id: "premium",
@@ -54,6 +55,7 @@ const hotels = [
     iconColor: "text-gold-400",
     pattern: "M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z",
     badgeColor: "bg-gold-400/20 text-gold-300",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80",
     amenities: [
       { icon: Wind, label: "Premium AC Rooms" },
       { icon: Wifi, label: "High-Speed Wi-Fi" },
@@ -71,7 +73,7 @@ const hotels = [
       "Airport / station pickup arranged",
     ],
     usedIn: ["Ayodhya Varanasi Package", "Ayodhya Prayagraj Varanasi Package"],
-    priceNote: "Included in packages starting ₹9,999",
+    priceNote: "Included in packages starting ₹32,000 / couple",
     dark: true,
   },
   {
@@ -87,6 +89,7 @@ const hotels = [
     iconBg: "bg-red-50",
     iconColor: "text-red-700",
     badgeColor: "bg-red-100 text-red-800",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
     amenities: [
       { icon: Wind, label: "Heritage AC Rooms" },
       { icon: Wifi, label: "Premium Wi-Fi" },
@@ -104,7 +107,7 @@ const hotels = [
       "Exclusive darshan slot coordination",
     ],
     usedIn: ["Full Circuit Package (5N/6D)"],
-    priceNote: "Included in packages starting ₹14,999",
+    priceNote: "Included in packages starting ₹50,000 / couple",
   },
 ];
 
@@ -148,111 +151,20 @@ export default function HotelShowcase() {
                 hotel.dark ? "bg-divine-dark text-white" : "bg-white"
               }`}
             >
-              {/* Visual Header — CSS Art Hotel Illustration */}
-              <div
-                className={`relative h-48 overflow-hidden ${
-                  hotel.dark
-                    ? "bg-gradient-to-br from-divine-dark via-divine-brown to-divine-dark"
-                    : `bg-gradient-to-br ${hotel.gradient}`
-                }`}
-              >
-                {/* Sacred pattern overlay */}
-                <div className="absolute inset-0 opacity-10 pattern-bg" />
-
-                {/* Abstract hotel illustration */}
-                <div className="absolute inset-0 flex items-end justify-center pb-0">
-                  <svg
-                    viewBox="0 0 400 200"
-                    className="w-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    {/* Main building */}
-                    <rect
-                      x="120"
-                      y="60"
-                      width="160"
-                      height="140"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-white/10" : "text-gray-900/8"}
-                    />
-                    {/* Roof */}
-                    <polygon
-                      points="110,60 200,20 290,60"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-white/15" : "text-gray-900/10"}
-                    />
-                    {/* Windows */}
-                    {[140, 180, 220].map((x) =>
-                      [80, 110, 140].map((y) => (
-                        <rect
-                          key={`${x}-${y}`}
-                          x={x}
-                          y={y}
-                          width="18"
-                          height="20"
-                          rx="2"
-                          fill="currentColor"
-                          className={hotel.dark ? "text-gold-400/30" : "text-amber-400/40"}
-                        />
-                      ))
-                    )}
-                    {/* Door */}
-                    <rect
-                      x="185"
-                      y="165"
-                      width="30"
-                      height="35"
-                      rx="3"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-gold-400/25" : "text-amber-500/30"}
-                    />
-                    {/* Dome / finial */}
-                    <circle
-                      cx="200"
-                      cy="20"
-                      r="8"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-gold-400/60" : "text-amber-500/50"}
-                    />
-                    {/* Side trees */}
-                    <rect
-                      x="80"
-                      y="140"
-                      width="12"
-                      height="60"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-white/10" : "text-gray-900/8"}
-                    />
-                    <circle
-                      cx="86"
-                      cy="130"
-                      r="20"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-emerald-400/20" : "text-emerald-600/15"}
-                    />
-                    <rect
-                      x="308"
-                      y="140"
-                      width="12"
-                      height="60"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-white/10" : "text-gray-900/8"}
-                    />
-                    <circle
-                      cx="314"
-                      cy="130"
-                      r="20"
-                      fill="currentColor"
-                      className={hotel.dark ? "text-emerald-400/20" : "text-emerald-600/15"}
-                    />
-                  </svg>
-                </div>
+              {/* Visual Header — High-Quality Hotel Image */}
+              <div className="relative h-56 w-full overflow-hidden flex-shrink-0">
+                <img
+                  src={hotel.image}
+                  alt={hotel.label}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
 
                 {/* Tier badge */}
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 z-10">
                   <span
-                    className={`text-xs font-bold px-3 py-1.5 rounded-full ${hotel.badgeColor}`}
+                    className={`text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${hotel.badgeColor}`}
                   >
                     ⭐ {hotel.tier}
                   </span>
