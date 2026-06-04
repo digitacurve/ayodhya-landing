@@ -55,7 +55,7 @@ function Countdown() {
                 {val}
               </span>
             </div>
-            <div className="text-white/35 text-[9px] tracking-[0.2em] mt-1.5 font-medium">{lbl}</div>
+            <div className="text-white/50 text-[9px] tracking-[0.2em] mt-1.5 font-medium">{lbl}</div>
           </div>
         </div>
       ))}
@@ -187,7 +187,7 @@ export default function FinalCTA() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.58 }}
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-white/28 text-[12px]"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-white/40 text-[12px]"
         >
           {[
             "✓ No advance payment",

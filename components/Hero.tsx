@@ -202,7 +202,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white/65 text-base sm:text-lg lg:text-xl font-inter font-light mt-6 mb-2 max-w-2xl mx-auto leading-relaxed"
+          className="text-white/70 text-base sm:text-lg lg:text-xl font-inter font-light mt-6 mb-2 max-w-2xl mx-auto leading-relaxed"
         >
           Hotel confirmed &nbsp;·&nbsp; Darshan arranged &nbsp;·&nbsp; Transport ready
           <br className="hidden sm:block" />
@@ -218,7 +218,7 @@ export default function Hero() {
           transition={{ duration: 0.55, delay: 1.0 }}
           className="inline-flex items-center gap-2 mt-5 mb-8 bg-white/8 border border-white/18 backdrop-blur-md rounded-full px-5 py-2.5"
         >
-          <span className="text-white/55 text-sm">Starting at</span>
+          <span className="text-white/60 text-sm">Starting at</span>
           <span className="text-saffron-400 font-playfair font-bold text-2xl leading-none">₹22,000</span>
           <span className="text-white/40 text-sm">/ couple</span>
           <span className="hidden sm:inline text-white/25 text-sm">·&nbsp; All inclusive</span>
@@ -287,7 +287,7 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-8"
         >
           {trustBadges.map((badge, i) => (
-            <div key={i} className="flex items-center gap-2 text-white/65">
+            <div key={i} className="flex items-center gap-2 text-white/70">
               <div className="w-7 h-7 rounded-full bg-white/[0.09] border border-white/[0.16] flex items-center justify-center flex-shrink-0">
                 <badge.icon size={13} className="text-gold-400" />
               </div>
@@ -305,7 +305,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.6, duration: 1 }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/35"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/40"
       >
         <span className="text-[9px] tracking-[0.25em] uppercase font-medium">Explore</span>
         <motion.div

@@ -200,7 +200,7 @@ export default function Testimonials() {
                   </p>
 
                   {/* Full review */}
-                  <p className="text-white/55 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl">
+                  <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl">
                     {active.review}
                   </p>
 
@@ -221,7 +221,7 @@ export default function Testimonials() {
                       )}
                       <div>
                         <div className="text-white font-semibold text-[15px]">{active.name}</div>
-                        <div className="text-white/38 text-sm">{active.location}</div>
+                        <div className="text-white/50 text-sm">{active.location}</div>
                         <Stars n={active.rating} />
                       </div>
                     </div>
@@ -230,7 +230,7 @@ export default function Testimonials() {
                         Package
                       </div>
                       <div className="text-white/75 text-sm font-medium">{active.package}</div>
-                      <div className="text-white/28 text-xs mt-0.5">{active.date}</div>
+                      <div className="text-white/40 text-xs mt-0.5">{active.date}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -258,14 +258,14 @@ export default function Testimonials() {
                 <div className="flex gap-2.5">
                   <button
                     onClick={() => go(-1)}
-                    className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/45 hover:text-white hover:border-white/35 transition-all duration-200 hover:bg-white/5"
+                    className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-all duration-200 hover:bg-white/5"
                     aria-label="Previous"
                   >
                     <ChevronLeft size={17} />
                   </button>
                   <button
                     onClick={() => go(1)}
-                    className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/45 hover:text-white hover:border-white/35 transition-all duration-200 hover:bg-white/5"
+                    className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-all duration-200 hover:bg-white/5"
                     aria-label="Next"
                   >
                     <ChevronRight size={17} />

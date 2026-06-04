@@ -130,7 +130,7 @@ export default function WhyChooseUs() {
           className="text-center mb-16 sm:mb-20"
         >
           <div className="ornament-line max-w-[220px] mx-auto mb-5">
-            <span className="text-gold-500/60 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
+            <span className="text-gold-400 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
               Why 50,000+ Families Choose Us
             </span>
           </div>
@@ -138,7 +138,7 @@ export default function WhyChooseUs() {
             The Difference You{" "}
             <span className="text-gradient-gold">Feel on Day One</span>
           </h2>
-          <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
             We don&apos;t sell tours. We craft stress-free pilgrimages that let you focus entirely on your devotion.
           </p>
         </motion.div>
@@ -185,7 +185,7 @@ export default function WhyChooseUs() {
               <h3 className="font-playfair font-semibold text-white text-[17px] mb-2 leading-snug group-hover:text-white transition-colors">
                 {usp.title}
               </h3>
-              <p className="text-white/42 text-[13px] leading-relaxed group-hover:text-white/58 transition-colors">
+              <p className="text-white/70 text-[13px] leading-relaxed group-hover:text-white/90 transition-colors">
                 {usp.description}
               </p>
             </motion.div>
@@ -207,7 +207,7 @@ export default function WhyChooseUs() {
             <h3 className="font-playfair font-bold text-white text-xl mb-1.5">
               100 % Money-Back Guarantee
             </h3>
-            <p className="text-white/45 text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed">
               Not satisfied within 48 hours of booking? Full refund, no questions asked. We are that confident — and you should feel that safe.
             </p>
           </div>

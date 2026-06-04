@@ -149,7 +149,7 @@ function PolicyAccordion() {
                             className="mt-[5px] w-1.5 h-1.5 rounded-full flex-shrink-0"
                             style={{ backgroundColor: item.color }}
                           />
-                          <span className="text-white/45 text-[12px] leading-relaxed">{point}</span>
+                          <span className="text-white/60 text-[12px] leading-relaxed">{point}</span>
                         </li>
                       ))}
                     </ul>
