@@ -342,10 +342,12 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
 
         {/* CTA */}
         <a
-          href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`wa-shimmer flex items-center justify-center gap-2.5 w-full py-3.5 rounded-2xl text-white font-semibold text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+          href="#get-quote"
+          onClick={() => {
+            const event = new CustomEvent("select-tour", { detail: pkg.id });
+            window.dispatchEvent(event);
+          }}
+          className={`wa-shimmer flex items-center justify-center gap-2.5 w-full py-3.5 rounded-2xl text-white font-bold text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
             isPopular
               ? "bg-gold-gradient text-divine-dark hover:brightness-105"
               : "hover:brightness-110"
@@ -355,11 +357,10 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
               ? {}
               : { backgroundColor: pkg.accent }
           }
-          data-cta="whatsapp"
+          data-cta="scroll-quote"
           data-source="packages"
           data-package={pkg.id}
         >
-          <MessageCircle size={16} />
           {pkg.ctaText}
         </a>
 
@@ -458,14 +459,10 @@ export default function Packages() {
           <p className="text-gray-400 text-sm">
             Need a custom group tour, senior citizen plan or a different itinerary?{" "}
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-                "Jai Shri Ram! I need a custom Ayodhya tour package. Please help me plan."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#get-quote"
               className="text-saffron-600 font-semibold hover:text-saffron-700 underline underline-offset-2"
             >
-              Chat with our experts →
+              Plan your custom trip here →
             </a>
           </p>
         </motion.div>

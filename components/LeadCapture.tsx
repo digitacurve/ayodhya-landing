@@ -228,6 +228,28 @@ function LeadForm() {
   const [status,  setStatus]  = useState<"idle" | "submitting" | "error">("idle");
   const calRef = useRef<HTMLDivElement>(null);
 
+  // Auto-select package on select-tour event
+  useEffect(() => {
+    const handleSelectTour = (e: Event) => {
+      const tourId = (e as CustomEvent).detail;
+      const tourMapping: Record<string, string> = {
+        "ayodhya-darshan": "Ayodhya Darshan",
+        "ayodhya-varanasi": "Ayodhya – Varanasi",
+        "ayodhya-prayagraj-varanasi": "Ayodhya – Prayagraj – Varanasi Tour",
+        "lucknow-ayodhya": "Custom Trip",
+        "ayodhya-varanasi-chitrakoot": "Custom Trip",
+        "full-circuit": "Custom Trip",
+      };
+      const tourName = tourMapping[tourId];
+      if (tourName) {
+        setFields(f => ({ ...f, tour: tourName }));
+      }
+    };
+
+    window.addEventListener("select-tour", handleSelectTour);
+    return () => window.removeEventListener("select-tour", handleSelectTour);
+  }, []);
+
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFields(f => ({ ...f, [k]: e.target.value }));
     if (errors[k]) setErrors(er => { const n = { ...er }; delete n[k]; return n; });

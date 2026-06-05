@@ -251,19 +251,15 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.28, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12"
         >
-          {/* Primary — WhatsApp */}
+          {/* Primary — Scroll to Form */}
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="wa-shimmer wa-cta-glow group relative flex items-center gap-3 bg-[#25D366] hover:bg-[#20c05c] text-white px-7 py-4 rounded-full font-semibold text-[15px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center"
-            aria-label="Get full itinerary on WhatsApp"
-            data-cta="whatsapp"
+            href="#get-quote"
+            className="wa-shimmer bg-saffron-gradient hover:brightness-105 text-white px-8 py-4 rounded-full font-bold text-[15px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center text-center shadow-[0_4px_24px_rgba(255,107,0,0.3)]"
+            aria-label="Get Free Quote"
+            data-cta="scroll-quote"
             data-source="hero"
           >
-            <WhatsAppIcon />
-            <span>Get Full Itinerary</span>
-            <span className="hidden sm:inline text-white/60 text-sm font-normal">— Free on WhatsApp</span>
+            <span>Get Free Tour Details</span>
           </a>
 
           {/* Secondary — Call */}

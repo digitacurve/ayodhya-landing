@@ -77,7 +77,7 @@ export default function StickyWhatsApp() {
                     </div>
                   </div>
                   <p className="text-gray-600 text-xs leading-relaxed">
-                    Jai Shri Ram! 🙏 Planning an Ayodhya yatra? I can get you the best package within your budget. Chat free!
+                    Jai Shri Ram! 🙏 Planning an Ayodhya yatra? Get a free custom tour quote within your budget. Enquire now!
                   </p>
                   <div className="absolute bottom-[-8px] right-6 w-4 h-4 bg-white border-r border-b border-gray-100 rotate-45" />
                 </motion.div>
@@ -92,20 +92,18 @@ export default function StickyWhatsApp() {
                 style={{ animationDelay: "0.75s" }}
               />
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#get-quote"
                 onMouseEnter={() => setShowTooltip(true)}
-                aria-label="Chat on WhatsApp"
-                className="relative flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_40px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 active:scale-95"
-                data-cta="whatsapp"
+                aria-label="Book Your Tour"
+                className="relative flex items-center gap-3 bg-saffron-600 hover:bg-saffron-700 text-white rounded-full shadow-[0_8px_30px_rgba(255,107,0,0.4)] hover:shadow-[0_8px_40px_rgba(255,107,0,0.6)] transition-all duration-300 hover:scale-105 active:scale-95"
+                data-cta="scroll-quote"
                 data-source="sticky-desktop"
               >
                 <div className="w-14 h-14 flex items-center justify-center">
-                  <WhatsAppIcon />
+                  <FileText size={22} />
                 </div>
-                <span className="pr-5 font-semibold text-sm whitespace-nowrap">
-                  Chat on WhatsApp
+                <span className="pr-5 font-bold text-sm whitespace-nowrap">
+                  Book Your Tour
                 </span>
               </a>
             </div>
@@ -140,46 +138,30 @@ export default function StickyWhatsApp() {
               </button>
             </div>
 
-            {/* 3-Button row */}
-            <div className="bg-white border-t border-gray-100 shadow-2xl px-3 py-3 grid grid-cols-3 gap-2 safe-bottom">
+            {/* 2-Button row */}
+            <div className="bg-white border-t border-gray-100 shadow-2xl px-4 py-3 grid grid-cols-2 gap-3 safe-bottom">
               {/* Call */}
               <a
                 href="tel:+919235222399"
-                className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-2xl border-2 border-divine-dark text-divine-dark font-semibold text-xs active:scale-95 transition-transform"
+                className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-divine-dark text-divine-dark font-bold text-sm active:scale-95 transition-transform"
                 aria-label="Call now"
                 data-cta="call"
                 data-source="sticky-mobile"
               >
-                <Phone size={18} />
+                <Phone size={16} />
                 <span>Call Now</span>
               </a>
 
-              {/* WhatsApp — primary */}
+              {/* Get Quote */}
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-2xl bg-[#25D366] text-white font-bold text-xs active:scale-95 transition-transform shadow-md"
-                aria-label="WhatsApp"
-                data-cta="whatsapp"
+                href="#get-quote"
+                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-saffron-600 text-white font-bold text-sm active:scale-95 transition-transform shadow-md"
+                aria-label="Get Free Quote"
+                data-cta="scroll-quote"
                 data-source="sticky-mobile"
               >
-                <WhatsAppIcon />
-                <span>WhatsApp</span>
-              </a>
-
-              {/* Get Itinerary */}
-              <a
-                href={`https://wa.me/${WA_NUMBER}?text=${WA_ITINERARY}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-2xl bg-saffron-600 text-white font-semibold text-xs active:scale-95 transition-transform"
-                aria-label="Get itinerary"
-                data-cta="whatsapp-itinerary"
-                data-source="sticky-mobile"
-              >
-                <FileText size={17} />
-                <span>Get Plan</span>
+                <FileText size={16} />
+                <span>Enquire Now</span>
               </a>
             </div>
           </motion.div>

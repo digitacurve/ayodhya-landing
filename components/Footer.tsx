@@ -235,17 +235,14 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* WhatsApp CTA */}
+            {/* Quote CTA */}
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all hover:scale-105 active:scale-95"
-              data-cta="whatsapp"
+              href="#get-quote"
+              className="inline-flex items-center justify-center gap-2 mt-6 bg-saffron-600 hover:bg-saffron-700 text-white px-6 py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+              data-cta="scroll-quote"
               data-source="footer"
             >
-              <MessageCircle size={16} />
-              Chat on WhatsApp
+              Get Free Tour Quote
             </a>
           </div>
 

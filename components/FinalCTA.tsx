@@ -161,14 +161,11 @@ export default function FinalCTA() {
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10"
         >
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="wa-shimmer wa-cta-glow flex items-center gap-3 bg-[#25D366] hover:bg-[#20c05c] text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center"
-            data-cta="whatsapp"
+            href="#get-quote"
+            className="wa-shimmer flex items-center justify-center gap-3 bg-saffron-gradient hover:brightness-105 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center shadow-[0_4px_24px_rgba(255,107,0,0.35)]"
+            data-cta="scroll-quote"
             data-source="final-cta"
           >
-            <WhatsAppIcon />
             Plan My Ayodhya Yatra
           </a>
           <a

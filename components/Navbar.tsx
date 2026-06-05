@@ -96,14 +96,11 @@ export default function Navbar() {
               <span className="hidden lg:inline">{PHONE}</span>
             </a>
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="wa-shimmer flex items-center gap-2 bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-250 hover:shadow-saffron-glow hover:scale-[1.04] active:scale-[0.97]"
-              data-cta="whatsapp"
+              href="#get-quote"
+              className="flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-250 hover:shadow-saffron-glow hover:scale-[1.04] active:scale-[0.97]"
+              data-cta="scroll-quote"
               data-source="navbar"
             >
-              <MessageCircle size={14} />
               Book Now
             </a>
           </div>
@@ -156,15 +153,13 @@ export default function Navbar() {
                   {PHONE}
                 </a>
                 <a
-                  href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#get-quote"
+                  onClick={() => setMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-saffron-600 text-white font-semibold text-[14px] hover:bg-saffron-700 transition-colors"
-                  data-cta="whatsapp"
+                  data-cta="scroll-quote"
                   data-source="navbar-mobile"
                 >
-                  <MessageCircle size={15} />
-                  Book on WhatsApp
+                  Book Your Tour
                 </a>
               </div>
             </div>
