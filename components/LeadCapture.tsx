@@ -260,17 +260,22 @@ function LeadForm() {
     setStatus("submitting");
 
     try {
+      const payload: Record<string, string> = {
+        name:           fields.name,
+        phone:          fields.phone,
+        tour:           fields.tour,
+        travel_date:    date ? fmtDate(date) : "",
+        special_request:fields.request || "(none)",
+      };
+
+      if (fields.email.trim()) {
+        payload.email = fields.email.trim();
+      }
+
       const res = await fetch(FORMSPREE, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name:           fields.name,
-          phone:          fields.phone,
-          tour:           fields.tour,
-          travel_date:    date ? fmtDate(date) : "",
-          email:          fields.email || "(not provided)",
-          special_request:fields.request || "(none)",
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
