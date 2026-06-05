@@ -386,17 +386,17 @@ export default function Home() {
         {/* 3. Trust Metrics — animated numbers */}
         <TrustMetrics />
 
-        {/* 4. Packages — 6 destination packages */}
+        {/* 4. Hotel Showcase — trust signal for hotel searches */}
+        <HotelShowcase />
+
+        {/* 5. Packages — 6 destination packages */}
         <Packages />
 
-        {/* 5. Why Choose Us — USP grid */}
+        {/* 6. Why Choose Us — USP grid */}
         <WhyChooseUs />
 
-        {/* 6. Itinerary — day-wise expandable plans */}
+        {/* 7. Itinerary — day-wise expandable plans */}
         <Itinerary />
-
-        {/* 7. Hotel Showcase — trust signal for hotel searches */}
-        <HotelShowcase />
 
         {/* 8. Testimonials — social proof carousel */}
         <Testimonials />
@@ -410,7 +410,7 @@ export default function Home() {
         {/* 11. FAQ — 20 Q&As for featured snippets and Google AI Overview */}
         <FAQ />
 
-        {/* 10. Final CTA — conversion push */}
+        {/* 12. Final CTA — conversion push */}
         <FinalCTA />
       </main>
 
