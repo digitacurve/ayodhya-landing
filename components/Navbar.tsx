@@ -34,8 +34,8 @@ export default function Navbar() {
     <>
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "top-0 bg-white/96 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-b border-gold-500/15"
+          scrolled || menuOpen
+            ? "top-0 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-b border-gold-500/15"
             : "top-10 bg-transparent"
         }`}
         initial={{ y: -80 }}
@@ -56,11 +56,11 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className={`transition-colors duration-300 ${scrolled ? "text-divine-dark" : "text-white"}`}>
+            <div className={`transition-colors duration-300 ${scrolled || menuOpen ? "text-divine-dark" : "text-white"}`}>
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
-              <div className={`text-[9px] tracking-[0.24em] uppercase font-semibold ${scrolled ? "text-saffron-600" : "text-gold-300"}`}>
+              <div className={`text-[9px] tracking-[0.24em] uppercase font-semibold ${scrolled || menuOpen ? "text-saffron-600" : "text-gold-300"}`}>
                 Premium Pilgrimage
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(o => !o)}
             className={`md:hidden p-2 rounded-xl transition-colors ${
-              scrolled ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
+              scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
             }`}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
@@ -126,8 +126,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed left-4 right-4 z-40 md:hidden bg-white/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gold-500/15 overflow-hidden transition-all duration-300 ${
-              scrolled ? "top-[4.5rem]" : "top-[7rem]"
+            className={`fixed left-4 right-4 z-40 md:hidden bg-white rounded-2xl shadow-2xl border border-gold-500/15 overflow-hidden transition-all duration-300 ${
+              scrolled || menuOpen ? "top-[4.5rem]" : "top-[7rem]"
             }`}
           >
             <div className="p-4 space-y-0.5">

@@ -8,6 +8,7 @@ import Packages from "@/components/Packages";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Itinerary from "@/components/Itinerary";
 import HotelShowcase from "@/components/HotelShowcase";
+import LuxuryPartnersStrip from "@/components/LuxuryPartnersStrip";
 import Testimonials from "@/components/Testimonials";
 import GoogleReviews from "@/components/GoogleReviews";
 import SemanticContent from "@/components/SemanticContent";
@@ -386,8 +387,8 @@ export default function Home() {
         {/* 3. Trust Metrics — animated numbers */}
         <TrustMetrics />
 
-        {/* 4. Hotel Showcase — trust signal for hotel searches */}
-        <HotelShowcase />
+        {/* 4. Luxury Partners Strip — luxury 5-star brand trust strip */}
+        <LuxuryPartnersStrip />
 
         {/* 5. Packages — 6 destination packages */}
         <Packages />
@@ -398,7 +399,10 @@ export default function Home() {
         {/* 7. Itinerary — day-wise expandable plans */}
         <Itinerary />
 
-        {/* 8. Testimonials — social proof carousel */}
+        {/* 8. Hotel Showcase — trust signal for hotel searches */}
+        <HotelShowcase />
+
+        {/* 9. Testimonials — social proof carousel */}
         <Testimonials />
 
         {/* 9. Google Reviews — verified third-party trust signal */}
