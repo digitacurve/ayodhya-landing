@@ -446,12 +446,19 @@ function ItineraryCard({ item }: { item: ItineraryItem }) {
             <h3 className="font-playfair font-bold text-xl text-divine-dark">{item.package}</h3>
           </div>
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${waMessage}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all hover:scale-105 active:scale-95 flex-shrink-0"
+            href="#get-quote"
+            onClick={() => {
+              const tourIdMapping: Record<string, string> = {
+                "itinerary-ayodhya": "ayodhya-darshan",
+                "itinerary-ayodhya-varanasi": "ayodhya-varanasi",
+                "itinerary-ayodhya-prayagraj-varanasi": "ayodhya-prayagraj-varanasi",
+              };
+              const mappedId = tourIdMapping[item.id] || item.id;
+              const event = new CustomEvent("select-tour", { detail: mappedId });
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 flex-shrink-0 shadow-md"
           >
-            <MessageCircle size={15} />
             Book This Trip
           </a>
         </div>
@@ -602,14 +609,10 @@ export default function Itinerary() {
         >
           All itineraries are customisable.{" "}
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-              "Jai Shri Ram! I'd like to customise my Ayodhya tour itinerary. Please help me plan."
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#get-quote"
             className="text-saffron-600 font-semibold hover:underline"
           >
-            Chat with us to personalise your plan →
+            Enquire here to personalise your plan →
           </a>
         </motion.p>
       </div>

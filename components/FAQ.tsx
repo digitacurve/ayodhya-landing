@@ -110,19 +110,14 @@ export default function FAQ() {
           <h3 className="font-playfair font-bold text-white text-2xl mb-2">
             Still Have Questions?
           </h3>
-          <p className="text-white/45 text-sm mb-7 max-w-xs mx-auto">
-            Our travel experts answer on WhatsApp within 2 minutes — any time of day.
+          <p className="text-white/70 text-sm mb-7 max-w-xs mx-auto">
+            Our travel experts will call you to answer all questions — free of charge.
           </p>
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-              "Jai Shri Ram! I have some questions about the Ayodhya tour packages. Can you help?"
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="wa-shimmer inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20c05c] text-white px-8 py-4 rounded-full font-semibold text-[15px] transition-all duration-300 hover:scale-[1.04] active:scale-[0.97]"
+            href="#get-quote"
+            className="wa-shimmer inline-flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-8 py-4 rounded-full font-semibold text-[15px] transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] shadow-lg"
           >
-            <MessageCircle size={18} />
-            Ask on WhatsApp — Free
+            Enquire Now
           </a>
         </motion.div>
       </div>

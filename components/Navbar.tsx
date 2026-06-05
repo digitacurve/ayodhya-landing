@@ -33,10 +33,10 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-10 left-0 right-0 z-40 transition-all duration-500 ${
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-white/96 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-b border-gold-500/15"
-            : "bg-transparent"
+            ? "top-0 bg-white/96 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-b border-gold-500/15"
+            : "top-10 bg-transparent"
         }`}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
@@ -56,7 +56,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className={`transition-colors duration-300 hidden sm:block ${scrolled ? "text-divine-dark" : "text-white"}`}>
+            <div className={`transition-colors duration-300 ${scrolled ? "text-divine-dark" : "text-white"}`}>
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
@@ -126,7 +126,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[5.5rem] left-4 right-4 z-40 md:hidden bg-white/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gold-500/15 overflow-hidden"
+            className={`fixed left-4 right-4 z-40 md:hidden bg-white/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gold-500/15 overflow-hidden transition-all duration-300 ${
+              scrolled ? "top-[4.5rem]" : "top-[7rem]"
+            }`}
           >
             <div className="p-4 space-y-0.5">
               {navLinks.map((link, i) => (

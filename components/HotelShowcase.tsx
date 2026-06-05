@@ -260,19 +260,14 @@ export default function HotelShowcase() {
                     {hotel.priceNote}
                   </p>
                   <a
-                    href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-                      `Jai Shri Ram! 🙏 I'm interested in the ${hotel.tier} hotel option for my Ayodhya tour. Please share details.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] ${
+                    href="#get-quote"
+                    className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] ${
                       hotel.dark
                         ? "bg-gold-gradient text-divine-dark"
                         : "bg-saffron-600 hover:bg-saffron-700 text-white"
                     }`}
                   >
-                    <MessageCircle size={15} />
-                    Ask About This Hotel
+                    Enquire About This Hotel
                   </a>
                 </div>
               </div>
@@ -289,6 +284,28 @@ export default function HotelShowcase() {
         >
           <p className="text-gray-500 text-sm">
             🏨 All hotels are personally vetted by our team · Pre-confirmed before your booking · No last-minute surprises
+          </p>
+        </motion.div>
+
+        {/* Luxury Hotel Partners Trust Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-16 pt-10 border-t border-gray-100"
+        >
+          <p className="text-gray-400 text-xs tracking-[0.2em] uppercase font-bold text-center mb-6">
+            Our 5-Star Luxury Hotel Partners
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-45 hover:opacity-75 transition-opacity duration-300">
+            <span className="font-playfair font-black text-xl md:text-2xl text-divine-dark tracking-wider">TAJ HOTELS</span>
+            <span className="font-sans font-bold text-lg md:text-xl text-divine-dark tracking-[0.3em]">RAMADA</span>
+            <span className="font-playfair italic font-extrabold text-xl md:text-2xl text-divine-dark tracking-wide">The Oberoi</span>
+            <span className="font-sans font-medium text-lg md:text-xl text-divine-dark tracking-[0.2em]">HYATT</span>
+            <span className="font-sans font-black text-lg md:text-xl text-divine-dark tracking-[0.1em]">Radisson</span>
+          </div>
+          <p className="text-center text-[11px] text-gray-400 mt-4 leading-relaxed max-w-md mx-auto">
+            Custom luxury 5-star packages featuring premium accommodation upgrades are fully available on request.
           </p>
         </motion.div>
       </div>
