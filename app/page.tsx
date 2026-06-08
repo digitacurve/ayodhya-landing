@@ -245,10 +245,20 @@ const tourSchema = {
         name: "Ayodhya Darshan Package — 2 Nights / 3 Days",
         description:
           "Ayodhya tour package with Ram Mandir darshan, 3★/4★ hotel, airport pickup & drop, and professional guide.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png"
+        ],
+        sku: "ayodhya-darshan-2n3d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "22000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
@@ -261,10 +271,20 @@ const tourSchema = {
         name: "Ayodhya Varanasi Tour Package — 3 Nights / 4 Days",
         description:
           "Ayodhya and Varanasi tour package with Ram Mandir darshan, Kashi Vishwanath visit, 3★/4★ hotels and AC transfers.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG"
+        ],
+        sku: "ayodhya-varanasi-3n4d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "32000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
@@ -277,10 +297,20 @@ const tourSchema = {
         name: "Ayodhya Prayagraj Varanasi Package — 4 Nights / 5 Days",
         description:
           "Complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi with darshan pass, hotels and guide.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sangam_Allahabad.jpg/960px-Sangam_Allahabad.jpg"
+        ],
+        sku: "ayodhya-prayagraj-varanasi-4n5d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "40000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
@@ -293,10 +323,20 @@ const tourSchema = {
         name: "Lucknow Ayodhya Tour Package — 3 Nights / 4 Days",
         description:
           "Heritage and pilgrimage tour covering Lucknow and Ayodhya with Ram Mandir darshan and hotel stay.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bara_Imambara_Lucknow.jpg/960px-Bara_Imambara_Lucknow.jpg"
+        ],
+        sku: "lucknow-ayodhya-3n4d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "30000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
@@ -309,10 +349,20 @@ const tourSchema = {
         name: "Ayodhya Varanasi Chitrakoot Package — 4 Nights / 5 Days",
         description:
           "Ramayana pilgrimage circuit tracing Lord Ram's journey from Ayodhya through Chitrakoot to Varanasi.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Mandakini_River.jpg/960px-Mandakini_River.jpg"
+        ],
+        sku: "ayodhya-varanasi-chitrakoot-4n5d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "40000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
@@ -325,10 +375,20 @@ const tourSchema = {
         name: "Ayodhya Prayagraj Varanasi Chitrakoot Package — 5 Nights / 6 Days",
         description:
           "The ultimate Ramayana pilgrimage covering all four sacred destinations with premium hotels and guided darshan.",
+        image: [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png"
+        ],
+        sku: "ayodhya-prayagraj-varanasi-chitrakoot-5n6d",
+        brand: {
+          "@type": "Brand",
+          name: "Ayodhya Dharshan"
+        },
         offers: {
           "@type": "Offer",
           price: "50000",
           priceCurrency: "INR",
+          priceValidUntil: "2027-12-31",
+          url: "https://book.ayodhyadharshan.com/#get-quote",
           availability: "https://schema.org/InStock",
         },
       },
