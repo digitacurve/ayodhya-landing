@@ -1,11 +1,9 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, MessageCircle, Loader2, Home, ArrowRight } from "lucide-react";
+import { CheckCircle2, Home, Phone, CalendarDays, Map, User } from "lucide-react";
 import { motion } from "framer-motion";
-
-const WA_NUMBER = "919235222399";
 
 function ThankYouDetails() {
   const searchParams = useSearchParams();
@@ -13,26 +11,6 @@ function ThankYouDetails() {
   const phone = searchParams.get("phone") || "";
   const tour = searchParams.get("tour") || "";
   const date = searchParams.get("date") || "";
-  const isFlexible = searchParams.get("is_flexible") === "true";
-
-  const [countdown, setCountdown] = useState(3);
-  const [redirected, setRedirected] = useState(false);
-
-  const waMsg = encodeURIComponent(
-    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}\n• *Travel Date*: ${date}${isFlexible ? "\n• *Note*: I want to lock today's special rate with a flexible ₹1,999 token deposit" : ""}\n\nPlease share the details and custom itinerary.`
-  );
-
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
-
-  useEffect(() => {
-    if (countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (!redirected) {
-      setRedirected(true);
-      window.location.href = waUrl;
-    }
-  }, [countdown, redirected, waUrl]);
 
   return (
     <div className="w-full max-w-xl mx-auto text-center px-4">
@@ -55,10 +33,10 @@ function ThankYouDetails() {
         transition={{ delay: 0.15 }}
         className="font-playfair font-bold text-3xl sm:text-4xl text-white mb-4 leading-tight"
       >
-        Request Received Successfully!
+        Enquiry Submitted Successfully!
       </motion.h1>
 
-      {/* Personalized message */}
+      {/* Message */}
       <motion.p
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -66,54 +44,82 @@ function ThankYouDetails() {
         className="text-white/70 text-base sm:text-lg mb-8 leading-relaxed"
       >
         {name ? `Thank you, ${name}! ` : "Thank you! "}
-        Your travel plan request for <span className="text-gold-300 font-semibold">{tour || "Ayodhya Tour"}</span> on <span className="text-gold-300 font-semibold">{date || "selected date"}</span> has been recorded.
+        Your pilgrimage details have been recorded. Our tour expert will call you shortly to assist you.
       </motion.p>
 
-      {/* Countdown Card */}
+      {/* Details Card */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.35 }}
-        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 mb-8 mx-auto"
+        className="bg-white/[0.04] border border-white/[0.08] rounded-3xl p-6 mb-8 text-left space-y-4"
       >
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <Loader2 size={16} className="text-saffron-500 animate-spin" />
-          <span className="text-white/60 text-sm font-medium">
-            Redirecting to WhatsApp in <span className="text-saffron-400 font-bold text-base">{countdown}</span> seconds...
-          </span>
+        <h3 className="font-playfair font-bold text-white text-lg border-b border-white/[0.06] pb-3 mb-1">
+          Yatra Details Summary
+        </h3>
+
+        <div className="grid grid-cols-1 gap-3.5">
+          <div className="flex items-center gap-3">
+            <User size={16} className="text-saffron-400" />
+            <div>
+              <span className="text-white/45 text-[11px] block uppercase font-semibold">Devotee Name</span>
+              <span className="text-white text-[14px]">{name || "Not provided"}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Phone size={16} className="text-saffron-400" />
+            <div>
+              <span className="text-white/45 text-[11px] block uppercase font-semibold">Contact Number</span>
+              <span className="text-white text-[14px]">{phone || "Not provided"}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Map size={16} className="text-saffron-400" />
+            <div>
+              <span className="text-white/45 text-[11px] block uppercase font-semibold">Selected Yatra</span>
+              <span className="text-white text-[14px]">{tour || "Custom Trip"}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <CalendarDays size={16} className="text-saffron-400" />
+            <div>
+              <span className="text-white/45 text-[11px] block uppercase font-semibold">Travel Date</span>
+              <span className="text-white text-[14px]">{date || "Flexible Dates"}</span>
+            </div>
+          </div>
         </div>
 
-        <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mb-5">
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 3, ease: "linear" }}
-            className="h-full bg-gradient-to-r from-saffron-500 to-gold-500"
-          />
+        <div className="mt-4 pt-4 border-t border-white/[0.06] text-center">
+          <p className="text-saffron-300 text-xs font-semibold">
+            ⏱️ Our expert will call you within 2 hours
+          </p>
         </div>
-
-        <a
-          href={waUrl}
-          className="wa-shimmer wa-cta-glow flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20c05c] text-white py-4 px-6 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full shadow-[0_4px_20px_rgba(37,211,102,0.25)]"
-        >
-          <MessageCircle size={18} />
-          <span>Open WhatsApp Chat Now</span>
-          <ArrowRight size={16} />
-        </a>
       </motion.div>
 
-      {/* Back home */}
+      {/* Buttons */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.45 }}
+        className="flex flex-col sm:flex-row items-center justify-center gap-4"
       >
         <a
-          href="/"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-white text-sm font-medium transition-colors"
+          href="tel:+919235222399"
+          className="wa-shimmer flex items-center justify-center gap-2.5 bg-saffron-gradient text-white py-3.5 px-6 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shadow-[0_4px_20px_rgba(255,107,0,0.3)]"
         >
-          <Home size={15} />
-          Back to Homepage
+          <Phone size={16} />
+          <span>Call Us Directly (Fast Track)</span>
+        </a>
+
+        <a
+          href="/"
+          className="flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/40 text-white/70 hover:text-white py-3.5 px-6 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 w-full sm:w-auto hover:bg-white/5"
+        >
+          <Home size={16} />
+          <span>Back to Homepage</span>
         </a>
       </motion.div>
     </div>
@@ -147,7 +153,7 @@ export default function ThankYouPage() {
       <div className="relative z-10 w-full">
         <Suspense fallback={
           <div className="flex flex-col items-center justify-center text-white/50 gap-3">
-            <Loader2 size={32} className="animate-spin text-saffron-500" />
+            <span className="animate-spin text-2xl text-saffron-500">⏳</span>
             <span>Loading details...</span>
           </div>
         }>
