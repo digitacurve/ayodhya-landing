@@ -9,7 +9,9 @@ const testimonials = [
     name: "Ramkumar Sharma",
     location: "Lucknow, Uttar Pradesh",
     initials: "RS",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+    avatar: "/customer-1.jpg",
+    yatraPhoto: "/customer-1.jpg",
+    photoCaption: "Sharma ji's family starting their travel from Lucknow",
     rating: 5,
     package: "Ayodhya Varanasi Package",
     date: "March 2025",
@@ -21,7 +23,9 @@ const testimonials = [
     name: "Sunita Devi",
     location: "New Delhi",
     initials: "SD",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
+    avatar: "/customer-2.jpg",
+    yatraPhoto: "/customer-2.jpg",
+    photoCaption: "Sunita Devi & group enjoying pure sattvic meals at the hotel",
     rating: 5,
     package: "Full Ramayana Circuit",
     date: "January 2025",
@@ -33,7 +37,9 @@ const testimonials = [
     name: "Anil Gupta",
     location: "Mumbai, Maharashtra",
     initials: "AG",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80",
+    avatar: "/customer-3.jpg",
+    yatraPhoto: "/customer-3.jpg",
+    photoCaption: "Gupta family's group of 12 arriving at Ayodhya Dham Railway Station",
     rating: 5,
     package: "Ayodhya Varanasi Package",
     date: "February 2025",
@@ -45,7 +51,9 @@ const testimonials = [
     name: "Priya & Rajesh Malhotra",
     location: "Chandigarh, Punjab",
     initials: "PM",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
+    avatar: "/customer-4.jpg",
+    yatraPhoto: "/customer-4.jpg",
+    photoCaption: "Malhotra family during their morning Ganga Snan & Aarti",
     rating: 5,
     package: "Ayodhya Darshan Package",
     date: "April 2025",
@@ -57,7 +65,9 @@ const testimonials = [
     name: "Dr. Vikram Tiwari",
     location: "Bhopal, Madhya Pradesh",
     initials: "VT",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80",
+    avatar: "/customer-5.jpg",
+    yatraPhoto: "/customer-5.jpg",
+    photoCaption: "Dr. Tiwari's family at the Shri Ram Mandir entrance gate",
     rating: 5,
     package: "Ayodhya Prayagraj Varanasi Package",
     date: "May 2025",
@@ -193,45 +203,70 @@ export default function Testimonials() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -32 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
                 >
-                  {/* Highlight quote */}
-                  <p className="font-playfair text-gold-400 text-xl sm:text-2xl lg:text-3xl italic mb-6 leading-snug max-w-3xl">
-                    &ldquo;{active.highlight}&rdquo;
-                  </p>
+                  {/* Left Side: Testimonial Details */}
+                  <div className="lg:col-span-7 flex flex-col justify-between h-full">
+                    <div>
+                      {/* Highlight quote */}
+                      <p className="font-playfair text-gold-400 text-xl sm:text-2xl lg:text-3xl italic mb-6 leading-snug max-w-3xl">
+                        &ldquo;{active.highlight}&rdquo;
+                      </p>
 
-                  {/* Full review */}
-                  <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl">
-                    {active.review}
-                  </p>
+                      {/* Full review */}
+                      <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl">
+                        {active.review}
+                      </p>
+                    </div>
 
-                  {/* Reviewer row */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-                    <div className="flex items-center gap-4">
-                      {active.avatar ? (
-                        <img
-                          src={active.avatar}
-                          alt={active.name}
-                          className="w-12 h-12 rounded-full object-cover border border-gold-400/50 flex-shrink-0"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-saffron-700 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
-                          {active.initials}
+                    {/* Reviewer row */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-6 border-t border-white/5">
+                      <div className="flex items-center gap-4">
+                        {active.avatar ? (
+                          <img
+                            src={active.avatar}
+                            alt={active.name}
+                            className="w-12 h-12 rounded-full object-cover border border-gold-400/50 flex-shrink-0"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-saffron-700 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
+                            {active.initials}
+                          </div>
+                        )}
+                        <div>
+                          <div className="text-white font-semibold text-[15px]">{active.name}</div>
+                          <div className="text-white/50 text-sm">{active.location}</div>
+                          <Stars n={active.rating} />
                         </div>
-                      )}
-                      <div>
-                        <div className="text-white font-semibold text-[15px]">{active.name}</div>
-                        <div className="text-white/50 text-sm">{active.location}</div>
-                        <Stars n={active.rating} />
+                      </div>
+                      <div className="text-left sm:text-right">
+                        <div className="text-gold-400/60 text-[10px] font-semibold uppercase tracking-widest mb-1">
+                          Package
+                        </div>
+                        <div className="text-white/75 text-sm font-medium">{active.package}</div>
+                        <div className="text-white/40 text-xs mt-0.5">{active.date}</div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-gold-400/60 text-[10px] font-semibold uppercase tracking-widest mb-1">
-                        Package
-                      </div>
-                      <div className="text-white/75 text-sm font-medium">{active.package}</div>
-                      <div className="text-white/40 text-xs mt-0.5">{active.date}</div>
+                  </div>
+
+                  {/* Right Side: Yatra Group Photo */}
+                  <div className="lg:col-span-5 flex flex-col items-center">
+                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gold-500/20 group">
+                      <img
+                        src={active.yatraPhoto}
+                        alt={active.name + "'s Yatra"}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {/* Gold gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-divine-dark/60 via-transparent to-transparent pointer-events-none" />
                     </div>
+                    {active.photoCaption && (
+                      <p className="text-[12px] text-gold-400/70 italic mt-3 text-center leading-relaxed">
+                        📸 {active.photoCaption}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               </AnimatePresence>
