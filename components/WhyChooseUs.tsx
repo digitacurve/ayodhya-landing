@@ -205,14 +205,14 @@ export default function WhyChooseUs() {
           </div>
           <div className="flex-1">
             <h3 className="font-playfair font-bold text-white text-xl mb-1.5">
-              100 % Money-Back Guarantee
+              Flexi-Date Price Lock Guarantee
             </h3>
             <p className="text-white/70 text-sm leading-relaxed">
-              Not satisfied within 48 hours of booking? Full refund, no questions asked. We are that confident — and you should feel that safe.
+              Planning your yatra for upcoming months? Avoid seasonal hotel and transport price spikes. Lock in today's special package rates for any future month with a ₹1,999 token advance. Finalize your exact travel dates later at your convenience.
             </p>
           </div>
-          <div className="flex-shrink-0 text-emerald-400 font-playfair font-bold text-3xl whitespace-nowrap">
-            ₹0 Risk
+          <div className="flex-shrink-0 text-emerald-400 font-playfair font-bold text-2xl sm:text-3xl whitespace-nowrap">
+            Price Locked
           </div>
         </motion.div>
       </div>

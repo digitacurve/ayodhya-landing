@@ -226,6 +226,8 @@ function LeadForm() {
   const [calOpen, setCalOpen] = useState(false);
   const [errors,  setErrors]  = useState<Record<string, string>>({});
   const [status,  setStatus]  = useState<"idle" | "submitting" | "error">("idle");
+  const [isFlexible, setIsFlexible] = useState(false);
+  const [flexMonth, setFlexMonth] = useState("");
   const calRef = useRef<HTMLDivElement>(null);
 
   // Auto-select package on select-tour event
@@ -271,7 +273,8 @@ function LeadForm() {
     if (!fields.phone.trim()) e.phone = "Please enter your phone number";
     if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s/g, ""))) e.phone = "Enter a valid 10-digit Indian mobile number";
     if (!fields.tour)         e.tour  = "Please select a tour";
-    if (!date)                e.date  = "Please select your travel date";
+    if (!isFlexible && !date) e.date  = "Please select your travel date";
+    if (isFlexible && !flexMonth) e.flexMonth = "Please select tentative travel month";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -281,12 +284,14 @@ function LeadForm() {
     if (!validate()) return;
     setStatus("submitting");
 
+    const travelDateString = isFlexible ? `Flexible - ${flexMonth}` : (date ? fmtDate(date) : "");
+
     try {
       const payload: Record<string, string> = {
         name:           fields.name,
         phone:          fields.phone,
         tour:           fields.tour,
-        travel_date:    date ? fmtDate(date) : "",
+        travel_date:    travelDateString,
         special_request:fields.request || "(none)",
       };
 
@@ -308,7 +313,7 @@ function LeadForm() {
               event: "form_submit",
               form_name: "lead_capture",
               tour_selected: fields.tour,
-              travel_date: date ? fmtDate(date) : "",
+              travel_date: travelDateString,
             });
           }
         }
@@ -316,7 +321,8 @@ function LeadForm() {
           name: fields.name,
           phone: fields.phone,
           tour: fields.tour,
-          date: date ? fmtDate(date) : "",
+          date: travelDateString,
+          is_flexible: isFlexible ? "true" : "false",
         }).toString();
         window.location.href = `${REDIRECT}?${queryParams}`;
       } else {
@@ -384,30 +390,85 @@ function LeadForm() {
       </Field>
 
       {/* Row 3: Date */}
-      <Field label="Travel Date" required>
-        <div className="relative" ref={calRef}>
-          <button
-            type="button"
-            onClick={() => setCalOpen(o => !o)}
-            className={`${inputClass} flex items-center gap-3 text-left ${errors.date ? "border-red-400/60" : ""} ${calOpen ? "border-saffron-400/70 bg-white/[0.09] ring-2 ring-saffron-400/15" : ""}`}
-          >
-            <CalendarDays size={15} className={date ? "text-saffron-400" : "text-white/25"} />
-            <span className={date ? "text-white" : "text-white/25"}>
-              {date ? fmtDate(date) : "Select travel date"}
-            </span>
-          </button>
-          <AnimatePresence>
-            {calOpen && (
-              <Calendar
-                selected={date}
-                onSelect={d => { setDate(d); if (errors.date) setErrors(er => { const n = {...er}; delete n.date; return n; }); }}
-                onClose={() => setCalOpen(false)}
-              />
-            )}
-          </AnimatePresence>
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <label className="block text-white/60 text-[11px] font-semibold tracking-[0.14em] uppercase">
+            Travel Date
+            {!isFlexible && <span className="text-saffron-400 ml-0.5">*</span>}
+          </label>
+          <label className="flex items-center gap-1.5 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={isFlexible}
+              onChange={(e) => {
+                setIsFlexible(e.target.checked);
+                if (e.target.checked) {
+                  setDate(undefined);
+                  if (errors.date) {
+                    setErrors(er => { const n = { ...er }; delete n.date; return n; });
+                  }
+                } else {
+                  setFlexMonth("");
+                  if (errors.flexMonth) {
+                    setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
+                  }
+                }
+              }}
+              className="rounded border-white/25 bg-white/5 text-saffron-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5"
+            />
+            <span className="text-saffron-400 text-[11px] font-semibold uppercase tracking-wider">Dates are flexible / tentative</span>
+          </label>
         </div>
-        {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
-      </Field>
+
+        {isFlexible ? (
+          <div className="relative">
+            <select
+              value={flexMonth}
+              onChange={(e) => {
+                setFlexMonth(e.target.value);
+                if (errors.flexMonth) setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
+              }}
+              className={`${inputClass} pr-10 ${errors.flexMonth ? "border-red-400/60" : ""} cursor-pointer`}
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            >
+              <option value="" disabled style={{ background: "#160800" }}>Select tentative travel month</option>
+              <option value="June 2026" style={{ background: "#160800" }}>June 2026</option>
+              <option value="July 2026" style={{ background: "#160800" }}>July 2026</option>
+              <option value="August 2026" style={{ background: "#160800" }}>August 2026</option>
+              <option value="September 2026" style={{ background: "#160800" }}>September 2026</option>
+              <option value="October 2026" style={{ background: "#160800" }}>October 2026 (Festive Season)</option>
+              <option value="November 2026" style={{ background: "#160800" }}>November 2026</option>
+              <option value="December 2026" style={{ background: "#160800" }}>December 2026</option>
+              <option value="Later / Undecided" style={{ background: "#160800" }}>Later / Undecided</option>
+            </select>
+            <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+            {errors.flexMonth && <p className="text-red-400 text-[11px] mt-1.5">{errors.flexMonth}</p>}
+          </div>
+        ) : (
+          <div className="relative" ref={calRef}>
+            <button
+              type="button"
+              onClick={() => setCalOpen(o => !o)}
+              className={`${inputClass} flex items-center gap-3 text-left ${errors.date ? "border-red-400/60" : ""} ${calOpen ? "border-saffron-400/70 bg-white/[0.09] ring-2 ring-saffron-400/15" : ""}`}
+            >
+              <CalendarDays size={15} className={date ? "text-saffron-400" : "text-white/25"} />
+              <span className={date ? "text-white" : "text-white/25"}>
+                {date ? fmtDate(date) : "Select travel date"}
+              </span>
+            </button>
+            <AnimatePresence>
+              {calOpen && (
+                <Calendar
+                  selected={date}
+                  onSelect={d => { setDate(d); if (errors.date) setErrors(er => { const n = {...er}; delete n.date; return n; }); }}
+                  onClose={() => setCalOpen(false)}
+                />
+              )}
+            </AnimatePresence>
+            {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
+          </div>
+        )}
+      </div>
 
       {/* Row 4: Email */}
       <Field label="Email Address">
@@ -480,8 +541,8 @@ function LeadForm() {
       {/* Micro-trust strip */}
       <div className="flex items-center justify-center gap-4 pt-1">
         {[
-          "No advance payment",
-          "Free cancellation 48h",
+          "Price Lock Guarantee",
+          "Flexible Dates",
           "100% secure",
         ].map(t => (
           <span key={t} className="text-white/28 text-[10px] whitespace-nowrap flex items-center gap-1">
@@ -650,7 +711,7 @@ export default function LeadCapture() {
                       Get Your Free Tour Quote
                     </h3>
                     <p className="text-white/40 text-[12px] mt-0.5">
-                      No advance payment · Personalised itinerary
+                      Lock Today's Rates with ₹1,999 Deposit · Finalize Dates Later
                     </p>
                   </div>
                 </div>

@@ -367,7 +367,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
         <p className={`text-center text-[11px] mt-2.5 ${
           isPopular ? "text-white/30" : "text-gray-300"
         }`}>
-          No advance payment &nbsp;·&nbsp; Free cancellation within 48 h
+          Price Lock Available &nbsp;·&nbsp; Secure Today's Rates for Any Month
         </p>
       </div>
     </motion.div>
@@ -446,6 +446,22 @@ export default function Packages() {
                 <p className="text-gray-400 text-xs leading-relaxed">Ram Mandir darshan passes are arranged strictly as part of our complete tour packages. We do not provide or sell standalone passes without hotel/transport booking.</p>
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Early bird price lock warning card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-8 bg-amber-500/10 border border-amber-500/20 rounded-3xl p-5 sm:p-6 max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
+        >
+          <span className="text-2xl">💡</span>
+          <div>
+            <h4 className="font-semibold text-amber-200 text-sm mb-0.5">Early Bird Tip for Future Travels</h4>
+            <p className="text-gray-300 text-xs leading-relaxed">
+              Planning your yatra for upcoming months? Hotel tariffs in Ayodhya increase by up to 45% closer to the date due to massive Ram Mandir crowds. Protect yourself from seasonal price hikes by choosing a <strong>Flexi-Date Price Lock</strong> today for just a ₹1,999 token advance. Finalize your exact dates later!
+            </p>
           </div>
         </motion.div>
 

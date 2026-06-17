@@ -38,7 +38,7 @@ const trustBadges = [
   { icon: Star,         label: "4.9★  Google Rated",  sub: "2,847 verified reviews" },
   { icon: Users,        label: "50,000+ Pilgrims",     sub: "Trusted since 2009" },
   { icon: ShieldCheck,  label: "Free Cancellation",    sub: "Full refund within 48h" },
-  { icon: CheckCircle2, label: "No Advance Payment",   sub: "Pay only on confirm" },
+  { icon: CheckCircle2, label: "Price Lock Guarantee",   sub: "Lock rates with ₹1,999 token" },
 ];
 
 const WhatsAppIcon = () => (
