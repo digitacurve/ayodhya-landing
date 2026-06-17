@@ -1,9 +1,11 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Home, Phone, CalendarDays, Map, User } from "lucide-react";
+import { CheckCircle2, Home, Phone, CalendarDays, Map, User, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+
+const WA_NUMBER = "919235222399";
 
 function ThankYouDetails() {
   const searchParams = useSearchParams();
@@ -11,6 +13,26 @@ function ThankYouDetails() {
   const phone = searchParams.get("phone") || "";
   const tour = searchParams.get("tour") || "";
   const date = searchParams.get("date") || "";
+  const isFlexible = searchParams.get("is_flexible") === "true";
+
+  const [countdown, setCountdown] = useState(2);
+  const [redirected, setRedirected] = useState(false);
+
+  const waMsg = encodeURIComponent(
+    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}\n• *Travel Date*: ${date}${isFlexible ? "\n• *Note*: I want to lock today's special rate with a flexible ₹1,999 token deposit" : ""}\n\nPlease share the details and custom itinerary.`
+  );
+
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (!redirected) {
+      setRedirected(true);
+      window.location.href = waUrl;
+    }
+  }, [countdown, redirected, waUrl]);
 
   return (
     <div className="w-full max-w-xl mx-auto text-center px-4">
@@ -41,11 +63,22 @@ function ThankYouDetails() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.25 }}
-        className="text-white/70 text-base sm:text-lg mb-8 leading-relaxed"
+        className="text-white/70 text-base sm:text-lg mb-4 leading-relaxed"
       >
         {name ? `Thank you, ${name}! ` : "Thank you! "}
-        Your pilgrimage details have been recorded. Our tour expert will call you shortly to assist you.
+        Your pilgrimage details have been recorded. We are redirecting you to confirm your booking...
       </motion.p>
+
+      {/* Redirect Status */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="flex items-center justify-center gap-2 mb-8 text-saffron-400 font-medium text-sm"
+      >
+        <Loader2 size={16} className="animate-spin text-saffron-500" />
+        <span>Redirecting to yatra confirmation in {countdown}s...</span>
+      </motion.div>
 
       {/* Details Card */}
       <motion.div
@@ -91,12 +124,6 @@ function ThankYouDetails() {
             </div>
           </div>
         </div>
-
-        <div className="mt-4 pt-4 border-t border-white/[0.06] text-center">
-          <p className="text-saffron-300 text-xs font-semibold">
-            ⏱️ Our expert will call you within 2 hours
-          </p>
-        </div>
       </motion.div>
 
       {/* Buttons */}
@@ -107,11 +134,10 @@ function ThankYouDetails() {
         className="flex flex-col sm:flex-row items-center justify-center gap-4"
       >
         <a
-          href="tel:+919235222399"
-          className="wa-shimmer flex items-center justify-center gap-2.5 bg-saffron-gradient text-white py-3.5 px-6 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shadow-[0_4px_20px_rgba(255,107,0,0.3)]"
+          href={waUrl}
+          className="wa-shimmer flex items-center justify-center gap-2.5 bg-saffron-gradient text-white py-3.5 px-8 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shadow-[0_4px_20px_rgba(255,107,0,0.3)]"
         >
-          <Phone size={16} />
-          <span>Call Us Directly (Fast Track)</span>
+          <span>Continue to Booking Confirmation</span>
         </a>
 
         <a
