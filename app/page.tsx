@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LeadCapture from "@/components/LeadCapture";
 import TrustStrip from "@/components/TrustStrip";
+import YatraPhotoMarquee from "@/components/YatraPhotoMarquee";
 import TrustMetrics from "@/components/TrustMetrics";
 import Packages from "@/components/Packages";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -445,7 +446,10 @@ export default function Home() {
         {/* 3. Trust Strip — immediate social proof */}
         <TrustStrip />
 
-        {/* 3. Trust Metrics — animated numbers */}
+        {/* 3b. Yatra Photo Marquee — sliding track of real devotee group photos */}
+        <YatraPhotoMarquee />
+
+        {/* 3c. Trust Metrics — animated numbers */}
         <TrustMetrics />
 
         {/* 4. Luxury Partners Strip — luxury 5-star brand trust strip */}
