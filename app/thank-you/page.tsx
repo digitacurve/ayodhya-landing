@@ -14,12 +14,17 @@ function ThankYouDetails() {
   const tour = searchParams.get("tour") || "";
   const date = searchParams.get("date") || "";
   const isFlexible = searchParams.get("is_flexible") === "true";
+  const bookingType = searchParams.get("booking_type") || "confirm";
 
   const [countdown, setCountdown] = useState(2);
   const [redirected, setRedirected] = useState(false);
 
+  const noteString = bookingType === "lock"
+    ? "\n• *Note*: I want to lock today's special rate with a flexible ₹1,999 token deposit"
+    : "\n• *Note*: I want to confirm my booking with a 25% advance payment";
+
   const waMsg = encodeURIComponent(
-    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}\n• *Travel Date*: ${date}${isFlexible ? "\n• *Note*: I want to lock today's special rate with a flexible ₹1,999 token deposit" : ""}\n\nPlease share the details and custom itinerary.`
+    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}\n• *Travel Date*: ${date}${noteString}\n\nPlease share the details and custom itinerary.`
   );
 
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;

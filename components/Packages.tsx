@@ -367,7 +367,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
         <p className={`text-center text-[11px] mt-2.5 ${
           isPopular ? "text-white/30" : "text-gray-300"
         }`}>
-          Price Lock Available &nbsp;·&nbsp; Secure Today's Rates for Any Month
+          Confirm with 25% Advance &nbsp;·&nbsp; Or Lock Rates with ₹1,999
         </p>
       </div>
     </motion.div>
@@ -460,7 +460,7 @@ export default function Packages() {
           <div>
             <h4 className="font-semibold text-amber-200 text-sm mb-0.5">Early Bird Tip for Future Travels</h4>
             <p className="text-gray-300 text-xs leading-relaxed">
-              Planning your yatra for upcoming months? Hotel tariffs in Ayodhya increase by up to 45% closer to the date due to massive Ram Mandir crowds. Protect yourself from seasonal price hikes by choosing a <strong>Flexi-Date Price Lock</strong> today for just a ₹1,999 token advance. Finalize your exact dates later!
+              Traveling this month? Pay a 25% advance to confirm your dates immediately. Traveling in future months? Avoid seasonal price surges of up to 45% by securing a Flexi-Date Price Lock for just ₹1,999 today. Finalize your exact dates later!
             </p>
           </div>
         </motion.div>

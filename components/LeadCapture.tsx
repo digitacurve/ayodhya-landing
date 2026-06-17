@@ -226,7 +226,7 @@ function LeadForm() {
   const [calOpen, setCalOpen] = useState(false);
   const [errors,  setErrors]  = useState<Record<string, string>>({});
   const [status,  setStatus]  = useState<"idle" | "submitting" | "error">("idle");
-  const [isFlexible, setIsFlexible] = useState(false);
+  const [bookingType, setBookingType] = useState<"confirm" | "lock">("confirm");
   const [flexMonth, setFlexMonth] = useState("");
   const calRef = useRef<HTMLDivElement>(null);
 
@@ -273,8 +273,8 @@ function LeadForm() {
     if (!fields.phone.trim()) e.phone = "Please enter your phone number";
     if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s/g, ""))) e.phone = "Enter a valid 10-digit Indian mobile number";
     if (!fields.tour)         e.tour  = "Please select a tour";
-    if (!isFlexible && !date) e.date  = "Please select your travel date";
-    if (isFlexible && !flexMonth) e.flexMonth = "Please select tentative travel month";
+    if (bookingType === "confirm" && !date) e.date  = "Please select your travel date";
+    if (bookingType === "lock" && !flexMonth) e.flexMonth = "Please select tentative travel month";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -284,7 +284,7 @@ function LeadForm() {
     if (!validate()) return;
     setStatus("submitting");
 
-    const travelDateString = isFlexible ? `Flexible - ${flexMonth}` : (date ? fmtDate(date) : "");
+    const travelDateString = bookingType === "lock" ? `Flexible - ${flexMonth}` : (date ? fmtDate(date) : "");
 
     try {
       const payload: Record<string, string> = {
@@ -292,6 +292,7 @@ function LeadForm() {
         phone:          fields.phone,
         tour:           fields.tour,
         travel_date:    travelDateString,
+        booking_type:   bookingType === "confirm" ? "Direct Confirmation (25% Advance)" : "Flexi-Date Price Lock (₹1,999)",
         special_request:fields.request || "(none)",
       };
 
@@ -314,6 +315,7 @@ function LeadForm() {
               form_name: "lead_capture",
               tour_selected: fields.tour,
               travel_date: travelDateString,
+              booking_type: bookingType,
             });
           }
         }
@@ -322,7 +324,8 @@ function LeadForm() {
           phone: fields.phone,
           tour: fields.tour,
           date: travelDateString,
-          is_flexible: isFlexible ? "true" : "false",
+          booking_type: bookingType,
+          is_flexible: bookingType === "lock" ? "true" : "false",
         }).toString();
         window.location.href = `${REDIRECT}?${queryParams}`;
       } else {
@@ -389,85 +392,101 @@ function LeadForm() {
         {errors.tour && <p className="text-red-400 text-[11px] mt-1.5">{errors.tour}</p>}
       </Field>
 
-      {/* Row 3: Date */}
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <label className="block text-white/60 text-[11px] font-semibold tracking-[0.14em] uppercase">
-            Travel Date
-            {!isFlexible && <span className="text-saffron-400 ml-0.5">*</span>}
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={isFlexible}
-              onChange={(e) => {
-                setIsFlexible(e.target.checked);
-                if (e.target.checked) {
-                  setDate(undefined);
-                  if (errors.date) {
-                    setErrors(er => { const n = { ...er }; delete n.date; return n; });
-                  }
-                } else {
-                  setFlexMonth("");
-                  if (errors.flexMonth) {
-                    setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
-                  }
-                }
-              }}
-              className="rounded border-white/25 bg-white/5 text-saffron-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5"
-            />
-            <span className="text-saffron-400 text-[11px] font-semibold uppercase tracking-wider">Dates are flexible / tentative</span>
-          </label>
+      {/* Row 3: Booking Type & Date Selection */}
+      <div className="space-y-3">
+        <label className="block text-white/60 text-[11px] font-semibold tracking-[0.14em] uppercase">
+          Select Booking Type & Timeline
+        </label>
+        
+        {/* Tab Toggle */}
+        <div className="grid grid-cols-2 gap-2 bg-white/[0.04] p-1.5 rounded-xl border border-white/[0.08]">
+          <button
+            type="button"
+            onClick={() => {
+              setBookingType("confirm");
+              setFlexMonth("");
+              if (errors.flexMonth || errors.date) {
+                setErrors(er => { const n = { ...er }; delete n.date; delete n.flexMonth; return n; });
+              }
+            }}
+            className={`py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
+              bookingType === "confirm"
+                ? "bg-saffron-600 text-white shadow-[0_2px_8px_rgba(255,107,0,0.3)]"
+                : "text-white/50 hover:text-white hover:bg-white/5"
+            }`}
+          >
+            Direct Confirm (25% Adv)
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setBookingType("lock");
+              setDate(undefined);
+              if (errors.flexMonth || errors.date) {
+                setErrors(er => { const n = { ...er }; delete n.date; delete n.flexMonth; return n; });
+              }
+            }}
+            className={`py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
+              bookingType === "lock"
+                ? "bg-saffron-600 text-white shadow-[0_2px_8px_rgba(255,107,0,0.3)]"
+                : "text-white/50 hover:text-white hover:bg-white/5"
+            }`}
+          >
+            Flexi-Price Lock (₹1,999)
+          </button>
         </div>
 
-        {isFlexible ? (
-          <div className="relative">
-            <select
-              value={flexMonth}
-              onChange={(e) => {
-                setFlexMonth(e.target.value);
-                if (errors.flexMonth) setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
-              }}
-              className={`${inputClass} pr-10 ${errors.flexMonth ? "border-red-400/60" : ""} cursor-pointer`}
-              style={{ background: "rgba(255,255,255,0.06)" }}
-            >
-              <option value="" disabled style={{ background: "#160800" }}>Select tentative travel month</option>
-              <option value="June 2026" style={{ background: "#160800" }}>June 2026</option>
-              <option value="July 2026" style={{ background: "#160800" }}>July 2026</option>
-              <option value="August 2026" style={{ background: "#160800" }}>August 2026</option>
-              <option value="September 2026" style={{ background: "#160800" }}>September 2026</option>
-              <option value="October 2026" style={{ background: "#160800" }}>October 2026 (Festive Season)</option>
-              <option value="November 2026" style={{ background: "#160800" }}>November 2026</option>
-              <option value="December 2026" style={{ background: "#160800" }}>December 2026</option>
-              <option value="Later / Undecided" style={{ background: "#160800" }}>Later / Undecided</option>
-            </select>
-            <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
-            {errors.flexMonth && <p className="text-red-400 text-[11px] mt-1.5">{errors.flexMonth}</p>}
-          </div>
-        ) : (
-          <div className="relative" ref={calRef}>
-            <button
-              type="button"
-              onClick={() => setCalOpen(o => !o)}
-              className={`${inputClass} flex items-center gap-3 text-left ${errors.date ? "border-red-400/60" : ""} ${calOpen ? "border-saffron-400/70 bg-white/[0.09] ring-2 ring-saffron-400/15" : ""}`}
-            >
-              <CalendarDays size={15} className={date ? "text-saffron-400" : "text-white/25"} />
-              <span className={date ? "text-white" : "text-white/25"}>
-                {date ? fmtDate(date) : "Select travel date"}
-              </span>
-            </button>
-            <AnimatePresence>
-              {calOpen && (
-                <Calendar
-                  selected={date}
-                  onSelect={d => { setDate(d); if (errors.date) setErrors(er => { const n = {...er}; delete n.date; return n; }); }}
-                  onClose={() => setCalOpen(false)}
-                />
-              )}
-            </AnimatePresence>
-            {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
-          </div>
-        )}
+        {/* Date Input */}
+        <div>
+          {bookingType === "lock" ? (
+            <div className="relative">
+              <select
+                value={flexMonth}
+                onChange={(e) => {
+                  setFlexMonth(e.target.value);
+                  if (errors.flexMonth) setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
+                }}
+                className={`${inputClass} pr-10 ${errors.flexMonth ? "border-red-400/60" : ""} cursor-pointer`}
+                style={{ background: "rgba(255,255,255,0.06)" }}
+              >
+                <option value="" disabled style={{ background: "#160800" }}>Select tentative travel month</option>
+                <option value="June 2026" style={{ background: "#160800" }}>June 2026</option>
+                <option value="July 2026" style={{ background: "#160800" }}>July 2026</option>
+                <option value="August 2026" style={{ background: "#160800" }}>August 2026</option>
+                <option value="September 2026" style={{ background: "#160800" }}>September 2026</option>
+                <option value="October 2026" style={{ background: "#160800" }}>October 2026 (Festive Season)</option>
+                <option value="November 2026" style={{ background: "#160800" }}>November 2026</option>
+                <option value="December 2026" style={{ background: "#160800" }}>December 2026</option>
+                <option value="Later / Undecided" style={{ background: "#160800" }}>Later / Undecided</option>
+              </select>
+              <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+              {errors.flexMonth && <p className="text-red-400 text-[11px] mt-1.5">{errors.flexMonth}</p>}
+            </div>
+          ) : (
+            <div className="relative" ref={calRef}>
+              <button
+                type="button"
+                onClick={() => setCalOpen(o => !o)}
+                className={`${inputClass} flex items-center gap-3 text-left ${errors.date ? "border-red-400/60" : ""} ${calOpen ? "border-saffron-400/70 bg-white/[0.09] ring-2 ring-saffron-400/15" : ""}`}
+              >
+                <CalendarDays size={15} className={date ? "text-saffron-400" : "text-white/25"} />
+                <span className={date ? "text-white" : "text-white/25"}>
+                  {date ? fmtDate(date) : "Select travel date"}
+                </span>
+              </button>
+              <AnimatePresence>
+                {calOpen && (
+                  <Calendar
+                    selected={date}
+                    onSelect={d => { setDate(d); if (errors.date) setErrors(er => { const n = {...er}; delete n.date; return n; }); }}
+                    onClose={() => setCalOpen(false)}
+                  />
+                )}
+              </AnimatePresence>
+              {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Row 4: Email */}
@@ -528,8 +547,10 @@ function LeadForm() {
             <Loader2 size={17} className="animate-spin" />
             Sending your request…
           </span>
+        ) : bookingType === "confirm" ? (
+          "Submit & Confirm Booking (25% Advance)"
         ) : (
-          "Get Tour Details"
+          "Submit & Lock Today's Rates (₹1,999)"
         )}
       </button>
 
@@ -541,9 +562,9 @@ function LeadForm() {
       {/* Micro-trust strip */}
       <div className="flex items-center justify-center gap-4 pt-1">
         {[
-          "Price Lock Guarantee",
-          "Flexible Dates",
-          "100% secure",
+          bookingType === "confirm" ? "25% Advance Payment" : "Price Lock Guarantee",
+          bookingType === "confirm" ? "Exact Dates Confirmed" : "Flexible Dates",
+          "100% secure tirth yatra",
         ].map(t => (
           <span key={t} className="text-white/28 text-[10px] whitespace-nowrap flex items-center gap-1">
             <CheckCircle2 size={9} className="text-emerald-400/50" />
@@ -711,7 +732,7 @@ export default function LeadCapture() {
                       Get Your Free Tour Quote
                     </h3>
                     <p className="text-white/40 text-[12px] mt-0.5">
-                      Lock Today's Rates with ₹1,999 Deposit · Finalize Dates Later
+                      Confirm Travel This Month (25% Adv) OR Lock Future Rates (₹1,999)
                     </p>
                   </div>
                 </div>

@@ -205,14 +205,14 @@ export default function WhyChooseUs() {
           </div>
           <div className="flex-1">
             <h3 className="font-playfair font-bold text-white text-xl mb-1.5">
-              Flexi-Date Price Lock Guarantee
+              Direct Confirmation or Flexi-Date Price Lock
             </h3>
             <p className="text-white/70 text-sm leading-relaxed">
-              Planning your yatra for upcoming months? Avoid seasonal hotel and transport price spikes. Lock in today's special package rates for any future month with a ₹1,999 token advance. Finalize your exact travel dates later at your convenience.
+              Planning your tirth yatra? For immediate travel this month, confirm your dates with a 25% advance. If you are planning for future months, lock today's special package rates using our ₹1,999 Flexi-Date token to protect yourself from seasonal tariff increases.
             </p>
           </div>
           <div className="flex-shrink-0 text-emerald-400 font-playfair font-bold text-2xl sm:text-3xl whitespace-nowrap">
-            Price Locked
+            Flexible Booking
           </div>
         </motion.div>
       </div>
