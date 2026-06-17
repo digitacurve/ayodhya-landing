@@ -10,6 +10,7 @@ import Itinerary from "@/components/Itinerary";
 import HotelShowcase from "@/components/HotelShowcase";
 import LuxuryPartnersStrip from "@/components/LuxuryPartnersStrip";
 import Testimonials from "@/components/Testimonials";
+import Gallery from "@/components/Gallery";
 import GoogleReviews from "@/components/GoogleReviews";
 import SemanticContent from "@/components/SemanticContent";
 import FAQ from "@/components/FAQ";
@@ -465,7 +466,10 @@ export default function Home() {
         {/* 9. Testimonials — social proof carousel */}
         <Testimonials />
 
-        {/* 9. Google Reviews — verified third-party trust signal */}
+        {/* 9b. Gallery — real pilgrim memories to build devotee trust */}
+        <Gallery />
+
+        {/* 10. Google Reviews — verified third-party trust signal */}
         <GoogleReviews />
 
         {/* 10. Semantic Content — conversational Q&A + package matrix for AI/voice SEO */}
