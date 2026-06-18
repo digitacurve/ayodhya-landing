@@ -14,6 +14,7 @@ const packages = [
     duration: "2 Nights / 3 Days",
     cities: ["Ayodhya"],
     price: 22000,
+    originalPrice: 28000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: false,
@@ -38,6 +39,7 @@ const packages = [
     duration: "3 Nights / 4 Days",
     cities: ["Ayodhya", "Varanasi"],
     price: 32000,
+    originalPrice: 42000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
     popular: true,
     featured: false,
@@ -62,6 +64,7 @@ const packages = [
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi"],
     price: 40000,
+    originalPrice: 52000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sangam_Allahabad.jpg/960px-Sangam_Allahabad.jpg",
     popular: false,
     featured: true,
@@ -86,6 +89,7 @@ const packages = [
     duration: "3 Nights / 4 Days",
     cities: ["Lucknow", "Ayodhya"],
     price: 30000,
+    originalPrice: 38000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bara_Imambara_Lucknow.jpg/960px-Bara_Imambara_Lucknow.jpg",
     popular: false,
     featured: false,
@@ -110,6 +114,7 @@ const packages = [
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Varanasi", "Chitrakoot"],
     price: 40000,
+    originalPrice: 52000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Mandakini_River.jpg/960px-Mandakini_River.jpg",
     popular: false,
     featured: false,
@@ -134,6 +139,7 @@ const packages = [
     duration: "5 Nights / 6 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
     price: 50000,
+    originalPrice: 65000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: true,
@@ -260,21 +266,48 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
           ))}
         </div>
 
-        {/* Price */}
-        <div className="mb-5">
-          <div className="flex items-end gap-1.5">
-            <span className={`font-playfair font-bold text-[2.6rem] leading-none ${
-              isPopular ? "text-gold-400" : "text-divine-dark"
-            }`}>
-              ₹{pkg.price.toLocaleString("en-IN")}
-            </span>
-            <span className={`text-sm pb-1 ${isPopular ? "text-white/40" : "text-gray-400"}`}>
-              / couple
-            </span>
+        {/* Price & Lock Section */}
+        <div className={`mb-6 flex items-center justify-between gap-3 border-t border-b py-4 ${
+          isPopular ? "border-white/10" : "border-gray-100"
+        }`}>
+          {/* Lock Price Pill */}
+          <a
+            href="#get-quote"
+            onClick={() => {
+              const event = new CustomEvent("select-tour", {
+                detail: { tourId: pkg.id, mode: "lock" }
+              });
+              window.dispatchEvent(event);
+            }}
+            className={`flex items-center gap-1 px-3 py-2 rounded-xl text-[12px] font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm ${
+              isPopular
+                ? "bg-gradient-to-r from-saffron-500/25 to-amber-500/25 text-amber-200 border border-saffron-500/40 hover:from-saffron-500/35 hover:to-amber-500/35"
+                : "bg-gradient-to-r from-amber-50 to-amber-100/60 text-amber-900 border border-amber-200/80 hover:from-amber-100 hover:to-amber-200/50"
+            }`}
+          >
+            <span className="text-[11px]">🔒</span>
+            <span>Lock Price at ₹1,999</span>
+            <span className="text-[9px] opacity-70">❯</span>
+          </a>
+
+          {/* Pricing */}
+          <div className="text-right">
+            <div className="flex items-baseline justify-end gap-1.5">
+              <span className={`text-[12px] line-through ${
+                isPopular ? "text-white/35" : "text-gray-400"
+              }`}>
+                ₹{pkg.originalPrice.toLocaleString("en-IN")}
+              </span>
+              <span className={`font-playfair font-bold text-2xl sm:text-[1.7rem] leading-none ${
+                isPopular ? "text-gold-400" : "text-divine-dark"
+              }`}>
+                ₹{pkg.price.toLocaleString("en-IN")}
+              </span>
+            </div>
+            <p className={`text-[10px] mt-1 ${isPopular ? "text-white/30" : "text-gray-400"}`}>
+              Onwards / couple
+            </p>
           </div>
-          <p className={`text-[11px] mt-1 ${isPopular ? "text-white/30" : "text-gray-300"}`}>
-            Onwards · Double sharing basis (2 Adults)
-          </p>
         </div>
 
         {/* Features */}
@@ -344,7 +377,9 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
         <a
           href="#get-quote"
           onClick={() => {
-            const event = new CustomEvent("select-tour", { detail: pkg.id });
+            const event = new CustomEvent("select-tour", {
+              detail: { tourId: pkg.id, mode: "confirm" }
+            });
             window.dispatchEvent(event);
           }}
           className={`wa-shimmer flex items-center justify-center gap-2.5 w-full py-3.5 rounded-2xl text-white font-bold text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${

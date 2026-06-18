@@ -219,6 +219,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 mt-5 mb-8 bg-white/8 border border-white/18 backdrop-blur-md rounded-full px-5 py-2.5"
         >
           <span className="text-white/60 text-sm">Starting at</span>
+          <span className="text-white/40 line-through text-xs sm:text-sm">₹28,000</span>
           <span className="text-saffron-400 font-playfair font-bold text-2xl leading-none">₹22,000</span>
           <span className="text-white/40 text-sm">/ couple</span>
           <span className="hidden sm:inline text-white/25 text-sm">·&nbsp; All inclusive</span>

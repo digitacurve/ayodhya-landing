@@ -233,7 +233,10 @@ function LeadForm() {
   // Auto-select package on select-tour event
   useEffect(() => {
     const handleSelectTour = (e: Event) => {
-      const tourId = (e as CustomEvent).detail;
+      const detail = (e as CustomEvent).detail;
+      const tourId = typeof detail === "string" ? detail : detail?.tourId;
+      const mode = typeof detail === "object" ? detail?.mode : undefined;
+
       const tourMapping: Record<string, string> = {
         "ayodhya-darshan": "Ayodhya Darshan",
         "ayodhya-varanasi": "Ayodhya – Varanasi",
@@ -245,6 +248,11 @@ function LeadForm() {
       const tourName = tourMapping[tourId];
       if (tourName) {
         setFields(f => ({ ...f, tour: tourName }));
+      }
+      if (mode === "lock") {
+        setBookingType("lock");
+      } else if (mode === "confirm") {
+        setBookingType("confirm");
       }
     };
 
