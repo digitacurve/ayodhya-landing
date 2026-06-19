@@ -301,7 +301,7 @@ const tourSchema = {
         description:
           "Complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi with darshan pass, hotels and guide.",
         image: [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sangam_Allahabad.jpg/960px-Sangam_Allahabad.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Triveni_Sangam.JPG/960px-Triveni_Sangam.JPG"
         ],
         sku: "ayodhya-prayagraj-varanasi-4n5d",
         brand: {

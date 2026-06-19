@@ -65,7 +65,7 @@ const packages = [
     cities: ["Ayodhya", "Prayagraj", "Varanasi"],
     price: 40000,
     originalPrice: 52000,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sangam_Allahabad.jpg/960px-Sangam_Allahabad.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Triveni_Sangam.JPG/960px-Triveni_Sangam.JPG",
     popular: false,
     featured: true,
     ctaText: "Get Full Itinerary",
