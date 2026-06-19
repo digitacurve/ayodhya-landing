@@ -18,6 +18,7 @@ import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
+import OfferPopup from "@/components/OfferPopup";
 import { faqData } from "@/lib/faqData";
 
 // ─── JSON-LD Schemas ──────────────────────────────────────────────────────────
@@ -488,6 +489,7 @@ export default function Home() {
 
       <Footer />
       <StickyWhatsApp />
+      <OfferPopup />
     </>
   );
 }

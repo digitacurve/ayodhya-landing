@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, MessageCircle, Clock, MapPin, Hotel, Car, UserCheck, Ticket, Sparkles } from "lucide-react";
 
@@ -166,7 +166,7 @@ const coreInclusions = [
   { icon: UserCheck,label: "Expert Guide" },
 ];
 
-function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number }) {
+function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; index: number; tokenAmount: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const inView  = useInView(cardRef, { once: true, margin: "-60px" });
 
@@ -286,7 +286,7 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
             }`}
           >
             <span className="text-[11px]">🔒</span>
-            <span>Lock Price at ₹1,999</span>
+            <span>Lock Price at ₹{tokenAmount.toLocaleString("en-IN")}</span>
             <span className="text-[9px] opacity-70">❯</span>
           </a>
 
@@ -402,16 +402,27 @@ function PackageCard({ pkg, index }: { pkg: (typeof packages)[0]; index: number 
         <p className={`text-center text-[11px] mt-2.5 ${
           isPopular ? "text-white/30" : "text-gray-300"
         }`}>
-          Confirm with 25% Advance &nbsp;·&nbsp; Or Lock Rates with ₹1,999
+          Confirm with 25% Advance &nbsp;·&nbsp; Or Lock Rates with ₹{tokenAmount.toLocaleString("en-IN")}
         </p>
       </div>
     </motion.div>
   );
 }
-
 export default function Packages() {
   const ref   = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [tokenAmount, setTokenAmount] = useState(1999);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("price_lock_discount") === "true") {
+        setTokenAmount(1749);
+      }
+      const handleDiscount = () => setTokenAmount(1749);
+      window.addEventListener("apply-discount", handleDiscount);
+      return () => window.removeEventListener("apply-discount", handleDiscount);
+    }
+  }, []);
 
   return (
     <section ref={ref} id="packages" className="py-24 sm:py-32 bg-sacred-cream" data-section="packages">
@@ -445,7 +456,7 @@ export default function Packages() {
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {packages.map((pkg, i) => (
-            <PackageCard key={pkg.id} pkg={pkg} index={i} />
+            <PackageCard key={pkg.id} pkg={pkg} index={i} tokenAmount={tokenAmount} />
           ))}
         </div>
 
@@ -495,7 +506,7 @@ export default function Packages() {
           <div>
             <h4 className="font-semibold text-amber-200 text-sm mb-0.5">Early Bird Tip for Future Travels</h4>
             <p className="text-gray-300 text-xs leading-relaxed">
-              Traveling this month? Pay a 25% advance to confirm your dates immediately. Traveling in future months? Avoid seasonal price surges of up to 45% by securing a Flexi-Date Price Lock for just ₹1,999 today. Finalize your exact dates later!
+              Traveling this month? Pay a 25% advance to confirm your dates immediately. Traveling in future months? Avoid seasonal price surges of up to 45% by securing a Flexi-Date Price Lock for just ₹{tokenAmount.toLocaleString("en-IN")} today. Finalize your exact dates later!
             </p>
           </div>
         </motion.div>

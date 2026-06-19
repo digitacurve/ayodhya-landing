@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Home, Phone, CalendarDays, Map, User, Loader2 } from "lucide-react";
+import { CheckCircle2, Home, Phone, CalendarDays, Map, User, Loader2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const WA_NUMBER = "919235222399";
@@ -15,16 +15,20 @@ function ThankYouDetails() {
   const date = searchParams.get("date") || "";
   const isFlexible = searchParams.get("is_flexible") === "true";
   const bookingType = searchParams.get("booking_type") || "confirm";
+  const packageType = searchParams.get("package_type") || "";
+  const tokenAmount = searchParams.get("token_amount") || "1,999";
 
   const [countdown, setCountdown] = useState(2);
   const [redirected, setRedirected] = useState(false);
 
   const noteString = bookingType === "lock"
-    ? "\n• *Note*: I want to lock today's special rate with a flexible ₹1,999 token deposit"
+    ? `\n• *Note*: I want to lock today's special rate with a flexible ₹${tokenAmount} token deposit`
     : "\n• *Note*: I want to confirm my booking with a 25% advance payment";
 
+  const packageTypeLine = packageType ? `\n• *Package Class*: ${packageType}` : "";
+
   const waMsg = encodeURIComponent(
-    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}\n• *Travel Date*: ${date}${noteString}\n\nPlease share the details and custom itinerary.`
+    `Jai Shri Ram! 🙏 I have submitted the yatra inquiry form:\n\n• *Name*: ${name}\n• *Phone*: ${phone}\n• *Tour*: ${tour}${packageTypeLine}\n• *Travel Date*: ${date}${noteString}\n\nPlease share the details and custom itinerary.`
   );
 
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
@@ -120,6 +124,16 @@ function ThankYouDetails() {
               <span className="text-white text-[14px]">{tour || "Custom Trip"}</span>
             </div>
           </div>
+
+          {packageType && (
+            <div className="flex items-center gap-3">
+              <Sparkles size={16} className="text-saffron-400" />
+              <div>
+                <span className="text-white/45 text-[11px] block uppercase font-semibold">Package Class Preference</span>
+                <span className="text-white text-[14px]">{packageType}</span>
+              </div>
+            </div>
+          )}
 
           <div className="flex items-center gap-3">
             <CalendarDays size={16} className="text-saffron-400" />

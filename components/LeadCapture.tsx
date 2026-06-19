@@ -218,9 +218,9 @@ function fmtDate(d: Date) {
 }
 
 // ─── Form Component ───────────────────────────────────────────────────────────
-function LeadForm() {
+function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTokenAmount: React.Dispatch<React.SetStateAction<number>> }) {
   const [fields, setFields] = useState({
-    name: "", phone: "", tour: "", email: "", request: "",
+    name: "", phone: "", tour: "", email: "", request: "", packageType: "",
   });
   const [date,    setDate]    = useState<Date | undefined>(undefined);
   const [calOpen, setCalOpen] = useState(false);
@@ -230,8 +230,13 @@ function LeadForm() {
   const [flexMonth, setFlexMonth] = useState("");
   const calRef = useRef<HTMLDivElement>(null);
 
-  // Auto-select package on select-tour event
+  // Auto-select package on select-tour event & handle discount
   useEffect(() => {
+    const handleApplyDiscount = () => {
+      setBookingType("lock");
+      setTokenAmount(1749);
+    };
+
     const handleSelectTour = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       const tourId = typeof detail === "string" ? detail : detail?.tourId;
@@ -257,8 +262,12 @@ function LeadForm() {
     };
 
     window.addEventListener("select-tour", handleSelectTour);
-    return () => window.removeEventListener("select-tour", handleSelectTour);
-  }, []);
+    window.addEventListener("apply-discount", handleApplyDiscount);
+    return () => {
+      window.removeEventListener("select-tour", handleSelectTour);
+      window.removeEventListener("apply-discount", handleApplyDiscount);
+    };
+  }, [setTokenAmount]);
 
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFields(f => ({ ...f, [k]: e.target.value }));
@@ -281,6 +290,7 @@ function LeadForm() {
     if (!fields.phone.trim()) e.phone = "Please enter your phone number";
     if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s/g, ""))) e.phone = "Enter a valid 10-digit Indian mobile number";
     if (!fields.tour)         e.tour  = "Please select a tour";
+    if (!fields.packageType)  e.packageType = "Please select package class / budget preference";
     if (bookingType === "confirm" && !date) e.date  = "Please select your travel date";
     if (bookingType === "lock" && !flexMonth) e.flexMonth = "Please select tentative travel month";
     setErrors(e);
@@ -299,8 +309,9 @@ function LeadForm() {
         name:           fields.name,
         phone:          fields.phone,
         tour:           fields.tour,
+        package_type:   fields.packageType,
         travel_date:    travelDateString,
-        booking_type:   bookingType === "confirm" ? "Direct Confirmation (25% Advance)" : "Flexi-Date Price Lock (₹1,999)",
+        booking_type:   bookingType === "confirm" ? "Direct Confirmation (25% Advance)" : `Flexi-Date Price Lock (₹${tokenAmount})`,
         special_request:fields.request || "(none)",
       };
 
@@ -331,9 +342,11 @@ function LeadForm() {
           name: fields.name,
           phone: fields.phone,
           tour: fields.tour,
+          package_type: fields.packageType,
           date: travelDateString,
           booking_type: bookingType,
           is_flexible: bookingType === "lock" ? "true" : "false",
+          token_amount: tokenAmount.toString(),
         }).toString();
         window.location.href = `${REDIRECT}?${queryParams}`;
       } else {
@@ -381,24 +394,44 @@ function LeadForm() {
         </Field>
       </div>
 
-      {/* Row 2: Tour */}
-      <Field label="Spiritual Tour" required>
-        <div className="relative">
-          <select
-            value={fields.tour}
-            onChange={set("tour")}
-            className={`${inputClass} pr-10 ${errors.tour ? "border-red-400/60" : ""} cursor-pointer`}
-            style={{ background: "rgba(255,255,255,0.06)" }}
-          >
-            <option value="" disabled style={{ background: "#160800" }}>Select your tour</option>
-            {TOURS.map(t => (
-              <option key={t} value={t} style={{ background: "#160800" }}>{t}</option>
-            ))}
-          </select>
-          <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
-        </div>
-        {errors.tour && <p className="text-red-400 text-[11px] mt-1.5">{errors.tour}</p>}
-      </Field>
+      {/* Row 2: Tour & Package Type */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Spiritual Tour" required>
+          <div className="relative">
+            <select
+              value={fields.tour}
+              onChange={set("tour")}
+              className={`${inputClass} pr-10 ${errors.tour ? "border-red-400/60" : ""} cursor-pointer`}
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            >
+              <option value="" disabled style={{ background: "#160800" }}>Select your tour</option>
+              {TOURS.map(t => (
+                <option key={t} value={t} style={{ background: "#160800" }}>{t}</option>
+              ))}
+            </select>
+            <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+          </div>
+          {errors.tour && <p className="text-red-400 text-[11px] mt-1.5">{errors.tour}</p>}
+        </Field>
+
+        <Field label="Package Class & Budget" required>
+          <div className="relative">
+            <select
+              value={fields.packageType}
+              onChange={set("packageType")}
+              className={`${inputClass} pr-10 ${errors.packageType ? "border-red-400/60" : ""} cursor-pointer`}
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            >
+              <option value="" disabled style={{ background: "#160800" }}>Select category</option>
+              <option value="Standard / Budget" style={{ background: "#160800" }}>Standard / Budget (Clean Hotels & AC Travel)</option>
+              <option value="Deluxe" style={{ background: "#160800" }}>Deluxe (3★ Hotels, Dedicated AC Sedan)</option>
+              <option value="Premium / Luxury" style={{ background: "#160800" }}>Premium / Luxury (4★/5★ Hotels, AC SUV & VIP Help)</option>
+            </select>
+            <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+          </div>
+          {errors.packageType && <p className="text-red-400 text-[11px] mt-1.5">{errors.packageType}</p>}
+        </Field>
+      </div>
 
       {/* Row 3: Booking Type & Date Selection */}
       <div className="space-y-3">
@@ -440,7 +473,7 @@ function LeadForm() {
                 : "text-white/50 hover:text-white hover:bg-white/5"
             }`}
           >
-            Flexi-Price Lock (₹1,999)
+            Flexi-Price Lock (₹{tokenAmount})
           </button>
         </div>
 
@@ -558,7 +591,7 @@ function LeadForm() {
         ) : bookingType === "confirm" ? (
           "Submit & Confirm Booking (25% Advance)"
         ) : (
-          "Submit & Lock Today's Rates (₹1,999)"
+          `Submit & Lock Today's Rates (₹${tokenAmount})`
         )}
       </button>
 
@@ -595,6 +628,18 @@ const proofPoints = [
 export default function LeadCapture() {
   const ref    = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [tokenAmount, setTokenAmount] = useState(1999);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("price_lock_discount") === "true") {
+        setTokenAmount(1749);
+      }
+      const handleDiscount = () => setTokenAmount(1749);
+      window.addEventListener("apply-discount", handleDiscount);
+      return () => window.removeEventListener("apply-discount", handleDiscount);
+    }
+  }, []);
 
   return (
     <section
@@ -740,13 +785,13 @@ export default function LeadCapture() {
                       Get Your Free Tour Quote
                     </h3>
                     <p className="text-white/40 text-[12px] mt-0.5">
-                      Confirm Travel This Month (25% Adv) OR Lock Future Rates (₹1,999)
+                      Confirm Travel This Month (25% Adv) OR Lock Future Rates (₹{tokenAmount})
                     </p>
                   </div>
                 </div>
               </div>
 
-              <LeadForm />
+              <LeadForm tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
             </div>
           </motion.div>
         </div>
