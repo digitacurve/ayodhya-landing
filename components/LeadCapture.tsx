@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const FORMSPREE   = "https://formspree.io/f/xlgddeqp";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY      = "91c6129d-ac01-41e8-ae6a-3b04e733c34f";
 const REDIRECT    = "/thank-you";
 
 const TOURS = [
@@ -306,6 +307,7 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
 
     try {
       const payload: Record<string, string> = {
+        access_key:     WEB3FORMS_KEY,
         name:           fields.name,
         phone:          fields.phone,
         tour:           fields.tour,
@@ -319,7 +321,7 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
         payload.email = fields.email.trim();
       }
 
-      const res = await fetch(FORMSPREE, {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
