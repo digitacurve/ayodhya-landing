@@ -256,6 +256,19 @@ const tourSchema = {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
         },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Ramesh Gupta" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "Ram Mandir darshan was arranged perfectly — no queue, calm atmosphere. Hotels were spotlessly clean. Highly recommend to all devotees.",
+        },
         offers: {
           "@type": "Offer",
           price: "22000",
@@ -281,6 +294,19 @@ const tourSchema = {
         brand: {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Sunita Sharma" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "Combine Kashi and Ayodhya was great. Beautiful evening Ganga Aarti and smooth Ram Lalla darshan.",
         },
         offers: {
           "@type": "Offer",
@@ -308,6 +334,19 @@ const tourSchema = {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
         },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Anil Saxena" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "Amazing triple circuit tour. The Triveni Sangam boat ride in Prayagraj and Ram Mandir in Ayodhya were highlights.",
+        },
         offers: {
           "@type": "Offer",
           price: "40000",
@@ -333,6 +372,19 @@ const tourSchema = {
         brand: {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Preeti Mishra" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "Enjoyed both Lucknow heritage monuments and the peaceful atmosphere of Ayodhya temples. Great planning.",
         },
         offers: {
           "@type": "Offer",
@@ -360,6 +412,19 @@ const tourSchema = {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
         },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Deepak Rawat" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "Chitrakoot is incredibly peaceful. Walking in Lord Ram's exile steps was a holy experience. Thank you.",
+        },
         offers: {
           "@type": "Offer",
           price: "40000",
@@ -385,6 +450,19 @@ const tourSchema = {
         brand: {
           "@type": "Brand",
           name: "Ayodhya Dharshan"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Vijay Kumar" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "The complete 6-day circuit is perfect. Premium hotels, dedicated AC SUV transfers, and guides who explained everything.",
         },
         offers: {
           "@type": "Offer",

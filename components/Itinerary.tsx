@@ -406,22 +406,64 @@ const timeColors = {
   Evening: "text-indigo-400",
 };
 
-function ItineraryCard({ item }: { item: ItineraryItem }) {
-  const [openDays, setOpenDays] = useState<Set<number>>(new Set([0]));
+function ItineraryDay({ day, index }: { day: Day; index: number }) {
+  const [isOpen, setIsOpen] = useState(index === 0);
 
-  const toggleDay = (i: number) => {
-    setOpenDays((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
-  };
+  return (
+    <details
+      open={isOpen}
+      onToggle={(e) => setIsOpen(e.currentTarget.open)}
+      className="group"
+    >
+      <summary
+        className="w-full flex items-center justify-between gap-4 px-6 sm:px-8 py-4 text-left hover:bg-gray-50/50 transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-saffron-100 flex items-center justify-center flex-shrink-0">
+            <span className="text-saffron-700 font-bold text-xs">{index + 1}</span>
+          </div>
+          <span className="font-semibold text-divine-dark text-sm sm:text-base leading-snug">
+            {day.title}
+          </span>
+        </div>
+        <div
+          className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center bg-gray-50 group-open:bg-saffron-100 transition-colors duration-300"
+        >
+          <ChevronDown
+            size={15}
+            className="text-gray-400 group-open:text-saffron-600 group-open:rotate-180 transition-transform duration-300"
+          />
+        </div>
+      </summary>
 
-  const waMessage = encodeURIComponent(
-    `Jai Shri Ram! 🙏 I'm interested in the "${item.package}" itinerary. Please share availability and full details.`
+      <div className="px-6 sm:px-8 pb-5 space-y-4">
+        {day.activities.map((act, ai) => {
+          const Icon = timeIcons[act.time];
+          return (
+            <div key={ai} className="flex gap-4">
+              <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center">
+                  <Icon size={15} className={timeColors[act.time]} />
+                </div>
+                {ai < day.activities.length - 1 && (
+                  <div className="w-px flex-1 bg-gray-100 min-h-[20px]" />
+                )}
+              </div>
+              <div className="pt-1 pb-2">
+                <div className={`text-xs font-semibold mb-1.5 ${timeColors[act.time]}`}>
+                  {act.time}
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed">{act.activity}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </details>
   );
+}
 
+function ItineraryCard({ item }: { item: ItineraryItem }) {
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
       {/* Card Header */}
@@ -464,76 +506,11 @@ function ItineraryCard({ item }: { item: ItineraryItem }) {
         </div>
       </div>
 
-      {/* Days Accordion */}
+      {/* Days Accordion (Native <details> for 100% search engine/crawler indexing) */}
       <div className="divide-y divide-gray-50">
-        {item.days.map((day, di) => {
-          const isOpen = openDays.has(di);
-          return (
-            <div key={di}>
-              <button
-                onClick={() => toggleDay(di)}
-                className="w-full flex items-center justify-between gap-4 px-6 sm:px-8 py-4 text-left hover:bg-gray-50/50 transition-colors"
-                aria-expanded={isOpen}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-saffron-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-saffron-700 font-bold text-xs">{di + 1}</span>
-                  </div>
-                  <span className="font-semibold text-divine-dark text-sm sm:text-base leading-snug">
-                    {day.title}
-                  </span>
-                </div>
-                <motion.div
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.25 }}
-                  className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
-                    isOpen ? "bg-saffron-100" : "bg-gray-50"
-                  }`}
-                >
-                  <ChevronDown
-                    size={15}
-                    className={isOpen ? "text-saffron-600" : "text-gray-400"}
-                  />
-                </motion.div>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <div className="px-6 sm:px-8 pb-5 space-y-4">
-                      {day.activities.map((act, ai) => {
-                        const Icon = timeIcons[act.time];
-                        return (
-                          <div key={ai} className="flex gap-4">
-                            <div className="flex flex-col items-center gap-1 flex-shrink-0">
-                              <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center">
-                                <Icon size={15} className={timeColors[act.time]} />
-                              </div>
-                              {ai < day.activities.length - 1 && (
-                                <div className="w-px flex-1 bg-gray-100 min-h-[20px]" />
-                              )}
-                            </div>
-                            <div className="pt-1 pb-2">
-                              <div className={`text-xs font-semibold mb-1.5 ${timeColors[act.time]}`}>
-                                {act.time}
-                              </div>
-                              <p className="text-gray-600 text-sm leading-relaxed">{act.activity}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        })}
+        {item.days.map((day, di) => (
+          <ItineraryDay key={di} day={day} index={di} />
+        ))}
       </div>
     </div>
   );
@@ -590,15 +567,20 @@ export default function Itinerary() {
           ))}
         </motion.div>
 
-        {/* Active Itinerary */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-        >
-          <ItineraryCard item={itineraries[activeTab]} />
-        </motion.div>
+        {/* All Itineraries (Rendered in DOM, toggled with hidden class for 100% crawlability) */}
+        <div className="relative">
+          {itineraries.map((item, i) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={activeTab === i ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              transition={{ duration: 0.45 }}
+              className={activeTab === i ? "block" : "hidden"}
+            >
+              <ItineraryCard item={item} />
+            </motion.div>
+          ))}
+        </div>
 
         {/* Bottom nudge */}
         <motion.p

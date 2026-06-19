@@ -1,64 +1,43 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Plus, Minus, MessageCircle } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
 import { faqData } from "@/lib/faqData";
 
 const WA_NUMBER = "919235222399";
 
 function FAQItem({ item, index }: { item: (typeof faqData)[0]; index: number }) {
-  const [open, setOpen] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.04 }}
-      className={`rounded-2xl overflow-hidden transition-all duration-300 ${
-        open
-          ? "bg-white shadow-[0_4px_24px_rgba(0,0,0,0.07)] border border-saffron-100"
-          : "bg-white border border-gray-100 hover:border-gray-200"
-      }`}
     >
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left"
-        aria-expanded={open}
+      <details
+        name="faq-accordion"
+        className="group rounded-2xl overflow-hidden border border-gray-100 bg-white hover:border-gray-200 open:shadow-[0_4px_24px_rgba(0,0,0,0.07)] open:border-saffron-100 transition-all duration-300"
       >
-        <span className={`font-playfair font-semibold text-base sm:text-lg leading-snug transition-colors ${
-          open ? "text-saffron-700" : "text-divine-dark"
-        }`}>
-          {item.question}
-        </span>
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-          open ? "bg-saffron-100 rotate-0" : "bg-gray-50 rotate-0"
-        }`}>
-          {open
-            ? <Minus size={15} className="text-saffron-600" />
-            : <Plus size={15} className="text-gray-400" />
-          }
-        </div>
-      </button>
+        <summary
+          className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none"
+        >
+          <span className="font-playfair font-semibold text-base sm:text-lg leading-snug text-divine-dark group-open:text-saffron-700 transition-colors duration-300">
+            {item.question}
+          </span>
+          <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gray-50 group-open:bg-saffron-100 transition-all duration-300">
+            <Plus size={15} className="text-gray-400 group-open:hidden" />
+            <Minus size={15} className="text-saffron-600 hidden group-open:block" />
+          </div>
+        </summary>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="px-5 sm:px-6 pb-6">
-              <div className="h-px bg-saffron-100 mb-4" />
-              <p className="text-gray-600 text-sm sm:text-[15px] leading-relaxed">
-                {item.answer}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <div className="px-5 sm:px-6 pb-6">
+          <div className="h-px bg-saffron-100 mb-4" />
+          <p className="text-gray-600 text-sm sm:text-[15px] leading-relaxed">
+            {item.answer}
+          </p>
+        </div>
+      </details>
     </motion.div>
   );
 }
