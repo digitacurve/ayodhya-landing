@@ -607,8 +607,8 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
           bookingType === "confirm" ? "Exact Dates Confirmed" : "Flexible Dates",
           "100% secure tirth yatra",
         ].map(t => (
-          <span key={t} className="text-white/28 text-[10px] whitespace-nowrap flex items-center gap-1">
-            <CheckCircle2 size={9} className="text-emerald-400/50" />
+          <span key={t} className="text-white/70 text-[11px] whitespace-nowrap flex items-center gap-1">
+            <CheckCircle2 size={10} className="text-emerald-400/80" />
             {t}
           </span>
         ))}
