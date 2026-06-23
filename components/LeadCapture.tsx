@@ -288,8 +288,18 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
   const validate = () => {
     const e: Record<string, string> = {};
     if (!fields.name.trim())  e.name  = "Please enter your name";
-    if (!fields.phone.trim()) e.phone = "Please enter your phone number";
-    if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s/g, ""))) e.phone = "Enter a valid 10-digit Indian mobile number";
+    
+    const phoneTrimmed = fields.phone.trim();
+    if (!phoneTrimmed) {
+      e.phone = "Please enter your phone number";
+    } else {
+      // Allow valid international numbers by stripping spaces, hyphens, brackets, and +
+      const cleanPhone = phoneTrimmed.replace(/[\s\-()+]/g, "");
+      if (!/^\d{7,15}$/.test(cleanPhone)) {
+        e.phone = "Please enter a valid phone number (7-15 digits)";
+      }
+    }
+    
     if (!fields.tour)         e.tour  = "Please select a tour";
     if (!fields.packageType)  e.packageType = "Please select package class / budget preference";
     if (bookingType === "confirm" && !date) e.date  = "Please select your travel date";
@@ -386,10 +396,10 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
               type="tel"
               value={fields.phone}
               onChange={set("phone")}
-              placeholder="+91 XXXXX XXXXX"
+              placeholder="e.g. +91 98765 43210"
               className={`${inputClass} pl-10 ${errors.phone ? "border-red-400/60 focus:border-red-400/70 focus:ring-red-400/15" : ""}`}
               autoComplete="tel"
-              inputMode="numeric"
+              inputMode="tel"
             />
           </div>
           {errors.phone && <p className="text-red-400 text-[11px] mt-1.5">{errors.phone}</p>}
