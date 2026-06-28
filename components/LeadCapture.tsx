@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   User, Phone, CalendarDays, Mail, MessageSquare, ChevronDown,
-  ChevronLeft, ChevronRight, CheckCircle2, Loader2, AlertCircle,
+  CheckCircle2, Loader2, AlertCircle,
   Star, Users, ShieldCheck, BadgeCheck,
 } from "lucide-react";
 
@@ -34,168 +34,6 @@ const MONTHS = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December",
 ];
-const DAYS_ABBR = ["Mo","Tu","We","Th","Fr","Sa","Su"];
-
-// ─── Mini Calendar ─────────────────────────────────────────────────────────────
-function Calendar({
-  selected,
-  onSelect,
-  onClose,
-}: {
-  selected?: Date;
-  onSelect: (d: Date) => void;
-  onClose: () => void;
-}) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const initDate = selected && selected >= today ? selected : today;
-  const [view, setView] = useState({ month: initDate.getMonth(), year: initDate.getFullYear() });
-
-  const daysInMonth    = new Date(view.year, view.month + 1, 0).getDate();
-  const rawFirstDay    = new Date(view.year, view.month, 1).getDay();
-  const startOffset    = (rawFirstDay + 6) % 7; // Monday-first
-
-  const cells: (number | null)[] = [
-    ...Array(startOffset).fill(null),
-    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
-  ];
-
-  const isSelected = (d: number) =>
-    !!selected &&
-    selected.getDate() === d &&
-    selected.getMonth() === view.month &&
-    selected.getFullYear() === view.year;
-
-  const isDisabled = (d: number) =>
-    new Date(view.year, view.month, d) < today;
-
-  const isToday = (d: number) =>
-    today.getDate() === d &&
-    today.getMonth() === view.month &&
-    today.getFullYear() === view.year;
-
-  const prevMonth = () =>
-    setView(v =>
-      v.month === 0
-        ? { month: 11, year: v.year - 1 }
-        : { month: v.month - 1, year: v.year }
-    );
-
-  const nextMonth = () =>
-    setView(v =>
-      v.month === 11
-        ? { month: 0, year: v.year + 1 }
-        : { month: v.month + 1, year: v.year }
-    );
-
-  const canGoPrev =
-    view.year > today.getFullYear() ||
-    (view.year === today.getFullYear() && view.month > today.getMonth());
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute top-[calc(100%+8px)] left-0 right-0 z-50 bg-[#160800] border border-white/[0.15] rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.6)] overflow-hidden"
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08]">
-        <button
-          type="button"
-          onClick={prevMonth}
-          disabled={!canGoPrev}
-          className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-          aria-label="Previous month"
-        >
-          <ChevronLeft size={14} />
-        </button>
-        <span className="font-playfair font-semibold text-white text-sm">
-          {MONTHS[view.month]} {view.year}
-        </span>
-        <button
-          type="button"
-          onClick={nextMonth}
-          className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors"
-          aria-label="Next month"
-        >
-          <ChevronRight size={14} />
-        </button>
-      </div>
-
-      <div className="p-3">
-        {/* Day headers */}
-        <div className="grid grid-cols-7 mb-1.5">
-          {DAYS_ABBR.map(d => (
-            <div
-              key={d}
-              className="flex items-center justify-center h-7 text-white/30 text-[10px] font-semibold tracking-wide"
-            >
-              {d}
-            </div>
-          ))}
-        </div>
-
-        {/* Day cells */}
-        <div className="grid grid-cols-7 gap-y-0.5">
-          {cells.map((day, i) => {
-            if (!day) return <div key={`e-${i}`} className="h-8" />;
-            const disabled  = isDisabled(day);
-            const sel       = isSelected(day);
-            const tod       = isToday(day);
-            return (
-              <button
-                key={day}
-                type="button"
-                disabled={disabled}
-                onClick={() => {
-                  onSelect(new Date(view.year, view.month, day));
-                  onClose();
-                }}
-                className={[
-                  "h-8 w-full rounded-lg text-[13px] flex items-center justify-center transition-all duration-150",
-                  disabled
-                    ? "text-white/18 cursor-not-allowed"
-                    : "text-white/75 cursor-pointer hover:bg-white/10 hover:text-white",
-                  sel
-                    ? "!bg-saffron-500 !text-white font-semibold shadow-[0_2px_12px_rgba(255,107,0,0.4)]"
-                    : "",
-                  tod && !sel
-                    ? "border border-saffron-400/50 text-saffron-400"
-                    : "",
-                ].join(" ")}
-              >
-                {day}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="border-t border-white/[0.06] px-4 py-2.5 flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => {
-            onSelect(today);
-            onClose();
-          }}
-          className="text-saffron-400 text-[12px] font-medium hover:text-saffron-300 transition-colors"
-        >
-          Select today
-        </button>
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-white/30 text-[12px] hover:text-white/60 transition-colors"
-        >
-          Cancel
-        </button>
-      </div>
-    </motion.div>
-  );
-}
 
 // ─── Field wrapper ─────────────────────────────────────────────────────────────
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
@@ -218,18 +56,23 @@ function fmtDate(d: Date) {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function getLocalDateString(d: Date) {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 // ─── Form Component ───────────────────────────────────────────────────────────
 function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTokenAmount: React.Dispatch<React.SetStateAction<number>> }) {
   const [fields, setFields] = useState({
     name: "", phone: "", tour: "", email: "", request: "", packageType: "",
   });
   const [date,    setDate]    = useState<Date | undefined>(undefined);
-  const [calOpen, setCalOpen] = useState(false);
   const [errors,  setErrors]  = useState<Record<string, string>>({});
   const [status,  setStatus]  = useState<"idle" | "submitting" | "error">("idle");
   const [bookingType, setBookingType] = useState<"confirm" | "lock">("confirm");
   const [flexMonth, setFlexMonth] = useState("");
-  const calRef = useRef<HTMLDivElement>(null);
 
   // Auto-select package on select-tour event & handle discount
   useEffect(() => {
@@ -275,15 +118,6 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
     if (errors[k]) setErrors(er => { const n = { ...er }; delete n[k]; return n; });
   };
 
-  // Close calendar on outside click
-  useEffect(() => {
-    if (!calOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (calRef.current && !calRef.current.contains(e.target as Node)) setCalOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [calOpen]);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -516,26 +350,20 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
               {errors.flexMonth && <p className="text-red-400 text-[11px] mt-1.5">{errors.flexMonth}</p>}
             </div>
           ) : (
-            <div className="relative" ref={calRef}>
-              <button
-                type="button"
-                onClick={() => setCalOpen(o => !o)}
-                className={`${inputClass} flex items-center gap-3 text-left ${errors.date ? "border-red-400/60" : ""} ${calOpen ? "border-saffron-400/70 bg-white/[0.09] ring-2 ring-saffron-400/15" : ""}`}
-              >
-                <CalendarDays size={15} className={date ? "text-saffron-400" : "text-white/25"} />
-                <span className={date ? "text-white" : "text-white/25"}>
-                  {date ? fmtDate(date) : "Select travel date"}
-                </span>
-              </button>
-              <AnimatePresence>
-                {calOpen && (
-                  <Calendar
-                    selected={date}
-                    onSelect={d => { setDate(d); if (errors.date) setErrors(er => { const n = {...er}; delete n.date; return n; }); }}
-                    onClose={() => setCalOpen(false)}
-                  />
-                )}
-              </AnimatePresence>
+            <div className="relative">
+              <CalendarDays size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/25 pointer-events-none z-10" />
+              <input
+                type="date"
+                value={date ? getLocalDateString(date) : ""}
+                min={getLocalDateString(new Date())}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setDate(val ? new Date(val) : undefined);
+                  if (errors.date) setErrors(er => { const n = { ...er }; delete n.date; return n; });
+                }}
+                className={`${inputClass} pl-10 cursor-pointer text-white`}
+                style={{ colorScheme: "dark" }}
+              />
               {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
             </div>
           )}
