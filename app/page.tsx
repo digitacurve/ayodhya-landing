@@ -516,7 +516,7 @@ export default function Home() {
       <AnnouncementBar />
       <Navbar />
 
-      <main>
+      <main className="overflow-hidden w-full relative">
         {/* 1. Hero — above-the-fold conversion section */}
         <Hero />
 
