@@ -292,20 +292,27 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
 
           {/* Pricing */}
           <div className="text-right">
-            <div className="flex items-baseline justify-end gap-1.5">
-              <span className={`text-[12px] line-through ${
+            <div className="flex items-baseline justify-end gap-1">
+              <span className={`text-[11px] line-through ${
                 isPopular ? "text-white/35" : "text-gray-400"
               }`}>
-                ₹{pkg.originalPrice.toLocaleString("en-IN")}
+                ₹{(pkg.originalPrice / 2).toLocaleString("en-IN")}
               </span>
               <span className={`font-playfair font-bold text-2xl sm:text-[1.7rem] leading-none ${
                 isPopular ? "text-gold-400" : "text-divine-dark"
               }`}>
-                ₹{pkg.price.toLocaleString("en-IN")}
+                ₹{(pkg.price / 2).toLocaleString("en-IN")}
+              </span>
+              <span className={`text-[11px] font-medium ${
+                isPopular ? "text-white/50" : "text-gray-500"
+              }`}>
+                / person
               </span>
             </div>
-            <p className={`text-[10px] mt-1 ${isPopular ? "text-white/30" : "text-gray-400"}`}>
-              Onwards / couple
+            <p className={`text-[9px] mt-1 font-medium ${
+              isPopular ? "text-gold-300/80" : "text-saffron-600/90"
+            }`}>
+              ₹{pkg.price.toLocaleString("en-IN")} total for couple
             </p>
           </div>
         </div>

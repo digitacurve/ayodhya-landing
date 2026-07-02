@@ -39,7 +39,7 @@ const hotels = [
       "Laundry service available",
     ],
     usedIn: ["Ayodhya Darshan Package", "Lucknow Ayodhya Package"],
-    priceNote: "Included in packages starting ₹22,000 / couple",
+    priceNote: "Included in packages starting ₹11,000 / person",
   },
   {
     id: "premium",
@@ -73,7 +73,7 @@ const hotels = [
       "Airport / station pickup arranged",
     ],
     usedIn: ["Ayodhya Varanasi Package", "Ayodhya Prayagraj Varanasi Package"],
-    priceNote: "Included in packages starting ₹32,000 / couple",
+    priceNote: "Included in packages starting ₹16,000 / person",
     dark: true,
   },
   {
@@ -107,7 +107,7 @@ const hotels = [
       "Exclusive darshan slot coordination",
     ],
     usedIn: ["Full Circuit Package (5N/6D)"],
-    priceNote: "Included in packages starting ₹50,000 / couple",
+    priceNote: "Included in packages starting ₹25,000 / person",
   },
 ];
 
