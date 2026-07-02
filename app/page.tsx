@@ -33,7 +33,7 @@ const organizationSchema = {
   logo: "https://ayodhyadharshan.com/logo.png",
   image: "https://ayodhyadharshan.com/logo.png",
   description:
-    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including Ram Mandir darshan pass, 3-star and 4-star hotel stays, AC transport, and expert guides. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹22,000 for a couple. We have served over 50,000 pilgrims since 2009.",
+    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including Ram Mandir darshan pass, 3-star and 4-star hotel stays, AC transport, and expert guides. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹20,000 for a couple. We have served over 50,000 pilgrims since 2009.",
   telephone: "+919235222399",
   email: "contact@ayodhyadharsha.com",
   address: {
@@ -93,7 +93,7 @@ const organizationSchema = {
           description: "2 Nights 3 Days Ayodhya tour with Ram Mandir darshan, hotel and transport",
           tripOrigin: { "@type": "TouristAttraction", name: "Ayodhya" },
         },
-        price: "22000",
+        price: "20000",
         priceCurrency: "INR",
       },
       {
@@ -103,7 +103,7 @@ const organizationSchema = {
           name: "Ayodhya Varanasi Tour Package",
           description: "3 Nights 4 Days Ayodhya and Varanasi tour package with Ram Mandir darshan and Ganga Aarti",
         },
-        price: "32000",
+        price: "30000",
         priceCurrency: "INR",
       },
       {
@@ -113,7 +113,7 @@ const organizationSchema = {
           name: "Ayodhya Prayagraj Varanasi Tour Package",
           description: "4 Nights 5 Days complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi",
         },
-        price: "40000",
+        price: "38000",
         priceCurrency: "INR",
       },
     ],
@@ -272,7 +272,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "22000",
+          price: "20000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
@@ -311,7 +311,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "32000",
+          price: "30000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
@@ -350,7 +350,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "40000",
+          price: "38000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
@@ -389,7 +389,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "30000",
+          price: "28000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
@@ -428,7 +428,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "40000",
+          price: "38000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
@@ -467,7 +467,7 @@ const tourSchema = {
         },
         offers: {
           "@type": "Offer",
-          price: "50000",
+          price: "48000",
           priceCurrency: "INR",
           priceValidUntil: "2027-12-31",
           url: "https://book.ayodhyadharshan.com/#get-quote",
