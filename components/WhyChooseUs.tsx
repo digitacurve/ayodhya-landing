@@ -42,7 +42,7 @@ const usps = [
     icon: Banknote,
     title: "Zero Hidden Charges",
     description:
-      "The price you see is exactly what you pay. Hotel, meals, transfers, guide, darshan pass — all included. Period.",
+      "The price you see is exactly what you pay. Hotel, meals, AC vehicle transfers — all included. Period.",
     iconColor: "#60A5FA",
     iconBg: "rgba(96,165,250,0.12)",
   },

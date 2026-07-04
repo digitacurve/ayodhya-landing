@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ayodhya Tour Package with Hotel & Darshan | Varanasi Prayagraj Circuits | Starting ₹20,000 for Couple",
+  title: "Ayodhya Tour Package with Hotel & Transport | Varanasi Prayagraj Circuits | Starting ₹14,998 for Couple",
   description:
-    "Looking for the best Ayodhya tour package? We include Ram Mandir darshan pass, 3★/4★ hotel, airport pickup, AC transport and an expert guide — all starting at ₹20,000 for a couple. Choose from Ayodhya Varanasi, Ayodhya Prayagraj Varanasi, same-day tours, or the full Ramayana Circuit. Trusted by 50,000+ pilgrims. Book on WhatsApp in 2 minutes.",
+    "Looking for the best Ayodhya tour package? We include comfortable hotel stays, airport pickup, AC transport — all starting at ₹14,998 for a couple. Choose from Ayodhya Varanasi, Ayodhya Prayagraj Varanasi, same-day tours, or the full Ramayana Circuit. Trusted by 50,000+ pilgrims. Book on WhatsApp in 2 minutes.",
   keywords: [
     "Ayodhya tour packages",
     "Ayodhya trip package",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "Ayodhya same day tour",
     "Ayodhya same day tour package",
     "Ayodhya one day tour package",
-    "Ram Mandir darshan package",
+    "Ram Mandir package",
     "Ayodhya pilgrimage tour",
     "Ayodhya tour package 2025",
     "Lucknow Ayodhya tour package",
@@ -50,18 +50,18 @@ export const metadata: Metadata = {
   classification: "Pilgrimage Tours",
   formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
-    title: "Ayodhya Tour Package with Hotel & Ram Mandir Darshan — Starting ₹20,000 for Couple",
+    title: "Ayodhya Tour Package with Hotel & Transport — Starting ₹14,998 for Couple",
     description:
-      "Complete Ayodhya pilgrimage packages: hotel stay, Ram Mandir darshan pass, AC transport, expert guide. Ayodhya Varanasi, Prayagraj circuits & same-day tours. 50,000+ pilgrims served since 2009.",
+      "Complete Ayodhya pilgrimage packages: hotel stay, AC transport, airport transfer. Ayodhya Varanasi, Prayagraj circuits & same-day tours. 50,000+ pilgrims served since 2009.",
     type: "website",
     locale: "en_IN",
     siteName: "Ayodhya Dharshan",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayodhya Tour Package with Hotel & Darshan — Starting ₹20,000 for Couple",
+    title: "Ayodhya Tour Package with Hotel & Transport — Starting ₹14,998 for Couple",
     description:
-      "Ram Mandir darshan + hotel + AC transport + expert guide. Ayodhya–Varanasi, Prayagraj circuits. Book on WhatsApp in 2 minutes.",
+      "Hotel + AC transport + railway/airport pickup & drop. Ayodhya–Varanasi, Prayagraj circuits. Book on WhatsApp in 2 minutes.",
   },
   robots: {
     index: true,

@@ -13,8 +13,8 @@ const packages = [
     subtitle: "Ideal for a short, focused pilgrimage",
     duration: "2 Nights / 3 Days",
     cities: ["Ayodhya"],
-    price: 20000,
-    originalPrice: 26000,
+    price: 14998,
+    originalPrice: 19998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: false,
@@ -23,9 +23,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "Hanuman Garhi & Kanak Bhawan",
       "Saryu River Ghat Walk",
       "24/7 WhatsApp Support",
@@ -38,8 +36,8 @@ const packages = [
     subtitle: "Our most booked Ayodhya tour with Varanasi",
     duration: "3 Nights / 4 Days",
     cities: ["Ayodhya", "Varanasi"],
-    price: 30000,
-    originalPrice: 40000,
+    price: 25998,
+    originalPrice: 33998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
     popular: true,
     featured: false,
@@ -48,9 +46,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "Kashi Vishwanath Corridor Visit",
       "Ganga Aarti at Dashashwamedh Ghat",
       "Sarnath Excursion Included",
@@ -63,8 +59,8 @@ const packages = [
     subtitle: "The complete tirthdham circuit",
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi"],
-    price: 38000,
-    originalPrice: 50000,
+    price: 31998,
+    originalPrice: 41998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Triveni_Sangam.JPG/960px-Triveni_Sangam.JPG",
     popular: false,
     featured: true,
@@ -73,9 +69,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "Triveni Sangam Prayagraj Visit",
       "Anand Bhawan & Heritage Tour",
       "Kashi Vishwanath + Ganga Aarti",
@@ -88,8 +82,8 @@ const packages = [
     subtitle: "Heritage & devotion beautifully combined",
     duration: "3 Nights / 4 Days",
     cities: ["Lucknow", "Ayodhya"],
-    price: 28000,
-    originalPrice: 36000,
+    price: 29998,
+    originalPrice: 39998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bara_Imambara_Lucknow.jpg/960px-Bara_Imambara_Lucknow.jpg",
     popular: false,
     featured: false,
@@ -98,9 +92,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "Bara Imambara & Heritage Tour",
       "Lucknow Food Walk Experience",
       "24/7 WhatsApp Support",
@@ -113,8 +105,8 @@ const packages = [
     subtitle: "Tracing the sacred path of Lord Ram",
     duration: "4 Nights / 5 Days",
     cities: ["Ayodhya", "Varanasi", "Chitrakoot"],
-    price: 38000,
-    originalPrice: 50000,
+    price: 33998,
+    originalPrice: 43998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Mandakini_River.jpg/960px-Mandakini_River.jpg",
     popular: false,
     featured: false,
@@ -123,9 +115,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "Kamadgiri Parikarama Chitrakoot",
       "Ramghat & Sati Anusuya Ashram",
       "Varanasi Ganga Aarti Experience",
@@ -138,8 +128,8 @@ const packages = [
     subtitle: "The ultimate Ramayana pilgrimage",
     duration: "5 Nights / 6 Days",
     cities: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
-    price: 48000,
-    originalPrice: 63000,
+    price: 36998,
+    originalPrice: 47998,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
     popular: false,
     featured: true,
@@ -148,9 +138,7 @@ const packages = [
     features: [
       "Intercity AC Car Transfers",
       "Airport / Railway Pickup & Drop",
-      "Ram Mandir Darshan Pass",
-      "Professional Licensed Guide",
-      "3 Star / 4 Star Hotel Stay",
+      "Best Hotel Stay",
       "All 4 Sacred Destinations Covered",
       "Triveni Sangam + Kamadgiri Parikrama",
       "Ganga Aarti + Personal Puja Arranged",
@@ -161,9 +149,7 @@ const packages = [
 
 const coreInclusions = [
   { icon: Car,      label: "AC Transfer" },
-  { icon: Hotel,    label: "3★/4★ Hotel" },
-  { icon: Ticket,   label: "Darshan Pass" },
-  { icon: UserCheck,label: "Expert Guide" },
+  { icon: Hotel,    label: "Best Hotel" },
 ];
 
 function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; index: number; tokenAmount: number }) {
@@ -246,7 +232,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         </p>
 
         {/* Core inclusions icons */}
-        <div className={`flex items-center justify-between mb-5 pb-5 border-b ${
+        <div className={`flex items-center justify-around mb-5 pb-5 border-b ${
           isPopular ? "border-white/10" : "border-gray-100"
         }`}>
           {coreInclusions.map(({ icon: Icon, label }) => (
@@ -452,7 +438,7 @@ export default function Packages() {
             <span className="text-gradient-saffron">Packages 2025</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto leading-relaxed">
-            Every detail pre-arranged — hotel, darshan pass, AC transport and expert guide — so you arrive and simply pray.
+            Every detail pre-arranged — best hotel stays, comfortable AC transport and seamless logistics — so you arrive and simply pray.
           </p>
           <div className="inline-flex items-center gap-2 mt-6 text-sm text-gray-500 bg-white border border-gray-100 shadow-sm rounded-full px-5 py-2.5">
             <MapPin size={13} className="text-saffron-500" />

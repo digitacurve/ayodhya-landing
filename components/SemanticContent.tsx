@@ -10,7 +10,7 @@ const quickAnswers = [
   {
     question: "Which Ayodhya tour package is best for a first-time pilgrim?",
     answer:
-      "If this is your first visit to Ayodhya, the Ayodhya Darshan Package (2 Nights / 3 Days, starting ₹10,000 per person / ₹20,000 couple) covers everything essential — Ram Mandir darshan, Hanuman Garhi, Kanak Bhawan, and Saryu Ghat. You get a pre-arranged darshan pass, hotel near the temple, and a knowledgeable guide. No queuing, no logistics stress — just devotion.",
+      "If this is your first visit to Ayodhya, the Ayodhya Darshan Package (2 Nights / 3 Days, starting ₹7,499 per person / ₹14,998 couple) covers everything essential — Ram Mandir, Hanuman Garhi, Kanak Bhawan, and Saryu Ghat. You get a comfortable hotel stay near the temple, and hassle-free local transport. No logistics stress — just devotion.",
     icon: Star,
     accent: "#D4AF37",
     tag: "Best for beginners",
@@ -18,7 +18,7 @@ const quickAnswers = [
   {
     question: "Can I do an Ayodhya same-day tour from Lucknow?",
     answer:
-      "Yes. A same-day Ayodhya tour from Lucknow is very popular. Ayodhya is about 130 km from Lucknow — approximately 2.5 hours by road or 1.5 hours by train. In a single day you can comfortably cover Ram Mandir darshan, Hanuman Garhi, Kanak Bhawan, and the Saryu Ghat walk. We arrange the AC cab and guide. WhatsApp us your departure time and we will plan the route for you.",
+      "Yes. A same-day Ayodhya tour from Lucknow is very popular. Ayodhya is about 130 km from Lucknow — approximately 2.5 hours by road or 1.5 hours by train. In a single day you can comfortably cover Ram Mandir, Hanuman Garhi, Kanak Bhawan, and the Saryu Ghat walk. We arrange the AC cab. WhatsApp us your departure time and we will plan the route for you.",
     icon: Clock,
     accent: "#FF6B00",
     tag: "Same-day tour",
@@ -26,7 +26,7 @@ const quickAnswers = [
   {
     question: "Which tour covers Ayodhya, Varanasi and Prayagraj together?",
     answer:
-      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, ₹19,000 per person / ₹38,000 couple) is designed exactly for this. Day 1–2 in Ayodhya for Ram Mandir darshan, Day 3 in Prayagraj for Triveni Sangam, Day 4–5 in Varanasi for Kashi Vishwanath and Ganga Aarti. Everything is pre-arranged — hotels, AC transfers, darshan passes and a guide.",
+      "Our Ayodhya–Prayagraj–Varanasi Tour Package (4 Nights / 5 Days, ₹15,999 per person / ₹31,998 couple) is designed exactly for this. Day 1–2 in Ayodhya for Ram Mandir, Day 3 in Prayagraj for Triveni Sangam, Day 4–5 in Varanasi for Kashi Vishwanath and Ganga Aarti. Everything is pre-arranged — comfortable hotels and private AC transfers.",
     icon: MapPin,
     accent: "#7C3AED",
     tag: "Triple circuit",
@@ -34,7 +34,7 @@ const quickAnswers = [
   {
     question: "Is the Ayodhya Varanasi package possible in 3 days?",
     answer:
-      "Our Ayodhya Varanasi tour is a 3 Nights / 4 Days package — the most efficient way to cover both cities properly. Because we hold pre-arranged darshan passes, no time is wasted queuing at Ram Mandir. Day 2 you travel from Ayodhya to Varanasi and see the Kashi Vishwanath Corridor in the evening. Day 3 covers Sarnath and the world-famous Ganga Aarti. It is achievable and deeply fulfilling.",
+      "Our Ayodhya Varanasi tour is a 3 Nights / 4 Days package — the most efficient way to cover both cities properly. We plan the travel efficiently so that no time is wasted. Day 2 you travel from Ayodhya to Varanasi and see the Kashi Vishwanath Corridor in the evening. Day 3 covers Sarnath and the world-famous Ganga Aarti. It is achievable and deeply fulfilling.",
     icon: Calendar,
     accent: "#34D399",
     tag: "Ayodhya + Varanasi",
@@ -42,7 +42,7 @@ const quickAnswers = [
   {
     question: "What makes a good Ayodhya travel package?",
     answer:
-      "A good Ayodhya travel package must include five things: a confirmed Ram Mandir darshan pass (so you don't spend hours in queue), a hotel within 20 minutes of the temple, all transport pre-arranged in AC vehicles, a licensed guide who knows the temple history and timings, and responsive support during the trip. Our packages include all five — that is why over 50,000 pilgrims have trusted us since 2009.",
+      "A good Ayodhya travel package must include a clean hotel stay near the temple, comfortable intercity transport in AC vehicles, and 24/7 responsive support. Our packages include all of these so that you can focus entirely on your devotion while we handle the logistics.",
     icon: Check,
     accent: "#60A5FA",
     tag: "What to look for",
@@ -50,7 +50,7 @@ const quickAnswers = [
   {
     question: "Which Ayodhya package is best for large families and groups?",
     answer:
-      "Our Custom Group Tour option is designed for families and groups of 8 or more. We arrange a dedicated AC tempo traveller or bus, block adjacent hotel rooms, arrange a group darshan slot at Ram Mandir, and assign a dedicated guide. Group bookings get priority scheduling and flexible meal arrangements. Rates are lower on a per-head basis for groups above 10 people.",
+      "Our Custom Group Tour option is designed for families and groups of 8 or more. We arrange a dedicated AC tempo traveller or bus, block adjacent hotel rooms, and handle all group logistics. Group bookings get priority scheduling and flexible meal arrangements. Rates are lower on a per-head basis for groups above 10 people.",
     icon: Users,
     accent: "#FB923C",
     tag: "Family & groups",
@@ -61,28 +61,28 @@ const packageMatrix = [
   {
     name: "Ayodhya Darshan",
     duration: "2N / 3D",
-    price: "₹10,000 / person",
+    price: "₹7,499 / person",
     best: "First-time pilgrims, short trips",
-    includes: ["Ram Mandir darshan", "Hanuman Garhi", "Kanak Bhawan", "Saryu Ghat"],
+    includes: ["Ram Mandir visit", "Hanuman Garhi", "Kanak Bhawan", "Saryu Ghat"],
   },
   {
     name: "Ayodhya – Varanasi",
     duration: "3N / 4D",
-    price: "₹15,000 / person",
+    price: "₹12,999 / person",
     best: "Most popular circuit",
     includes: ["Ram Mandir", "Kashi Vishwanath", "Ganga Aarti", "Sarnath"],
   },
   {
     name: "Ayodhya – Prayagraj – Varanasi",
     duration: "4N / 5D",
-    price: "₹19,000 / person",
+    price: "₹15,999 / person",
     best: "Three holy cities in one journey",
     includes: ["Ram Mandir", "Triveni Sangam", "Kashi Vishwanath", "Ganga Aarti"],
   },
   {
     name: "Full Ramayana Circuit",
     duration: "5N / 6D",
-    price: "₹24,000 / person",
+    price: "₹18,499 / person",
     best: "Ultimate pilgrimage experience",
     includes: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
   },
@@ -189,7 +189,7 @@ export default function SemanticContent() {
               Ayodhya Tour Package Comparison
             </h2>
             <p className="text-gray-400 text-sm mt-1">
-              All packages include hotel, darshan pass, AC transport, and expert guide.
+              All packages include best hotel stays and private AC transport.
             </p>
           </div>
 
@@ -252,7 +252,6 @@ export default function SemanticContent() {
                     </td>
                     <td className="px-6 py-5">
                       <span className="font-playfair font-bold text-divine-dark text-[17px]">{pkg.price}</span>
-                      <span className="text-gray-300 text-[11px] ml-1">/couple</span>
                     </td>
                     <td className="px-6 py-5">
                       <span className="text-saffron-600 text-[13px]">{pkg.best}</span>
@@ -278,7 +277,7 @@ export default function SemanticContent() {
           {/* Footer note */}
           <div className="px-6 sm:px-8 py-5 bg-gray-50/50 border-t border-gray-50">
             <p className="text-gray-400 text-[12px]">
-              * All prices are for a couple on double-sharing basis · inclusive of hotel, darshan pass, AC transport, meals (3N+ packages) and professional guide ·{" "}
+              * All prices are for a couple on double-sharing basis · inclusive of best hotel stay, private AC transport, and meals (3N+ packages) ·{" "}
               <span className="text-saffron-600 font-medium">
                 Same-day Ayodhya tour packages also available — WhatsApp us for details.
               </span>

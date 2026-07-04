@@ -33,7 +33,7 @@ const organizationSchema = {
   logo: "https://ayodhyadharshan.com/logo.png",
   image: "https://ayodhyadharshan.com/logo.png",
   description:
-    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including Ram Mandir darshan pass, 3-star and 4-star hotel stays, AC transport, and expert guides. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹20,000 for a couple. We have served over 50,000 pilgrims since 2009.",
+    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including comfortable hotel stays and AC transport. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹14,998 for a couple. We have served over 50,000 pilgrims since 2009.",
   telephone: "+919235222399",
   email: "contact@ayodhyadharsha.com",
   address: {
