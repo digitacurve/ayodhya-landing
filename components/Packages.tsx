@@ -160,8 +160,10 @@ const packages = [
 ];
 
 const coreInclusions = [
-  { icon: Car,      label: "AC Transfer" },
-  { icon: Hotel,    label: "Best Hotel" },
+  { icon: Car,           label: "AC Transfer" },
+  { icon: Hotel,         label: "Best Hotel" },
+  { icon: MapPin,        label: "Sightseeing" },
+  { icon: MessageCircle, label: "24/7 Support" },
 ];
 
 function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; index: number; tokenAmount: number }) {
@@ -244,7 +246,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         </p>
 
         {/* Core inclusions icons */}
-        <div className={`flex items-center justify-around mb-5 pb-5 border-b ${
+        <div className={`flex items-center justify-between mb-5 pb-5 border-b ${
           isPopular ? "border-white/10" : "border-gray-100"
         }`}>
           {coreInclusions.map(({ icon: Icon, label }) => (
