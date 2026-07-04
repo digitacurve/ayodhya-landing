@@ -12,7 +12,7 @@ const GOOGLE_RATING  = 4.9;
 const TOTAL_REVIEWS  = 312;
 const BUSINESS_NAME  = "Ayodhya Darshan — Tours & Travels";
 const GOOGLE_MAPS_URL =
-  "https://www.google.com/search?q=Ayodhya+Darshan+-+Tours+%26+Travels&kgmid=/g/11w290cc1v";
+  "https://share.google/XZ04u3ddZGvW7pVfO";
 
 const reviews = [
   {
