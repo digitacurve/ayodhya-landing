@@ -140,7 +140,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 var anchor = e.target && typeof e.target.closest === 'function' ? e.target.closest('a') : null;
                 if (anchor && anchor.href && anchor.href.indexOf('tel:') === 0) {
                   if (typeof window !== 'undefined' && window.fbq) {
-                    window.fbq('track', 'Contact');
+                    window.fbq('track', 'Lead', {
+                      source: 'call'
+                    });
                   }
                 }
               });
