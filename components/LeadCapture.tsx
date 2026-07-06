@@ -184,6 +184,9 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
             });
           }
         }
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'Lead');
+        }
         const queryParams = new URLSearchParams({
           name: fields.name,
           phone: fields.phone,
