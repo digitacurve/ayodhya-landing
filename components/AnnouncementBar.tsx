@@ -1,10 +1,10 @@
 "use client";
 
 const announcements = [
-  "✨ New Ayodhya Varanasi couple packages available from ₹32,000",
-  "🙏 Ram Mandir darshan pre-arranged — skip the queue",
-  "⭐ 4.9★ on Google · 2,847 verified reviews",
-  "🏨 3★ & 4★ hotels pre-confirmed near Ram Mandir",
+  "✨ New Ayodhya Varanasi packages available starting ₹12,999/person",
+  "✈️ Flight, Train & Bus bookings arranged by us from any city in India",
+  "⭐ 4.9★ on Google · 312 verified reviews",
+  "🏨 Best hotels pre-confirmed near Ram Mandir",
   "✅ IATA Certified · Ministry of Tourism Approved",
   "🚗 Airport pickup & drop included in all packages",
   "📿 Special Akhand Puja arrangements on request",

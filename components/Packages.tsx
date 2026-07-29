@@ -460,6 +460,34 @@ export default function Packages() {
           </div>
         </motion.div>
 
+        {/* Prominent Flight/Train Booking Assistance Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12 bg-gradient-to-r from-saffron-50 to-amber-50 border border-saffron-200/60 rounded-3xl p-6 sm:p-7 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left relative overflow-hidden"
+        >
+          {/* Decorative background circle */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-saffron-300/10 rounded-full blur-2xl pointer-events-none" />
+          
+          <div className="w-14 h-14 rounded-2xl bg-saffron-500/10 flex items-center justify-center flex-shrink-0 text-saffron-600 text-3xl shadow-inner">
+            ✈️
+          </div>
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
+              <h4 className="font-playfair font-bold text-divine-dark text-lg">
+                Flight & Train Ticket Bookings Available!
+              </h4>
+              <span className="bg-saffron-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                Yatra Add-on
+              </span>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              We arrange direct flights, trains, and luxury sleeper buses from any city in India (Delhi, Mumbai, Bengaluru, Chennai, etc.) at <strong>actual market rates</strong>. Prefer booking your own tickets? No problem! Your yatra packages will start directly from your arrival airport/station with our private AC pickup.
+            </p>
+          </div>
+        </motion.div>
+
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {packages.map((pkg, i) => (
