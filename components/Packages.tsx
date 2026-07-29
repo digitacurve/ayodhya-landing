@@ -360,9 +360,9 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
           </div>
           <ul className="space-y-2 text-[11px] leading-tight">
             <li className="flex items-start gap-2">
-              <span className="text-red-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✕</span>
-              <span className={isPopular ? "text-white/60" : "text-gray-500"}>
-                Transport tickets (Bus, Train, Flight) are NOT included
+              <span className="text-blue-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✈️</span>
+              <span className={isPopular ? "text-white/80 font-medium" : "text-gray-600 font-medium"}>
+                Flight/Train/Bus: Self-book OR we arrange at actual cost
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -479,10 +479,10 @@ export default function Packages() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-600 font-bold text-sm">✕</div>
+              <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600 font-bold text-sm">✈️</div>
               <div>
-                <h4 className="font-semibold text-divine-dark text-[13px] mb-1">No Transport Tickets</h4>
-                <p className="text-gray-400 text-xs leading-relaxed">Any type of transportation tickets (like flights, train tickets, or interstate buses) are not included. Devotees must book their own travel, or we can assist at actual cost.</p>
+                <h4 className="font-semibold text-divine-dark text-[13px] mb-1">Flexible Transport Options</h4>
+                <p className="text-gray-400 text-xs leading-relaxed">Book your own flight, train, or bus to the yatra starting point, or ask our team to book them for you at actual cost during confirmation.</p>
               </div>
             </div>
             <div className="flex gap-3">
