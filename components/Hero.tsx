@@ -27,11 +27,11 @@ const particles = [
 ];
 
 const inclusions = [
-  { label: "Hotel Included" },
-  { label: "Pickup & Drop" },
-  { label: "Darshan Arranged" },
-  { label: "Expert Guide" },
-  { label: "Family Friendly" },
+  { label: "Best Hotel Stay" },
+  { label: "Private AC Cab" },
+  { label: "Covers Sightseeing" },
+  { label: "Driver cum Guide" },
+  { label: "Flight / Train Ticket Support" },
 ];
 
 const trustBadges = [
@@ -204,10 +204,10 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
           className="text-white/70 text-base sm:text-lg lg:text-xl font-inter font-light mt-6 mb-2 max-w-2xl mx-auto leading-relaxed"
         >
-          Hotel confirmed &nbsp;·&nbsp; Darshan arranged &nbsp;·&nbsp; Transport ready
+          Best Hotels &nbsp;·&nbsp; Private AC Cabs &nbsp;·&nbsp; Flight/Train Booking Support
           <br className="hidden sm:block" />
           <span className="text-white/80 font-normal sm:mt-1 inline-block">
-            Just come with devotion — we handle everything else.
+            Just come with devotion — we handle all transport and stays.
           </span>
         </motion.p>
 
