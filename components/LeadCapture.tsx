@@ -446,7 +446,7 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
       </p>
 
       {/* Micro-trust strip */}
-      <div className="flex items-center justify-center gap-4 pt-1">
+      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 pt-1">
         {[
           bookingType === "confirm" ? "25% Advance Payment" : "Price Lock Guarantee",
           bookingType === "confirm" ? "Exact Dates Confirmed" : "Flexible Dates",

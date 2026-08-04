@@ -96,7 +96,7 @@ const itemVariants = {
 
 export default function WhyChooseUs() {
   const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
 
   return (
     <section

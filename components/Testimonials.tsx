@@ -93,7 +93,7 @@ function Stars({ n }: { n: number }) {
 
 export default function Testimonials() {
   const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
 
   const [current, setCurrent] = useState(0);
   const [auto,    setAuto]    = useState(true);
@@ -167,7 +167,7 @@ export default function Testimonials() {
                   ))}
                 </div>
               </div>
-              <div className="text-gray-400 text-[11px] mt-0.5">2,847 Google Reviews</div>
+              <div className="text-gray-400 text-[11px] mt-0.5">312 Google Reviews</div>
             </div>
           </motion.div>
         </motion.div>

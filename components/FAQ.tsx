@@ -44,7 +44,7 @@ function FAQItem({ item, index }: { item: (typeof faqData)[0]; index: number }) 
 
 export default function FAQ() {
   const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
 
   return (
     <section ref={ref} id="faq" className="py-24 sm:py-32 bg-sacred-light">

@@ -61,7 +61,7 @@ const organizationSchema = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "2847",
+    reviewCount: "312",
     bestRating: "5",
     worstRating: "1",
   },
@@ -260,7 +260,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },
@@ -299,7 +299,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },
@@ -338,7 +338,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },
@@ -377,7 +377,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },
@@ -416,7 +416,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },
@@ -455,7 +455,7 @@ const tourSchema = {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
-          reviewCount: "2847",
+          reviewCount: "312",
           bestRating: "5",
           worstRating: "1",
         },

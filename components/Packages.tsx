@@ -417,7 +417,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
 }
 export default function Packages() {
   const ref   = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
   const [tokenAmount, setTokenAmount] = useState(1999);
 
   useEffect(() => {

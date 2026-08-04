@@ -1,6 +1,7 @@
 "use client";
 
 const announcements = [
+  "🛡️ Govt. Registered & GST Approved — GSTIN: 09CJPPJ6346G1ZR",
   "✨ New Ayodhya Varanasi packages available starting ₹12,999/person",
   "✈️ Flight, Train & Bus bookings arranged by us from any city in India",
   "⭐ 4.9★ on Google · 312 verified reviews",

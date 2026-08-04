@@ -37,7 +37,7 @@ const inclusions = [
 const trustBadges = [
   { icon: Star,         label: "4.9★  Google Rated",  sub: "312 verified reviews" },
   { icon: Users,        label: "50,000+ Pilgrims",     sub: "Trusted since 2009" },
-  { icon: ShieldCheck,  label: "Free Cancellation",    sub: "Full refund within 48h" },
+  { icon: ShieldCheck,  label: "Govt. Registered Agency", sub: "GSTIN: 09CJPPJ6346G1ZR" },
   { icon: CheckCircle2, label: "Flexi-Booking Options",  sub: "25% direct confirm OR ₹1,999 price lock" },
 ];
 
@@ -161,6 +161,17 @@ export default function Hero() {
         className="relative z-20 text-center px-5 sm:px-8 max-w-5xl mx-auto pt-32 pb-24"
         style={{ opacity: fade }}
       >
+        {/* Govt Trust Badge at top */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="inline-flex items-center gap-1.5 mb-5 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full text-emerald-400 font-inter text-[11px] font-medium tracking-wide uppercase shadow-[0_2px_12px_rgba(16,185,129,0.08)]"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Govt. Registered Agency (GSTIN: 09CJPPJ6346G1ZR)
+        </motion.div>
+
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
