@@ -77,15 +77,6 @@ const reviews = [
     thumb: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&h=600&q=80",
     initials: "SM",
   },
-  {
-    id: 9,
-    name: "Anjali Joshi",
-    location: "Pune, MH",
-    yatra: "Ayodhya Darshan (2N/3D)",
-    videoSrc: "/videos/review9.mp4",
-    thumb: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=600&q=80",
-    initials: "AJ",
-  },
 ];
 
 export default function VideoTestimonial() {
