@@ -350,6 +350,8 @@ export default function Footer() {
             <span className="text-saffron-600/50">Jai Shri Ram 🙏</span>
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-white/25 text-xs">
+            <span className="text-white/40 font-medium">GSTIN: 09CJPPJ6346G1ZR</span>
+            <span className="text-white/10">•</span>
             <span>IATA Certified</span>
             <span className="text-white/10">•</span>
             <span>Ministry of Tourism Registered</span>
