@@ -13,6 +13,7 @@ const reviews = [
     videoSrc: "/videos/review1.mp4",
     thumb: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&h=600&q=80",
     initials: "AS",
+    isHorizontal: true,
   },
   {
     id: 2,
@@ -40,6 +41,7 @@ const reviews = [
     videoSrc: "/videos/review4.mp4",
     thumb: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=600&q=80",
     initials: "DP",
+    isHorizontal: true,
   },
   {
     id: 5,
@@ -58,6 +60,7 @@ const reviews = [
     videoSrc: "/videos/review6.mp4",
     thumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=600&q=80",
     initials: "KJ",
+    isHorizontal: true,
   },
   {
     id: 7,
@@ -202,7 +205,11 @@ export default function VideoTestimonial() {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 350 }}
-                className="relative w-full max-w-[360px] h-[80vh] max-h-[640px] bg-divine-dark rounded-[2.5rem] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8)] overflow-hidden z-10 flex flex-col justify-end"
+                className={`relative w-full bg-divine-dark rounded-[2.5rem] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8)] overflow-hidden z-10 flex flex-col justify-end transition-all duration-300 ${
+                  activeVideo.isHorizontal 
+                    ? "max-w-[640px] aspect-video h-auto" 
+                    : "max-w-[360px] h-[80vh] max-h-[640px]"
+                }`}
               >
                 {/* Custom HTML5 Video */}
                 <video
