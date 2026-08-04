@@ -8,7 +8,7 @@ const items = [
   { icon: Car,            label: "Comfortable Transport",    sub: "AC vehicle throughout" },
   { icon: BookOpen,       label: "Pilgrimage Experts",       sub: "15+ years experience" },
   { icon: HeadphonesIcon, label: "24/7 Local Support",       sub: "Reply in 2 minutes" },
-  { icon: BadgeCheck,     label: "Transparent Pricing",      sub: "Zero hidden charges" },
+  { icon: BadgeCheck,     label: "Govt. Registered Agency",  sub: "GSTIN: 09CJPPJ6346G1ZR" },
 ];
 
 export default function TrustStrip() {
