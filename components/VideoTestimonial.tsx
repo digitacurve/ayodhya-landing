@@ -105,7 +105,7 @@ export default function VideoTestimonial() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="text-left">
-            <div className="ornament-line max-w-[200px] mb-4">
+            <div className="ornament-line max-w-md mb-4">
               <span className="text-gold-600 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
                 Devotee Feedback
               </span>

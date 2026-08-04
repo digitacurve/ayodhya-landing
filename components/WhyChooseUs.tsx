@@ -129,7 +129,7 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16 sm:mb-20"
         >
-          <div className="ornament-line max-w-[220px] mx-auto mb-5">
+          <div className="ornament-line max-w-md mx-auto mb-5">
             <span className="text-gold-400 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
               Why 50,000+ Families Choose Us
             </span>
