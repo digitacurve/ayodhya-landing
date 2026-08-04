@@ -125,7 +125,7 @@ export default function HotelShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <div className="ornament-line max-w-md mx-auto mb-4">
+          <div className="ornament-line max-w-xl mx-auto mb-4">
             <span className="text-gold-600 text-xs tracking-[0.3em] uppercase font-medium whitespace-nowrap px-4">
               Where You'll Rest & Recharge
             </span>
