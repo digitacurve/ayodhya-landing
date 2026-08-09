@@ -20,6 +20,9 @@ const TOURS = [
   "Prayagraj Sangam Darshan",
   "Prayagraj",
   "Ayodhya – Varanasi",
+  "Lucknow – Ayodhya",
+  "Ayodhya – Varanasi – Chitrakoot",
+  "Full Ramayana Circuit",
   "Custom Trip",
 ];
 
@@ -90,9 +93,9 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
         "ayodhya-darshan": "Ayodhya Darshan",
         "ayodhya-varanasi": "Ayodhya – Varanasi",
         "ayodhya-prayagraj-varanasi": "Ayodhya – Prayagraj – Varanasi Tour",
-        "lucknow-ayodhya": "Custom Trip",
-        "ayodhya-varanasi-chitrakoot": "Custom Trip",
-        "full-circuit": "Custom Trip",
+        "lucknow-ayodhya": "Lucknow – Ayodhya",
+        "ayodhya-varanasi-chitrakoot": "Ayodhya – Varanasi – Chitrakoot",
+        "full-circuit": "Full Ramayana Circuit",
       };
       const tourName = tourMapping[tourId];
       if (tourName) {

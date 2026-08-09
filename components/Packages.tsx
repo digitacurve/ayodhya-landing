@@ -3,161 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, MessageCircle, Clock, MapPin, Hotel, Car, UserCheck, Ticket, Sparkles } from "lucide-react";
-
-const WA_NUMBER = "919235222399";
-
-const packages = [
-  {
-    id: "ayodhya-darshan",
-    name: "Ayodhya Darshan",
-    subtitle: "Ideal for a short, focused pilgrimage",
-    duration: "2 Nights / 3 Days",
-    cities: ["Ayodhya"],
-    price: 14998,
-    originalPrice: 19998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
-    popular: false,
-    featured: false,
-    ctaText: "Get Tour Details",
-    accent: "#FF6B00",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "Hanuman Garhi & Kanak Bhawan",
-      "Saryu River Ghat Walk",
-      "24/7 WhatsApp Support",
-    ],
-    note: "Ideal for a short divine weekend escape",
-  },
-  {
-    id: "ayodhya-varanasi",
-    name: "Ayodhya Varanasi",
-    subtitle: "Our most booked Ayodhya tour with Varanasi",
-    duration: "3 Nights / 4 Days",
-    cities: ["Ayodhya", "Varanasi"],
-    price: 25998,
-    originalPrice: 33998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
-    popular: true,
-    featured: false,
-    ctaText: "Get Full Itinerary",
-    accent: "#D4AF37",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "Kashi Vishwanath Corridor Visit",
-      "Ganga Aarti at Dashashwamedh Ghat",
-      "Sarnath Excursion Included",
-    ],
-    note: "8 of 12 seats booked this week",
-  },
-  {
-    id: "ayodhya-prayagraj-varanasi",
-    name: "Ayodhya · Prayagraj · Varanasi",
-    subtitle: "The complete tirthdham circuit",
-    duration: "4 Nights / 5 Days",
-    cities: ["Ayodhya", "Prayagraj", "Varanasi"],
-    price: 31998,
-    originalPrice: 41998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Triveni_Sangam.JPG/960px-Triveni_Sangam.JPG",
-    popular: false,
-    featured: true,
-    ctaText: "Get Full Itinerary",
-    accent: "#7C3AED",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "Triveni Sangam Prayagraj Visit",
-      "Anand Bhawan & Heritage Tour",
-      "Kashi Vishwanath + Ganga Aarti",
-    ],
-    note: "Covers three of India's holiest cities",
-  },
-  {
-    id: "lucknow-ayodhya",
-    name: "Lucknow · Ayodhya",
-    subtitle: "Heritage & devotion beautifully combined",
-    duration: "3 Nights / 4 Days",
-    cities: ["Lucknow", "Ayodhya"],
-    price: 29998,
-    originalPrice: 39998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bara_Imambara_Lucknow.jpg/960px-Bara_Imambara_Lucknow.jpg",
-    popular: false,
-    featured: false,
-    ctaText: "Get Tour Details",
-    accent: "#0891B2",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "Bara Imambara & Heritage Tour",
-      "Lucknow Food Walk Experience",
-      "24/7 WhatsApp Support",
-    ],
-    note: "Nawabi culture meets Ram Bhumi devotion",
-  },
-  {
-    id: "ayodhya-varanasi-chitrakoot",
-    name: "Ayodhya · Varanasi · Chitrakoot",
-    subtitle: "Tracing the sacred path of Lord Ram",
-    duration: "4 Nights / 5 Days",
-    cities: ["Ayodhya", "Varanasi", "Chitrakoot"],
-    price: 33998,
-    originalPrice: 43998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Mandakini_River.jpg/960px-Mandakini_River.jpg",
-    popular: false,
-    featured: false,
-    ctaText: "Talk To Tour Expert",
-    accent: "#059669",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "Kamadgiri Parikarama Chitrakoot",
-      "Ramghat & Sati Anusuya Ashram",
-      "Varanasi Ganga Aarti Experience",
-    ],
-    note: "Follow Ram's footsteps from Ayodhya to exile",
-  },
-  {
-    id: "full-circuit",
-    name: "Full Ramayana Circuit",
-    subtitle: "The ultimate Ramayana pilgrimage",
-    duration: "5 Nights / 6 Days",
-    cities: ["Ayodhya", "Prayagraj", "Varanasi", "Chitrakoot"],
-    price: 36998,
-    originalPrice: 47998,
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
-    popular: false,
-    featured: true,
-    ctaText: "Talk To Tour Expert",
-    accent: "#8B0000",
-    features: [
-      "Intercity AC Car Transfers",
-      "Airport / Railway Pickup & Drop",
-      "Best Hotel Stay",
-      "Covers Sightseeing & Temple Visits",
-      "Driver will guide you during the yatra",
-      "All 4 Sacred Destinations Covered",
-      "Triveni Sangam + Kamadgiri Parikrama",
-      "Ganga Aarti + Personal Puja Arranged",
-    ],
-    note: "Most complete Ramayana circuit — limited slots",
-  },
-];
+import Link from "next/link";
+import { packages } from "@/data/packagesData";
 
 const coreInclusions = [
   { icon: Car,           label: "AC Transfer" },
@@ -381,14 +228,8 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         </div>
 
         {/* CTA */}
-        <a
-          href="#get-quote"
-          onClick={() => {
-            const event = new CustomEvent("select-tour", {
-              detail: { tourId: pkg.id, mode: "confirm" }
-            });
-            window.dispatchEvent(event);
-          }}
+        <Link
+          href={`/packages/${pkg.id}`}
           className={`wa-shimmer flex items-center justify-center gap-2.5 w-full py-3.5 rounded-2xl text-white font-bold text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
             isPopular
               ? "bg-gold-gradient text-divine-dark hover:brightness-105"
@@ -399,12 +240,12 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
               ? {}
               : { backgroundColor: pkg.accent }
           }
-          data-cta="scroll-quote"
+          data-cta="view-details"
           data-source="packages"
           data-package={pkg.id}
         >
           {pkg.ctaText}
-        </a>
+        </Link>
 
         <p className={`text-center text-[11px] mt-2.5 ${
           isPopular ? "text-white/30" : "text-gray-300"
