@@ -14,7 +14,7 @@ const slides = [
     duration: "1 Day",
     price: 5999,
     priceSuffix: " (For 3 Pax)",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/2/25/Ram_ki_Paidi.jpg",
     waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Same Day Tour (₹5,999 for up to 3 Pax). Please share details."
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     duration: "1 Day",
     price: 7999,
     priceSuffix: " (For 3 Pax)",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Assi_Ghat_Varanasi.jpg",
     waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Same Day Tour (₹7,999 for up to 3 Pax). Please share details."
   },
   {
@@ -34,7 +34,7 @@ const slides = [
     duration: "2 Days",
     price: 9998,
     priceSuffix: " / Person",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ram_Mandir%2C_Ayodhya.png/960px-Ram_Mandir%2C_Ayodhya.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Kanak_bhawan_Ayodhya.jpg",
     waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Yatra 1N/2D package (₹4,999/person). Please share details."
   },
   {
@@ -44,7 +44,7 @@ const slides = [
     duration: "2 Days",
     price: 9998,
     priceSuffix: " / Person",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG/960px-Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Varanasi_Ghats_-_Ganga.jpg/960px-Varanasi_Ghats_-_Ganga.jpg",
     waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Yatra 1N/2D package (₹4,999/person). Please share details."
   }
 ];
