@@ -21,7 +21,7 @@ const hotels = [
     iconColor: "text-orange-600",
     pattern: "M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z",
     badgeColor: "bg-orange-100 text-orange-700",
-    image: "/places/comfort-stay.png",
+    image: "/places/comfort-stay.jpg",
     amenities: [
       { icon: Wind, label: "AC Rooms" },
       { icon: Wifi, label: "Free Wi-Fi" },
