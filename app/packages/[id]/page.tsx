@@ -32,6 +32,211 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
+const customItineraries: Record<
+  string,
+  {
+    days: {
+      title: string;
+      activities: { time: "Morning" | "Afternoon" | "Evening"; activity: string }[];
+    }[];
+  }
+> = {
+  "ayodhya-same-day": {
+    days: [
+      {
+        title: "Day 1 — Quick Ayodhya Same Day Yatra",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Direct pickup from Ayodhya station/airport. Meet our driver-cum-guide and visit the historic Hanuman Garhi temple to take Hanuman ji's permission.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Proceed to Shri Ram Janmabhoomi (Ram Mandir) for special darshan of Ram Lalla. Walk around the massive temple complex and explore Kanak Bhawan.",
+          },
+          {
+            time: "Evening",
+            activity: "Explore Dashrath Mahal and take a walk along Saryu River. Attend the grand Saryu Aarti at sunset, and transfer back to Ayodhya Railway Station / Airport.",
+          },
+        ],
+      },
+    ],
+  },
+  "varanasi-same-day": {
+    days: [
+      {
+        title: "Day 1 — Complete Varanasi Same Day Yatra",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Pickup from Varanasi Airport / Station. Drive straight to the sacred Shri Kashi Vishwanath Jyotirlinga Temple via the modern Corridor. Visit Annapurna temple.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Drive to Sarnath (where Lord Buddha delivered his first sermon). Explore the Dhamek Stupa, ancient monastery ruins, and the Sarnath Archaeological Museum.",
+          },
+          {
+            time: "Evening",
+            activity: "Attend the world-famous evening Ganga Aarti at Dashashwamedh Ghat from a private boat. Walk through local markets and drop-off at Airport / Railway Station.",
+          },
+        ],
+      },
+    ],
+  },
+  "prayagraj-same-day": {
+    days: [
+      {
+        title: "Day 1 — Prayagraj Same Day Yatra",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Pickup from Prayagraj / Varanasi. Drive straight to Triveni Sangam — the holy confluence of Ganga, Yamuna, and invisible Saraswati. Board a boat for ritual dip (snan).",
+          },
+          {
+            time: "Afternoon",
+            activity: "Visit the unique reclining Letaji Hanuman Temple near Sangam. Explore Anand Bhawan, the historic ancestral home of the Nehru family (now a heritage museum).",
+          },
+          {
+            time: "Evening",
+            activity: "Visit the Mankameshwar Temple on the banks of Yamuna. Take a walk along the ghats and drop-off at Prayagraj Railway Station or Airport.",
+          },
+        ],
+      },
+    ],
+  },
+  "ayodhya-1n2d": {
+    days: [
+      {
+        title: "Day 1 — Arrival & Ram Mandir Darshan",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Pickup from Ayodhya Railway Station / Airport. Transfer to your hotel, check-in, and freshen up.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Visit Shri Ram Janmabhoomi (Ram Mandir) — experience special darshan of Ram Lalla. Guided walk through the beautiful temple architecture.",
+          },
+          {
+            time: "Evening",
+            activity: "Visit the fortress temple of Hanuman Garhi. Walk through the colourful local bazaar and attend evening Saryu River Aarti at Ram Ki Paidi.",
+          },
+        ],
+      },
+      {
+        title: "Day 2 — Sacred Stays & Departure",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Enjoy a sunrise walk along Saryu River ghats and take a holy dip. Visit Nageshwarnath Temple, Kanak Bhawan, and Dashrath Mahal.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Check-out from hotel. Explore local markets to buy authentic prasad and souvenirs.",
+          },
+          {
+            time: "Evening",
+            activity: "Transfer to Ayodhya Railway Station / Airport for your onward journey, carrying divine blessings of Ram Lalla.",
+          },
+        ],
+      },
+    ],
+  },
+  "varanasi-1n2d": {
+    days: [
+      {
+        title: "Day 1 — Arrival & Ganga Aarti",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Arrive at Lal Bahadur Shastri Airport / Varanasi Station. Meet our coordinator and transfer to hotel near the ghats. Check-in and relax.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Visit Kashi Vishwanath Jyotirlinga Temple, the newly built Vishwanath Corridor, Annapurna Temple, and the protective deity Kal Bhairav Temple.",
+          },
+          {
+            time: "Evening",
+            activity: "Experience the mesmerizing evening Ganga Aarti at Dashashwamedh Ghat from a private boat. Dinner at local traditional restaurant.",
+          },
+        ],
+      },
+      {
+        title: "Day 2 — Subah-e-Banaras & Sarnath Excursion",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Wake up early for Subah-e-Banaras at Assi Ghat — watch classical music, yoga, and sunrise fire rituals. Sunrise boat ride on Ganga.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Check-out from hotel. Drive to Sarnath to visit the historical Dhamek Stupa, deer park, and Buddhist temples.",
+          },
+          {
+            time: "Evening",
+            activity: "Free time for shopping (Banarasi Silk sarees / local sweets like Lal Peda). Drop-off at Airport / Railway Station for departure.",
+          },
+        ],
+      },
+    ],
+  },
+  "varanasi-ayodhya-2n3d": {
+    days: [
+      {
+        title: "Day 1 — Kashi Darshan & Ganga Aarti",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Arrive at Varanasi Airport/Station. Direct AC transfer to hotel. Visit Kashi Vishwanath Corridor, Annapurna Mandir, and Kal Bhairav.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Visit the historical Sarnath site and museum. Explore the Buddhist monuments and gardens.",
+          },
+          {
+            time: "Evening",
+            activity: "Witness the magnificent Ganga Aarti from a boat at Dashashwamedh Ghat. Dinner and overnight stay in Varanasi.",
+          },
+        ],
+      },
+      {
+        title: "Day 2 — Varanasi Sunrise & Drive to Ayodhya",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Wake up for Subah-e-Banaras at Assi Ghat. Enjoy a sunrise boat ride. Return to hotel for check-out.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Drive to Ayodhya in our private AC vehicle (approx 4.5 hours). Check-in at hotel and freshen up.",
+          },
+          {
+            time: "Evening",
+            activity: "Visit Hanuman Garhi and attend the grand Saryu River Aarti at Ram Ki Paidi. Overnight in Ayodhya.",
+          },
+        ],
+      },
+      {
+        title: "Day 3 — Ram Mandir Darshan & Departure",
+        activities: [
+          {
+            time: "Morning",
+            activity: "Early morning darshan of Ram Lalla at the grand Ram Mandir. Explore Kanak Bhawan and Dashrath Mahal with guide.",
+          },
+          {
+            time: "Afternoon",
+            activity: "Check-out from hotel. Buy prasad and local goods. Transfer to Ayodhya Airport / Railway Station or back to Lucknow.",
+          },
+          {
+            time: "Evening",
+            activity: "Depart carrying the blessings of both Lord Shiva and Lord Ram. Yatra concludes. 🙏",
+          },
+        ],
+      },
+    ],
+  },
+};
+
 const itineraryMapping: Record<string, string> = {
   "ayodhya-darshan": "ayodhya",
   "ayodhya-varanasi": "varanasi",
@@ -59,8 +264,10 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
     notFound();
   }
 
-  const itineraryId = itineraryMapping[pkg.id] || pkg.id;
-  const itinerary = itineraries.find((it) => it.id === itineraryId);
+  const itinerary = customItineraries[pkg.id] || (() => {
+    const itineraryId = itineraryMapping[pkg.id] || pkg.id;
+    return itineraries.find((it) => it.id === itineraryId);
+  })();
 
   const WA_NUMBER = "919235222399";
   const waMsg = encodeURIComponent(
@@ -139,12 +346,15 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 sm:p-6 max-w-md">
                 <div className="flex items-baseline gap-1.5 mb-1">
                   <span className="text-white/40 text-xs">Special Price:</span>
-                  <span className="text-white/40 line-through text-sm">₹{(pkg.originalPrice / 2).toLocaleString("en-IN")}</span>
-                  <span className="text-gold-400 font-playfair font-bold text-3xl">₹{(pkg.price / 2).toLocaleString("en-IN")}</span>
-                  <span className="text-white/50 text-xs font-medium">/ person</span>
+                  <span className="text-white/40 line-through text-sm">₹{(pkg.priceSuffix?.includes("Pax") ? pkg.originalPrice : (pkg.originalPrice / 2)).toLocaleString("en-IN")}</span>
+                  <span className="text-gold-400 font-playfair font-bold text-3xl">₹{(pkg.priceSuffix?.includes("Pax") ? pkg.price : (pkg.price / 2)).toLocaleString("en-IN")}</span>
+                  <span className="text-white/50 text-xs font-medium">{pkg.priceSuffix || "/ person"}</span>
                 </div>
                 <p className="text-saffron-400 text-xs font-semibold">
-                  ₹{pkg.price.toLocaleString("en-IN")} total for couple (double-sharing basis)
+                  {pkg.priceSuffix?.includes("Pax") 
+                    ? (pkg.note || "AC Cab & Driver-cum-Guide included") 
+                    : `₹${pkg.price.toLocaleString("en-IN")} total for couple (double-sharing basis)`
+                  }
                 </p>
                 <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
                   <span className="text-white/60 text-xs leading-snug">Confirm with 25% Advance payment</span>

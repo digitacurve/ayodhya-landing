@@ -8,44 +8,44 @@ const WA_NUMBER = "919235222399";
 
 const slides = [
   {
-    id: "ayodhya-darshan",
-    title: "Ayodhya Darshan",
-    description: "Seek blessings at Shri Ram Janmabhoomi, Hanuman Garhi, Kanak Bhawan and experience the divine Saryu River Aarti.",
-    duration: "2 NIGHTS / 3 DAYS",
-    price: "7,499",
-    originalPrice: "9,999",
+    id: "ayodhya-same-day",
+    title: "Ayodhya Same Day Tour",
+    description: "Quick single-day direct pilgrimage featuring priority support for Ram Mandir, Hanuman Garhi, and Saryu River.",
+    duration: "1 Day",
+    price: 5999,
+    priceSuffix: " (For 3 Pax)",
     image: "/gallery/gallery-24.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Darshan 2N/3D package. Please share details."
+    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Same Day Tour (₹5,999 for up to 3 Pax). Please share details."
   },
   {
-    id: "ayodhya-varanasi",
-    title: "Ayodhya Varanasi Yatra",
-    description: "Our most booked tour package combining the spiritual grace of Ram Mandir and the eternal ghats of Kashi Vishwanath.",
-    duration: "3 NIGHTS / 4 DAYS",
-    price: "12,999",
-    originalPrice: "16,999",
+    id: "varanasi-same-day",
+    title: "Varanasi Same Day Tour",
+    description: "Complete Kashi darshan including Kashi Vishwanath corridor, evening Ganga Aarti boat ride, and Sarnath excursion.",
+    duration: "1 Day",
+    price: 7999,
+    priceSuffix: " (For 3 Pax)",
     image: "/gallery/gallery-25.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Varanasi 3N/4D package. Please share details."
+    waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Same Day Tour (₹7,999 for up to 3 Pax). Please share details."
   },
   {
-    id: "ayodhya-prayagraj-varanasi",
-    title: "Tirthdham Yatra",
-    description: "Explore the holy convergence of Triveni Sangam in Prayagraj, Kashi Vishwanath Corridor in Varanasi, and Ram Mandir in Ayodhya.",
-    duration: "4 NIGHTS / 5 DAYS",
-    price: "15,999",
-    originalPrice: "20,999",
-    image: "/gallery/gallery-26.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Prayagraj Varanasi 4N/5D package. Please share details."
+    id: "ayodhya-1n2d",
+    title: "Ayodhya Yatra (1N/2D)",
+    description: "Devotional overnight stay in the sacred land of Ram Mandir, Kanak Bhawan, Hanuman Garhi, and sunset Saryu Aarti.",
+    duration: "2 Days",
+    price: 9998,
+    priceSuffix: " / Person",
+    image: "/gallery/gallery-10.jpg",
+    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Yatra 1N/2D package (₹4,999/person). Please share details."
   },
   {
-    id: "lucknow-ayodhya",
-    title: "Lucknow Ayodhya Tour",
-    description: "Combine the Nawabi heritage monuments of Lucknow with the sacred devotional atmosphere of Ayodhya's Ram Mandir.",
-    duration: "3 NIGHTS / 4 DAYS",
-    price: "14,999",
-    originalPrice: "19,999",
-    image: "/gallery/gallery-27.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Lucknow Ayodhya 3N/4D package. Please share details."
+    id: "varanasi-1n2d",
+    title: "Varanasi Yatra (1N/2D)",
+    description: "Experience the timeless spiritual energy of Varanasi with Kashi Vishwanath darshan, Ganga Aarti, and Subah-e-Banaras.",
+    duration: "2 Days",
+    price: 9998,
+    priceSuffix: " / Person",
+    image: "/gallery/gallery-11.jpg",
+    waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Yatra 1N/2D package (₹4,999/person). Please share details."
   }
 ];
 
@@ -64,7 +64,7 @@ const WhatsAppIcon = () => (
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [direction, setDirection] = useState(1);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoPlay = () => {
@@ -109,13 +109,14 @@ export default function Hero() {
 
   const activeSlide = slides[current];
 
-  // Dispatch event to select the tour package in dropdown
   const handleSelectPackage = (packageId: string) => {
     const event = new CustomEvent("select-tour", {
       detail: { tourId: packageId, mode: "confirm" }
     });
     window.dispatchEvent(event);
   };
+
+  const displayPrice = activeSlide.priceSuffix.includes("Pax") ? activeSlide.price : (activeSlide.price / 2);
 
   return (
     <section
@@ -137,12 +138,10 @@ export default function Hero() {
           />
         </AnimatePresence>
         
-        {/* Dark overlay gradients for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#080200]/70 via-[#100500]/60 to-[#0A0300]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0300]/80 via-transparent to-[#0A0300]/80" />
       </div>
 
-      {/* Faint ambient radial glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-[65vh] pointer-events-none z-0"
         style={{
@@ -167,7 +166,6 @@ export default function Hero() {
         <ChevronRight size={22} />
       </button>
 
-      {/* ── Top Buffer (for fixed header alignment) ── */}
       <div className="h-28 flex-shrink-0" />
 
       {/* ── Main Content Carousel ── */}
@@ -180,37 +178,32 @@ export default function Hero() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Govt Registered Badge */}
             <div className="inline-flex items-center gap-1.5 mb-5 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full text-emerald-400 font-inter text-[11px] font-medium tracking-wide uppercase shadow-[0_2px_12px_rgba(16,185,129,0.08)]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Govt. Registered Agency (GSTIN: 09CJPPJ6346G1ZR)
             </div>
 
-            {/* Slide Title */}
             <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-7.5xl text-white mb-4 leading-tight tracking-tight drop-shadow-md">
               {activeSlide.title}
             </h1>
 
-            {/* Slide Description */}
             <p className="text-white/75 text-sm sm:text-base lg:text-lg font-inter font-light max-w-2xl mx-auto leading-relaxed mb-6">
               {activeSlide.description}
             </p>
 
-            {/* Starting Rate Badge Pill */}
-            <div className="inline-flex items-center justify-center gap-2 bg-black/45 border border-white/10 backdrop-blur-md rounded-full px-5 py-3.5 mb-8 shadow-inner select-none">
-              <span className="text-white/50 text-[10px] sm:text-xs font-semibold tracking-wider uppercase border-r border-white/15 pr-3">
+            {/* Price badge formatted according to instructions */}
+            <div className="inline-flex items-center justify-center gap-2 bg-black/45 border border-white/10 backdrop-blur-md rounded-full px-5 py-3.5 mb-8 shadow-inner select-none text-xs sm:text-sm">
+              <span className="text-white/60 font-semibold uppercase tracking-wider pr-3 border-r border-white/15">
                 {activeSlide.duration}
               </span>
-              <span className="text-white/70 text-xs sm:text-sm font-medium pl-1">Starting From</span>
+              <span className="text-white/70 font-medium pl-1">Starting From</span>
               <span className="text-saffron-400 font-playfair font-bold text-lg sm:text-xl leading-none">
-                ₹{activeSlide.price}
+                ₹{displayPrice.toLocaleString("en-IN")}
               </span>
-              <span className="text-white/50 text-xs font-medium">/ Person</span>
+              <span className="text-white/50 font-medium">{activeSlide.priceSuffix}</span>
             </div>
 
-            {/* Slide CTA Actions */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto mb-6">
-              {/* Primary — Scroll to Form */}
               <a
                 href="#get-quote"
                 onClick={() => handleSelectPackage(activeSlide.id)}
@@ -221,7 +214,6 @@ export default function Hero() {
                 Get Free Itinerary
               </a>
 
-              {/* Secondary — WhatsApp */}
               <a
                 href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(activeSlide.waMsg)}`}
                 target="_blank"
@@ -234,7 +226,6 @@ export default function Hero() {
                 WhatsApp
               </a>
 
-              {/* Tertiary — Call */}
               <a
                 href="tel:+919235222399"
                 className="flex items-center gap-2 border border-white/20 hover:border-white/50 text-white px-6 py-3.5 rounded-full font-semibold text-[14px] sm:text-base backdrop-blur-sm hover:bg-white/[0.05] transition-all duration-300 w-full justify-center"
@@ -248,7 +239,6 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Slide dots indicators ── */}
         <div className="flex items-center justify-center gap-2.5 mt-4 mb-8">
           {slides.map((_, idx) => (
             <button
@@ -263,12 +253,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Bottom Section (Trust Badges & Scroll Indicator) ── */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex-shrink-0 flex flex-col items-center">
-        {/* Horizontal separator line */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
 
-        {/* Varanasi Travelers trust badges layout */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6 w-full max-w-4xl justify-center text-center md:text-left mb-6">
           {trustBadges.map((badge, i) => (
             <div key={i} className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-white/70 justify-center md:justify-start">
