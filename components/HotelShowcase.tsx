@@ -21,7 +21,7 @@ const hotels = [
     iconColor: "text-orange-600",
     pattern: "M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z",
     badgeColor: "bg-orange-100 text-orange-700",
-    image: "/places/comfort-stay.jpg",
+    image: "/places/comfort-stay-v2.jpg",
     amenities: [
       { icon: Wind, label: "AC Rooms" },
       { icon: Wifi, label: "Free Wi-Fi" },
@@ -55,7 +55,7 @@ const hotels = [
     iconColor: "text-gold-400",
     pattern: "M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z",
     badgeColor: "bg-gold-400/20 text-gold-300",
-    image: "/places/radisson-ayodhya.jpg",
+    image: "/places/radisson-ayodhya-v2.jpg",
     amenities: [
       { icon: Wind, label: "Premium AC Rooms" },
       { icon: Wifi, label: "High-Speed Wi-Fi" },
