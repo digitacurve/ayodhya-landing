@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://ayodhyadharshan.com",
+    canonical: "https://www.ayodhyadarshantourpackages.com",
   },
   icons: {
     icon: [

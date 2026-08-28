@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     title: `${pkg.name} Tour Package (${pkg.duration}) | Ayodhya Dharshan`,
     description: `${pkg.subtitle}. Covers ${pkg.cities.join(", ")}. Book our premium, government registered yatra with comfortable hotels, private AC transport, and pre-arranged darshan.`,
     alternates: {
-      canonical: `https://ayodhyadharshan.com/packages/${pkg.id}`,
+      canonical: `https://www.ayodhyadarshantourpackages.com/packages/${pkg.id}`,
     },
   };
 }
