@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Menu, X, MessageCircle } from "lucide-react";
+import { Phone, Menu, X, MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { packages } from "@/data/packagesData";
 
 const WA_NUMBER   = "919235222399";
 const PHONE       = "+91 9235222399";
@@ -13,16 +14,18 @@ const WA_MESSAGE  = encodeURIComponent(
 );
 
 const navLinks = [
-  { label: "Packages",   href: "#packages" },
-  { label: "Itinerary",  href: "#itinerary" },
-  { label: "Why Us",     href: "#why-us" },
-  { label: "Reviews",    href: "#testimonials" },
-  { label: "FAQ",        href: "#faq" },
+  { label: "Packages",   href: "/#packages" },
+  { label: "Itinerary",  href: "/#itinerary" },
+  { label: "Why Us",     href: "/#why-us" },
+  { label: "Reviews",    href: "/#testimonials" },
+  { label: "FAQ",        href: "/#faq" },
 ];
 
 export default function Navbar() {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [mobilePackagesOpen, setMobilePackagesOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 48);
@@ -89,17 +92,80 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navLinks.map(link => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`text-[13px] font-medium tracking-wide hover:text-saffron-600 transition-colors duration-200 ${
-                  scrolled ? "text-divine-dark/75" : "text-white/80"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map(link => {
+              if (link.label === "Packages") {
+                return (
+                  <div
+                    key={link.label}
+                    className="relative py-4"
+                    onMouseEnter={() => setDesktopDropdownOpen(true)}
+                    onMouseLeave={() => setDesktopDropdownOpen(false)}
+                  >
+                    <a
+                      href="/#packages"
+                      className={`text-[13px] font-medium tracking-wide hover:text-saffron-600 transition-colors duration-200 flex items-center gap-1 ${
+                        scrolled ? "text-divine-dark/75" : "text-white/80"
+                      }`}
+                    >
+                      <span>Packages</span>
+                      <ChevronDown size={12} className={`transition-transform duration-250 ${desktopDropdownOpen ? "rotate-180" : ""}`} />
+                    </a>
+
+                    <AnimatePresence>
+                      {desktopDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 w-80 z-50 text-divine-dark max-h-[350px] overflow-y-auto"
+                        >
+                          <a
+                            href="/#packages"
+                            onClick={() => setDesktopDropdownOpen(false)}
+                            className="block px-4 py-2 hover:bg-saffron-50 transition-colors group border-b border-gray-50 mb-1"
+                          >
+                            <div className="font-bold text-[13px] text-saffron-600 group-hover:text-saffron-700">
+                              ⚡ View All Packages
+                            </div>
+                            <div className="text-[10px] text-gray-400">
+                              Browse all our main tour options
+                            </div>
+                          </a>
+                          {packages.map(pkg => (
+                            <a
+                              key={pkg.id}
+                              href={`/packages/${pkg.id}`}
+                              onClick={() => setDesktopDropdownOpen(false)}
+                              className="block px-4 py-2 hover:bg-saffron-50 transition-colors group"
+                            >
+                              <div className="font-semibold text-[13px] group-hover:text-saffron-700 text-divine-dark">
+                                {pkg.name}
+                              </div>
+                              <div className="text-[10px] text-gray-400">
+                                {pkg.duration} · {pkg.cities.join(" - ")}
+                              </div>
+                            </a>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`text-[13px] font-medium tracking-wide hover:text-saffron-600 transition-colors duration-200 ${
+                    scrolled ? "text-divine-dark/75" : "text-white/80"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* Desktop CTAs */}
@@ -136,7 +202,48 @@ export default function Navbar() {
             }`}
           >
             <div className="p-3 sm:p-4 space-y-0.25">
-              {navLinks.map((link, i) => (
+              {/* Special Packages Dropdown for Mobile */}
+              <div className="space-y-0.5">
+                <button
+                  onClick={() => setMobilePackagesOpen(o => !o)}
+                  className="flex items-center justify-between w-full px-3.5 py-1.5 text-divine-dark font-medium rounded-lg hover:bg-saffron-50 hover:text-saffron-700 transition-colors text-[13.5px]"
+                >
+                  <span>Packages</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 ${mobilePackagesOpen ? "rotate-180" : ""}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {mobilePackagesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="pl-3 overflow-hidden border-l border-saffron-200 ml-4 space-y-1.5 my-1"
+                    >
+                      <a
+                        href="/#packages"
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-0.5 text-saffron-600 hover:text-saffron-700 text-[12.5px] font-semibold"
+                      >
+                        ⚡ View All Packages
+                      </a>
+                      {packages.map(pkg => (
+                        <a
+                          key={pkg.id}
+                          href={`/packages/${pkg.id}`}
+                          onClick={() => setMenuOpen(false)}
+                          className="block py-0.5 text-divine-dark/80 hover:text-saffron-700 text-[12.5px] truncate max-w-[200px]"
+                        >
+                          • {pkg.name}
+                        </a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Map other links except Packages */}
+              {navLinks.filter(link => link.label !== "Packages").map((link, i) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
