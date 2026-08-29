@@ -125,7 +125,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed left-4 right-4 z-40 md:hidden bg-white rounded-2xl shadow-2xl border border-gold-500/15 overflow-y-auto max-h-[50vh] transition-all duration-300 ${
+            className={`fixed left-4 w-[240px] z-40 md:hidden bg-white rounded-2xl shadow-2xl border border-gold-500/15 overflow-y-auto max-h-[50vh] transition-all duration-300 ${
               scrolled || menuOpen ? "top-[4.5rem]" : "top-[7rem]"
             }`}
           >
