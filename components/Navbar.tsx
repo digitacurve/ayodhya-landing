@@ -47,10 +47,12 @@ export default function Navbar() {
       >
         <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-          {/* Mobile menu toggle (left-aligned on mobile) */}
+          {/* Mobile menu toggle (left-aligned on mobile, right-aligned on scroll) */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className={`md:hidden p-2 rounded-xl transition-colors relative z-10 ${
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 z-10 ${
+              scrolled ? "absolute right-4 top-1/2 -translate-y-1/2" : "relative"
+            } ${
               scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
             }`}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -58,11 +60,11 @@ export default function Navbar() {
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          {/* Logo (absolute centered on mobile, left-aligned next to menu toggle on scroll, default on desktop) */}
+          {/* Logo (absolute centered on mobile, left-aligned on scroll, default on desktop) */}
           <a
             href="#"
-            className={`flex items-center gap-2.5 group flex-shrink-0 transition-all duration-300 md:static md:translate-x-0 md:translate-y-0 ${
-              scrolled ? "static translate-x-0 translate-y-0 ml-2" : "absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+            className={`flex items-center gap-2.5 group flex-shrink-0 transition-all duration-300 absolute top-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 ${
+              scrolled ? "left-4 translate-x-0" : "left-1/2 -translate-x-1/2"
             }`}
             aria-label="Ayodhya Dharshan"
           >
