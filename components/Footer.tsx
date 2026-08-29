@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Youtube, ChevronDown, AlertCircle, CreditCard, RefreshCw, Ban, Clock } from "lucide-react";
 import Image from "next/image";
 
-const WA_NUMBER    = "917011960307";
+const WA_NUMBER    = "919235222399";
 const WA_MESSAGE   = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );
@@ -201,7 +201,12 @@ export default function Footer() {
 
             {/* Contact */}
             <div className="space-y-3">
-
+              <div className="flex items-center gap-3 text-white/50 text-sm select-all">
+                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <Phone size={14} className="text-saffron-500" />
+                </div>
+                {PHONE_DISPLAY}
+              </div>
               <a
                 href={`mailto:${EMAIL}`}
                 className="flex items-center gap-3 text-white/50 hover:text-white text-sm transition-colors group"

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle, Phone, FileText } from "lucide-react";
 
-const WA_NUMBER = "917011960307";
+const WA_NUMBER = "919235222399";
 const WA_MESSAGE = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );

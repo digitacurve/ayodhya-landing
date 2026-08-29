@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Phone, Users, Clock } from "lucide-react";
 
-const WA_NUMBER = "917011960307";
+const WA_NUMBER = "919235222399";
 const WA_MESSAGE = encodeURIComponent(
   "Jai Shri Ram! 🙏 I'm ready to plan my Ayodhya yatra. Please guide me to the best package."
 );

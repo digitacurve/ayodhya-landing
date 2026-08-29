@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Star, ShieldCheck, Users, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 
-const WA_NUMBER = "917011960307";
+const WA_NUMBER = "919235222399";
 
 const slides = [
   {
