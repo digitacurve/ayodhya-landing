@@ -47,13 +47,15 @@ export default function Navbar() {
       >
         <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-          {/* Mobile menu toggle (left-aligned on mobile, right-aligned on scroll) */}
+          {/* Mobile menu toggle (left-aligned on mobile, right-aligned on scroll, contrast-protected on scroll) */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className={`md:hidden p-2 rounded-xl transition-all duration-300 z-10 ${
-              scrolled ? "absolute right-4 top-1/2 -translate-y-1/2" : "relative"
+            className={`md:hidden p-2.5 rounded-full transition-all duration-300 z-20 ${
+              scrolled
+                ? "absolute right-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.12)] border border-gold-500/10 text-divine-dark hover:bg-white"
+                : "relative text-white hover:bg-white/10"
             } ${
-              scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
+              menuOpen ? "!bg-white !text-divine-dark" : ""
             }`}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
