@@ -507,8 +507,7 @@ export default function LeadCapture() {
   return (
     <section
       ref={ref}
-      id="get-quote"
-      className="relative overflow-hidden scroll-mt-24"
+      className="relative overflow-hidden"
       data-section="lead-form"
       style={{
         background:
@@ -617,10 +616,11 @@ export default function LeadCapture() {
 
           {/* ── Right: Form Card ── */}
           <motion.div
+            id="get-quote"
             initial={{ opacity: 0, x: 28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 scroll-mt-24"
           >
             <div
               className="rounded-3xl p-6 sm:p-8 border"
