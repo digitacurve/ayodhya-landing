@@ -168,15 +168,7 @@ export default function FinalCTA() {
           >
             Plan My Ayodhya Yatra
           </a>
-          <a
-            href="tel:+919235222399"
-            className="flex items-center gap-3 border-2 border-white/22 hover:border-white/50 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-semibold text-base sm:text-lg hover:bg-white/[0.07] transition-all duration-300 w-full sm:w-auto justify-center"
-            data-cta="call"
-            data-source="final-cta"
-          >
-            <Phone size={19} />
-            Call Us Free
-          </a>
+
         </motion.div>
 
         {/* Micro trust strip */}

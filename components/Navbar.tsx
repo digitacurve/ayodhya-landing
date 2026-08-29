@@ -82,7 +82,13 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
+            <div className={`flex items-center gap-1.5 text-[13px] font-semibold select-all ${
+              scrolled ? "text-divine-dark/75" : "text-white/80"
+            }`}>
+              <Phone size={14} className="text-saffron-500" />
+              <span className="hidden lg:inline">{PHONE}</span>
+            </div>
 
             <a
               href="/#get-quote"
@@ -134,7 +140,10 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <div className="pt-3 pb-1 space-y-2 border-t border-gray-50 mt-2">
-
+                <div className="flex items-center justify-center gap-2 w-full py-2.5 text-divine-dark/70 font-semibold text-[13px] select-all">
+                  <Phone size={14} className="text-saffron-500" />
+                  <span>Call Support: {PHONE}</span>
+                </div>
                 <a
                   href="/#get-quote"
                   onClick={() => setMenuOpen(false)}

@@ -280,7 +280,7 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
 
       {/* Top Banner */}
       <div className="bg-divine-dark border-b border-gold-500/15 py-2.5 text-center text-gold-400/85 text-[11px] font-medium tracking-wide uppercase px-4">
-        🛡️ Govt. Registered & GST Approved — GSTIN: 09CJPPJ6346G1ZR
+        🛡️ Govt. Registered & GST Approved — GSTIN: 09CJPPJ6346G1ZR  •  📞 Call: +91 9235222399
       </div>
 
       {/* Back Navigation Header */}
