@@ -116,7 +116,7 @@ export default function StickyWhatsApp() {
             >
               <Phone size={16} className="text-saffron-400 sm:w-5 sm:h-5" />
               <span className="font-bold text-xs sm:text-sm whitespace-nowrap">
-                Call: +91 9235222399
+                Call Support
               </span>
             </a>
           </motion.div>
