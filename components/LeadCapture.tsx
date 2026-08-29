@@ -508,7 +508,7 @@ export default function LeadCapture() {
     <section
       ref={ref}
       id="get-quote"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden scroll-mt-24"
       data-section="lead-form"
       style={{
         background:
