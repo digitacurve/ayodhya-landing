@@ -105,20 +105,6 @@ export default function StickyWhatsApp() {
                 </span>
               </a>
             </div>
-
-            {/* 2. Call Now Button */}
-            <a
-              href="tel:+919235222399"
-              aria-label="Call Now"
-              className="relative flex items-center gap-2 sm:gap-3 bg-divine-dark border border-white/10 hover:border-white/20 text-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 px-4 py-3 sm:px-5 sm:py-3.5"
-              data-cta="call"
-              data-source="sticky-desktop"
-            >
-              <Phone size={16} className="text-saffron-400 sm:w-5 sm:h-5" />
-              <span className="font-bold text-xs sm:text-sm whitespace-nowrap">
-                Call Support
-              </span>
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

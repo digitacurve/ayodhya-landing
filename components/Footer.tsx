@@ -201,17 +201,7 @@ export default function Footer() {
 
             {/* Contact */}
             <div className="space-y-3">
-              <a
-                href="tel:+919235222399"
-                className="flex items-center gap-3 text-white/50 hover:text-white text-sm transition-colors group"
-                data-cta="call"
-                data-source="footer"
-              >
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-saffron-600/20 transition-colors flex-shrink-0">
-                  <Phone size={14} className="text-saffron-500" />
-                </div>
-                {PHONE_DISPLAY}
-              </a>
+
               <a
                 href={`mailto:${EMAIL}`}
                 className="flex items-center gap-3 text-white/50 hover:text-white text-sm transition-colors group"

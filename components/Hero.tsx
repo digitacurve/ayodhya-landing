@@ -199,7 +199,7 @@ export default function Hero() {
               <span className="text-white/50 font-medium">{activeSlide.priceSuffix}</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xs mx-auto mb-6">
               <a
                 href="/#get-quote"
                 onClick={() => handleSelectPackage(activeSlide.id)}
@@ -208,16 +208,6 @@ export default function Hero() {
                 data-source="hero-slide"
               >
                 Get Free Itinerary
-              </a>
-
-              <a
-                href="tel:+919235222399"
-                className="flex items-center gap-2 border border-white/20 hover:border-white/50 text-white px-6 py-3.5 rounded-full font-semibold text-[14px] sm:text-base backdrop-blur-sm hover:bg-white/[0.05] transition-all duration-300 w-full justify-center"
-                data-cta="call"
-                data-source="hero-slide"
-              >
-                <Phone size={15} />
-                Call Support
               </a>
             </div>
           </motion.div>

@@ -83,18 +83,7 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href={PHONE_TEL}
-              className={`flex items-center gap-1.5 text-[13px] font-medium transition-colors ${
-                scrolled ? "text-divine-dark/70 hover:text-saffron-600" : "text-white/70 hover:text-white"
-              }`}
-              aria-label="Call us"
-              data-cta="call"
-              data-source="navbar"
-            >
-              <Phone size={14} />
-              <span className="hidden lg:inline">{PHONE}</span>
-            </a>
+
             <a
               href="/#get-quote"
               className="flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-250 hover:shadow-saffron-glow hover:scale-[1.04] active:scale-[0.97]"
@@ -145,15 +134,7 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <div className="pt-3 pb-1 space-y-2 border-t border-gray-50 mt-2">
-                <a
-                  href={PHONE_TEL}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-gray-100 text-divine-dark font-medium text-[14px] hover:bg-gray-50 transition-colors"
-                  data-cta="call"
-                  data-source="navbar-mobile"
-                >
-                  <Phone size={15} />
-                  {PHONE}
-                </a>
+
                 <a
                   href="/#get-quote"
                   onClick={() => setMenuOpen(false)}

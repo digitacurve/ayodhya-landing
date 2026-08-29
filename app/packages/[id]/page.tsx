@@ -280,7 +280,7 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
 
       {/* Top Banner */}
       <div className="bg-divine-dark border-b border-gold-500/15 py-2.5 text-center text-gold-400/85 text-[11px] font-medium tracking-wide uppercase px-4">
-        🛡️ Govt. Registered & GST Approved — GSTIN: 09CJPPJ6346G1ZR  •  📞 Call: +91 9235222399
+        🛡️ Govt. Registered & GST Approved — GSTIN: 09CJPPJ6346G1ZR
       </div>
 
       {/* Back Navigation Header */}
@@ -292,10 +292,7 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
           </Link>
 
           <div className="flex items-center gap-3">
-            <a href={`tel:+919235222399`} className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-              <Phone size={13} />
-              +91 9235222399
-            </a>
+
             <a
               href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`}
               target="_blank"
