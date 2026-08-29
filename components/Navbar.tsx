@@ -78,7 +78,9 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className={`transition-colors duration-300 ${scrolled || menuOpen ? "text-divine-dark" : "text-white"}`}>
+            <div className={`transition-colors duration-300 ${
+              scrolled || menuOpen ? "text-divine-dark" : "text-white"
+            } ${scrolled ? "hidden md:block" : "block"}`}>
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
