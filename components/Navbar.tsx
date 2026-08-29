@@ -38,7 +38,7 @@ export default function Navbar() {
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "top-0 bg-white/80 backdrop-blur-md shadow-sm border-b border-gold-500/10"
+            ? "top-0 bg-divine-dark/90 backdrop-blur-md shadow-lg border-b border-gold-500/15"
             : "top-10 bg-transparent"
         }`}
         initial={{ y: -80 }}
@@ -63,13 +63,11 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className={`transition-colors duration-300 ${
-              scrolled || menuOpen ? "text-divine-dark" : "text-white"
-            } ${scrolled ? "hidden md:block" : "block"}`}>
+            <div className={`transition-colors duration-300 text-white ${scrolled ? "hidden md:block" : "block"}`}>
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
-              <div className={`text-[9px] tracking-[0.24em] uppercase font-semibold ${scrolled || menuOpen ? "text-saffron-600" : "text-gold-300"}`}>
+              <div className="text-[9px] tracking-[0.24em] uppercase font-semibold text-gold-300">
                 Premium Pilgrimage
               </div>
             </div>
@@ -88,9 +86,7 @@ export default function Navbar() {
                   >
                     <a
                       href="/#packages"
-                      className={`text-[13px] font-medium tracking-wide hover:text-saffron-600 transition-colors duration-200 flex items-center gap-1 ${
-                        scrolled ? "text-divine-dark/75" : "text-white/80"
-                      }`}
+                      className="text-[13px] font-medium tracking-wide hover:text-saffron-400 transition-colors duration-200 flex items-center gap-1 text-white/90"
                     >
                       <span>Packages</span>
                       <ChevronDown size={12} className={`transition-transform duration-250 ${desktopDropdownOpen ? "rotate-180" : ""}`} />
@@ -143,9 +139,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`text-[13px] font-medium tracking-wide hover:text-saffron-600 transition-colors duration-200 ${
-                    scrolled ? "text-divine-dark/75" : "text-white/80"
-                  }`}
+                  className="text-[13px] font-medium tracking-wide hover:text-saffron-400 transition-colors duration-200 text-white/90"
                 >
                   {link.label}
                 </a>
@@ -155,10 +149,8 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-4">
-            <div className={`flex items-center gap-1.5 text-[13px] font-semibold select-all ${
-              scrolled ? "text-divine-dark/75" : "text-white/80"
-            }`}>
-              <Phone size={14} className="text-saffron-500" />
+            <div className="flex items-center gap-1.5 text-[13px] font-semibold select-all text-white/90">
+              <Phone size={14} className="text-saffron-400" />
               <span className="hidden lg:inline">{PHONE}</span>
             </div>
 
@@ -177,7 +169,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(o => !o)}
             className={`md:hidden p-2 rounded-xl transition-all duration-300 z-20 relative ${
               scrolled
-                ? "bg-white/95 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.12)] border border-gold-500/10 text-divine-dark hover:bg-white !p-2.5 !rounded-full"
+                ? "bg-white/10 text-white hover:bg-white/20 !p-2.5 !rounded-full"
                 : "text-white hover:bg-white/10"
             } ${
               menuOpen ? "!bg-white !text-divine-dark" : ""
