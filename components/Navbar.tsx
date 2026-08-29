@@ -47,27 +47,10 @@ export default function Navbar() {
       >
         <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-          {/* Mobile menu toggle (left-aligned on mobile, right-aligned on scroll, contrast-protected on scroll) */}
-          <button
-            onClick={() => setMenuOpen(o => !o)}
-            className={`md:hidden p-2.5 rounded-full transition-all duration-300 z-20 ${
-              scrolled
-                ? "absolute right-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.12)] border border-gold-500/10 text-divine-dark hover:bg-white"
-                : "relative text-white hover:bg-white/10"
-            } ${
-              menuOpen ? "!bg-white !text-divine-dark" : ""
-            }`}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-
-          {/* Logo (absolute centered on mobile, left-aligned on scroll, default on desktop) */}
+          {/* Logo (left-aligned at all times) */}
           <a
             href="#"
-            className={`flex items-center gap-2.5 group flex-shrink-0 transition-all duration-300 absolute top-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 ${
-              scrolled ? "left-4 translate-x-0" : "left-1/2 -translate-x-1/2"
-            }`}
+            className="flex items-center gap-2.5 group flex-shrink-0 relative z-10"
             aria-label="Ayodhya Dharshan"
           >
             <div className="relative flex-shrink-0 w-[44px] h-[44px] md:w-[56px] md:h-[56px]">
@@ -188,6 +171,21 @@ export default function Navbar() {
               Book Now
             </a>
           </div>
+
+          {/* Mobile menu toggle (right-aligned at all times, contrast-protected on scroll) */}
+          <button
+            onClick={() => setMenuOpen(o => !o)}
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 z-20 relative ${
+              scrolled
+                ? "bg-white/95 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.12)] border border-gold-500/10 text-divine-dark hover:bg-white !p-2.5 !rounded-full"
+                : "text-white hover:bg-white/10"
+            } ${
+              menuOpen ? "!bg-white !text-divine-dark" : ""
+            }`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </nav>
       </motion.header>
 
@@ -199,7 +197,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed left-4 w-[240px] z-40 md:hidden bg-white rounded-2xl shadow-2xl border border-gold-500/15 overflow-y-auto max-h-[50vh] transition-all duration-300 ${
+            className={`fixed right-4 w-[240px] z-40 md:hidden bg-white rounded-2xl shadow-2xl border border-gold-500/15 overflow-y-auto max-h-[50vh] transition-all duration-300 ${
               scrolled ? "top-[4.5rem]" : "top-[7rem]"
             }`}
           >
