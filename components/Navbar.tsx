@@ -44,10 +44,12 @@ export default function Navbar() {
       >
         <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-          {/* Mobile menu toggle (left-aligned on mobile) */}
+          {/* Mobile menu toggle (left-aligned on mobile, hidden on scroll) */}
           <button
             onClick={() => setMenuOpen(o => !o)}
             className={`md:hidden p-2 rounded-xl transition-colors relative z-10 ${
+              scrolled ? "hidden" : "block"
+            } ${
               scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
             }`}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -55,10 +57,12 @@ export default function Navbar() {
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          {/* Logo (absolute centered on mobile, default on desktop) */}
+          {/* Logo (absolute centered on mobile, right-aligned on scroll, default on desktop) */}
           <a
             href="#"
-            className="flex items-center gap-2.5 group flex-shrink-0 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0"
+            className={`flex items-center gap-2.5 group flex-shrink-0 absolute top-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 transition-all duration-300 ${
+              scrolled ? "right-4 left-auto translate-x-0" : "left-1/2 -translate-x-1/2"
+            }`}
             aria-label="Ayodhya Dharshan"
           >
             <div className="relative flex-shrink-0 w-[44px] h-[44px] md:w-[56px] md:h-[56px]">
@@ -71,7 +75,9 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className={`transition-colors duration-300 ${scrolled || menuOpen ? "text-divine-dark" : "text-white"}`}>
+            <div className={`transition-colors duration-300 ${
+              scrolled || menuOpen ? "text-divine-dark" : "text-white"
+            } ${scrolled ? "hidden md:block" : "block"}`}>
               <div className="font-playfair font-bold text-[15px] leading-tight tracking-wide">
                 Ayodhya Dharshan
               </div>
