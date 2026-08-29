@@ -129,7 +129,7 @@ export default function Navbar() {
               scrolled || menuOpen ? "top-[4.5rem]" : "top-[7rem]"
             }`}
           >
-            <div className="p-4 space-y-0.5">
+            <div className="p-3 sm:p-4 space-y-0.25">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -138,20 +138,20 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
                   onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-3 text-divine-dark font-medium rounded-xl hover:bg-saffron-50 hover:text-saffron-700 transition-colors text-[15px]"
+                  className="block px-3.5 py-1.5 text-divine-dark font-medium rounded-lg hover:bg-saffron-50 hover:text-saffron-700 transition-colors text-[13.5px]"
                 >
                   {link.label}
                 </motion.a>
               ))}
-              <div className="pt-3 pb-1 space-y-2 border-t border-gray-50 mt-2">
-                <div className="flex items-center justify-center gap-2 w-full py-2.5 text-divine-dark/70 font-semibold text-[13px] select-all">
-                  <Phone size={14} className="text-saffron-500" />
+              <div className="pt-2 pb-0.5 space-y-1 border-t border-gray-50 mt-1.5">
+                <div className="flex items-center justify-center gap-2 w-full py-1.5 text-divine-dark/70 font-semibold text-[12px] select-all">
+                  <Phone size={13} className="text-saffron-500" />
                   <span>Call Support: {PHONE}</span>
                 </div>
                 <a
                   href="/#get-quote"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-saffron-600 text-white font-semibold text-[14px] hover:bg-saffron-700 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-saffron-600 text-white font-semibold text-[13px] hover:bg-saffron-700 transition-colors"
                   data-cta="scroll-quote"
                   data-source="navbar-mobile"
                 >
