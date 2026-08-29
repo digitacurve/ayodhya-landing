@@ -38,7 +38,7 @@ export default function Navbar() {
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "top-0 bg-transparent"
+            ? "top-0 bg-white/80 backdrop-blur-md shadow-sm border-b border-gold-500/10"
             : "top-10 bg-transparent"
         }`}
         initial={{ y: -80 }}
