@@ -42,10 +42,25 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Ayodhya Dharshan">
+          {/* Mobile menu toggle (left-aligned on mobile) */}
+          <button
+            onClick={() => setMenuOpen(o => !o)}
+            className={`md:hidden p-2 rounded-xl transition-colors relative z-10 ${
+              scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
+            }`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
+          {/* Logo (absolute centered on mobile, default on desktop) */}
+          <a
+            href="#"
+            className="flex items-center gap-2.5 group flex-shrink-0 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0"
+            aria-label="Ayodhya Dharshan"
+          >
             <div className="relative flex-shrink-0 w-[44px] h-[44px] md:w-[56px] md:h-[56px]">
               <Image
                 src="/logo.png"
@@ -99,17 +114,6 @@ export default function Navbar() {
               Book Now
             </a>
           </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setMenuOpen(o => !o)}
-            className={`md:hidden p-2 rounded-xl transition-colors ${
-              scrolled || menuOpen ? "text-divine-dark hover:bg-gray-100" : "text-white hover:bg-white/10"
-            }`}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </nav>
       </motion.header>
 
