@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Youtube, ChevronDown, AlertCircle, CreditCard, RefreshCw, Ban, Clock } from "lucide-react";
 import Image from "next/image";
 
-const WA_NUMBER    = "919235222399";
+const WA_NUMBER    = "917011960307";
 const WA_MESSAGE   = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );

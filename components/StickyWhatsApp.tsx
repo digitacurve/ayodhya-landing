@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle, Phone, FileText } from "lucide-react";
 
-const WA_NUMBER = "919235222399";
+const WA_NUMBER = "917011960307";
 const WA_MESSAGE = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );
@@ -45,7 +45,7 @@ export default function StickyWhatsApp() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-8 right-6 z-50 hidden sm:flex flex-col items-end gap-3"
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
           >
             {/* Chat bubble tooltip */}
             <AnimatePresence>
@@ -105,63 +105,6 @@ export default function StickyWhatsApp() {
                 <span className="pr-5 font-bold text-sm whitespace-nowrap">
                   Book Your Tour
                 </span>
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ── Mobile sticky bottom bar — 3 buttons ── */}
-      <AnimatePresence>
-        {visible && !dismissed && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 35 }}
-            className="fixed bottom-0 left-0 right-0 z-50 sm:hidden"
-          >
-            {/* Top mini info bar */}
-            <div className="bg-divine-dark flex items-center justify-between px-4 py-2 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block" />
-                <p className="text-white text-xs font-medium">
-                  🙏 Ayodhya Packages from <span className="text-saffron-400 font-bold">₹7,499/person</span> (₹14,998 couple)
-                </p>
-              </div>
-              <button
-                onClick={() => setDismissed(true)}
-                className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60"
-                aria-label="Dismiss"
-              >
-                <X size={13} />
-              </button>
-            </div>
-
-            {/* 2-Button row */}
-            <div className="bg-white border-t border-gray-100 shadow-2xl px-4 py-3 grid grid-cols-2 gap-3 safe-bottom">
-              {/* Call */}
-              <a
-                href="tel:+919235222399"
-                className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-divine-dark text-divine-dark font-bold text-sm active:scale-95 transition-transform"
-                aria-label="Call now"
-                data-cta="call"
-                data-source="sticky-mobile"
-              >
-                <Phone size={16} />
-                <span>Call Now</span>
-              </a>
-
-              {/* Get Quote */}
-              <a
-                href="#get-quote"
-                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-saffron-600 text-white font-bold text-sm active:scale-95 transition-transform shadow-md"
-                aria-label="Get Free Quote"
-                data-cta="scroll-quote"
-                data-source="sticky-mobile"
-              >
-                <FileText size={16} />
-                <span>Enquire Now</span>
               </a>
             </div>
           </motion.div>

@@ -269,7 +269,7 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
     return itineraries.find((it) => it.id === itineraryId);
   })();
 
-  const WA_NUMBER = "919235222399";
+  const WA_NUMBER = "917011960307";
   const waMsg = encodeURIComponent(
     `Jai Shri Ram! 🙏 I am interested in the "${pkg.name}" tour package (${pkg.duration}, ₹${pkg.price.toLocaleString("en-IN")} for couple). Please share details.`
   );
