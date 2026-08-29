@@ -217,7 +217,7 @@ export default function Hero() {
                 data-source="hero-slide"
               >
                 <Phone size={15} />
-                Call Now
+                Call Now: +91 9235222399
               </a>
             </div>
           </motion.div>

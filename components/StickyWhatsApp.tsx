@@ -84,7 +84,7 @@ export default function StickyWhatsApp() {
               )}
             </AnimatePresence>
 
-            {/* Main WhatsApp button with pulse rings */}
+            {/* 1. Book Tour Button */}
             <div className="relative">
               <span className="wa-pulse-ring absolute inset-0 rounded-full" />
               <span
@@ -95,18 +95,30 @@ export default function StickyWhatsApp() {
                 href="#get-quote"
                 onMouseEnter={() => setShowTooltip(true)}
                 aria-label="Book Your Tour"
-                className="relative flex items-center gap-3 bg-saffron-600 hover:bg-saffron-700 text-white rounded-full shadow-[0_8px_30px_rgba(255,107,0,0.4)] hover:shadow-[0_8px_40px_rgba(255,107,0,0.6)] transition-all duration-300 hover:scale-105 active:scale-95"
+                className="relative flex items-center gap-2 sm:gap-3 bg-saffron-600 hover:bg-saffron-700 text-white rounded-full shadow-[0_8px_30px_rgba(255,107,0,0.3)] hover:shadow-[0_8px_40px_rgba(255,107,0,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 px-4 py-3 sm:px-5 sm:py-3.5"
                 data-cta="scroll-quote"
                 data-source="sticky-desktop"
               >
-                <div className="w-14 h-14 flex items-center justify-center">
-                  <FileText size={22} />
-                </div>
-                <span className="pr-5 font-bold text-sm whitespace-nowrap">
-                  Book Your Tour
+                <FileText size={18} className="sm:w-5 sm:h-5" />
+                <span className="font-bold text-xs sm:text-sm whitespace-nowrap">
+                  Book <span className="hidden sm:inline">Your </span>Tour
                 </span>
               </a>
             </div>
+
+            {/* 2. Call Now Button */}
+            <a
+              href="tel:+919235222399"
+              aria-label="Call Now"
+              className="relative flex items-center gap-2 sm:gap-3 bg-divine-dark border border-white/10 hover:border-white/20 text-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 px-4 py-3 sm:px-5 sm:py-3.5"
+              data-cta="call"
+              data-source="sticky-desktop"
+            >
+              <Phone size={16} className="text-saffron-400 sm:w-5 sm:h-5" />
+              <span className="font-bold text-xs sm:text-sm whitespace-nowrap">
+                Call: +91 9235222399
+              </span>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
