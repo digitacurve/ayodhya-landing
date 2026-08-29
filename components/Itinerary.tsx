@@ -102,7 +102,7 @@ function ItineraryCard({ item }: { item: ItineraryItem }) {
             <h3 className="font-playfair font-bold text-xl text-divine-dark">{item.package}</h3>
           </div>
           <a
-            href="#get-quote"
+            href="/#get-quote"
             onClick={() => {
               const tourIdMapping: Record<string, string> = {
                 "itinerary-ayodhya": "ayodhya-darshan",
@@ -205,7 +205,7 @@ export default function Itinerary() {
         >
           All itineraries are customisable.{" "}
           <a
-            href="#get-quote"
+            href="/#get-quote"
             className="text-saffron-600 font-semibold hover:underline"
           >
             Enquire here to personalise your plan →

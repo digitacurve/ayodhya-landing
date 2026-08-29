@@ -260,7 +260,7 @@ export default function HotelShowcase() {
                     {hotel.priceNote}
                   </p>
                   <a
-                    href="#get-quote"
+                    href="/#get-quote"
                     className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] ${
                       hotel.dark
                         ? "bg-gold-gradient text-divine-dark"

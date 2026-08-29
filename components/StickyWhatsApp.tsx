@@ -92,7 +92,7 @@ export default function StickyWhatsApp() {
                 style={{ animationDelay: "0.75s" }}
               />
               <a
-                href="#get-quote"
+                href="/#get-quote"
                 onMouseEnter={() => setShowTooltip(true)}
                 aria-label="Book Your Tour"
                 className="relative flex items-center gap-2 sm:gap-3 bg-saffron-600 hover:bg-saffron-700 text-white rounded-full shadow-[0_8px_30px_rgba(255,107,0,0.3)] hover:shadow-[0_8px_40px_rgba(255,107,0,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 px-4 py-3 sm:px-5 sm:py-3.5"

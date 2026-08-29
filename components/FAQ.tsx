@@ -93,7 +93,7 @@ export default function FAQ() {
             Our travel experts will call you to answer all questions — free of charge.
           </p>
           <a
-            href="#get-quote"
+            href="/#get-quote"
             className="wa-shimmer inline-flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-8 py-4 rounded-full font-semibold text-[15px] transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] shadow-lg"
           >
             Enquire Now

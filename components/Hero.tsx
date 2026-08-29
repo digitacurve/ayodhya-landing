@@ -201,7 +201,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto mb-6">
               <a
-                href="#get-quote"
+                href="/#get-quote"
                 onClick={() => handleSelectPackage(activeSlide.id)}
                 className="wa-shimmer bg-saffron-gradient hover:brightness-105 text-white px-7 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full justify-center text-center shadow-[0_4px_24px_rgba(255,107,0,0.25)] flex items-center"
                 data-cta="scroll-quote"

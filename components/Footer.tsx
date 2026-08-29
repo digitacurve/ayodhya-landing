@@ -237,7 +237,7 @@ export default function Footer() {
 
             {/* Quote CTA */}
             <a
-              href="#get-quote"
+              href="/#get-quote"
               className="inline-flex items-center justify-center gap-2 mt-6 bg-saffron-600 hover:bg-saffron-700 text-white px-6 py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 active:scale-95"
               data-cta="scroll-quote"
               data-source="footer"

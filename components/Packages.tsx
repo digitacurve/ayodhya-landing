@@ -119,7 +119,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         }`}>
           {/* Lock Price Pill */}
           <a
-            href="#get-quote"
+            href="/#get-quote"
             onClick={() => {
               const event = new CustomEvent("select-tour", {
                 detail: { tourId: pkg.id, mode: "lock" }
@@ -402,7 +402,7 @@ export default function Packages() {
           <p className="text-gray-400 text-sm">
             Need a custom group tour, senior citizen plan or a different itinerary?{" "}
             <a
-              href="#get-quote"
+              href="/#get-quote"
               className="text-saffron-600 font-semibold hover:text-saffron-700 underline underline-offset-2"
             >
               Plan your custom trip here →
