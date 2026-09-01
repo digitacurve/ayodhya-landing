@@ -38,7 +38,7 @@ export default function Navbar() {
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "top-0 bg-divine-dark/90 backdrop-blur-md shadow-lg border-b border-gold-500/15"
+            ? "top-0 bg-transparent md:bg-divine-dark/90 md:backdrop-blur-md md:shadow-lg md:border-b md:border-gold-500/15"
             : "top-10 bg-transparent"
         }`}
         initial={{ y: -80 }}
@@ -169,7 +169,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(o => !o)}
             className={`md:hidden p-2 rounded-xl transition-all duration-300 z-20 relative ${
               scrolled
-                ? "bg-white/10 text-white hover:bg-white/20 !p-2.5 !rounded-full"
+                ? "bg-divine-dark/85 backdrop-blur-md border border-gold-500/20 text-white shadow-md !p-2.5 !rounded-full"
                 : "text-white hover:bg-white/10"
             } ${
               menuOpen ? "!bg-white !text-divine-dark" : ""
