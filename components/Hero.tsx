@@ -199,15 +199,23 @@ export default function Hero() {
               <span className="text-white/50 font-medium">{activeSlide.priceSuffix}</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xs mx-auto mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto mb-6">
               <a
                 href="/#get-quote"
                 onClick={() => handleSelectPackage(activeSlide.id)}
-                className="wa-shimmer bg-saffron-gradient hover:brightness-105 text-white px-7 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full justify-center text-center shadow-[0_4px_24px_rgba(255,107,0,0.25)] flex items-center"
+                className="wa-shimmer bg-saffron-gradient hover:brightness-105 text-white px-7 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center text-center shadow-[0_4px_24px_rgba(255,107,0,0.25)] flex items-center"
                 data-cta="scroll-quote"
                 data-source="hero-slide"
               >
                 Get Free Itinerary
+              </a>
+              <a
+                href="tel:+919235222399"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center text-center backdrop-blur-md flex items-center gap-2"
+                data-cta="call-hero"
+              >
+                <Phone size={16} className="text-saffron-400" />
+                <span>Call Now: +91 9235222399</span>
               </a>
             </div>
           </motion.div>
