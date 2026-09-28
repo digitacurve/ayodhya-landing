@@ -28,7 +28,6 @@ const TOURS = [
   "Ayodhya · Varanasi · Chitrakoot",
   "Full Ramayana Circuit",
   "Ayodhya · Lucknow · Varanasi",
-  "Kashi Vishwanath Special",
   "Complete UP Pilgrimage Tour",
   "Custom Trip",
 ];
@@ -110,7 +109,6 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
         "ayodhya-varanasi-chitrakoot": "Ayodhya · Varanasi · Chitrakoot",
         "full-circuit": "Full Ramayana Circuit",
         "ayodhya-lucknow-varanasi": "Ayodhya · Lucknow · Varanasi",
-        "kashi-viswanath-special": "Kashi Vishwanath Special",
         "complete-up-pilgrimage": "Complete UP Pilgrimage Tour",
       };
       const tourName = tourMapping[tourId];
