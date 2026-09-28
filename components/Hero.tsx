@@ -39,13 +39,13 @@ const slides = [
   },
   {
     id: "ayodhya-1n2d",
-    title: "Ayodhya Yatra (1N/2D)",
-    description: "Devotional overnight stay in the sacred land of Ram Mandir, Kanak Bhawan, Hanuman Garhi, and sunset Saryu Aarti.",
+    title: "🪔 Ayodhya Deepotsav Special Yatra (1N/2D)",
+    description: "Witness 25+ Lakh Diyas World Record illumination at Saryu Ghats & Ram Lalla Darshan in Ayodhya.",
     duration: "2 Days",
     price: 9998,
     priceSuffix: " / Person",
-    image: "/places/ram-mandir.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Yatra 1N/2D package (₹4,999/person). Please share details."
+    image: "/places/ram-ki-paidi.jpg",
+    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Deepotsav Special Yatra (1N/2D). Please share details."
   },
   {
     id: "varanasi-1n2d",

@@ -131,36 +131,36 @@ const customItineraries: Record<
   "ayodhya-1n2d": {
     days: [
       {
-        title: "Day 1 — Arrival & Ram Mandir Darshan",
+        title: "Day 1 — Arrival, Ram Mandir & Deepotsav Celebration",
         activities: [
           {
             time: "Morning",
-            activity: "Pickup from Ayodhya Railway Station / Airport. Transfer to your hotel, check-in, and freshen up.",
+            activity: "Pickup from Ayodhya Railway Station / Airport. Transfer to your pre-confirmed hotel, check-in, and freshen up.",
           },
           {
             time: "Afternoon",
-            activity: "Visit Shri Ram Janmabhoomi (Ram Mandir) — experience special darshan of Ram Lalla. Guided walk through the beautiful temple architecture.",
+            activity: "Visit Shri Ram Janmabhoomi (Ram Mandir) — experience priority darshan of Ram Lalla. Guided walk through the magnificent temple complex.",
           },
           {
             time: "Evening",
-            activity: "Visit the fortress temple of Hanuman Garhi. Walk through the colourful local bazaar and attend evening Saryu River Aarti at Ram Ki Paidi.",
+            activity: "🪔 Grand Ayodhya Deepotsav Festival: Visit Hanuman Garhi temple. Walk along Ram Ki Paidi and Saryu River Ghats to witness the World Record 25+ Lakh Diyas illumination and spectacular laser light show.",
           },
         ],
       },
       {
-        title: "Day 2 — Sacred Stays & Departure",
+        title: "Day 2 — Sunrise Saryu Snan & Departure",
         activities: [
           {
             time: "Morning",
-            activity: "Enjoy a sunrise walk along Saryu River ghats and take a holy dip. Visit Nageshwarnath Temple, Kanak Bhawan, and Dashrath Mahal.",
+            activity: "Enjoy a serene sunrise walk along Saryu River ghats and take a holy dip. Visit Nageshwarnath Temple, Kanak Bhawan, and Dashrath Mahal.",
           },
           {
             time: "Afternoon",
-            activity: "Check-out from hotel. Explore local markets to buy authentic prasad and souvenirs.",
+            activity: "Check-out from hotel. Explore local markets to buy authentic Ram Mandir prasad, wooden handicrafts, and souvenirs.",
           },
           {
             time: "Evening",
-            activity: "Transfer to Ayodhya Railway Station / Airport for your onward journey, carrying divine blessings of Ram Lalla.",
+            activity: "Transfer to Ayodhya Railway Station / Airport for your onward journey, carrying the radiant blessings of Ayodhya Deepotsav & Ram Lalla.",
           },
         ],
       },
