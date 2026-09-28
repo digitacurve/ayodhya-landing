@@ -28,6 +28,16 @@ const slides = [
     waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Same Day Tour (₹7,999 for up to 3 Pax). Please share details."
   },
   {
+    id: "varanasi-ayodhya-2n3d",
+    title: "🪔 Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
+    description: "Witness 10 Lakh Diya illumination on Banaras 84 Ghats & sacred Ram Mandir Darshan in Ayodhya.",
+    duration: "3 Days",
+    price: 13998,
+    priceSuffix: " / Person",
+    image: "/places/ganga-aarti.jpg",
+    waMsg: "Jai Shri Ram 🙏 I want to book the Dev Diwali Special Varanasi Ayodhya Yatra (2N/3D). Please share details."
+  },
+  {
     id: "ayodhya-1n2d",
     title: "Ayodhya Yatra (1N/2D)",
     description: "Devotional overnight stay in the sacred land of Ram Mandir, Kanak Bhawan, Hanuman Garhi, and sunset Saryu Aarti.",
@@ -44,7 +54,7 @@ const slides = [
     duration: "2 Days",
     price: 9998,
     priceSuffix: " / Person",
-    image: "/places/ganga-aarti.jpg",
+    image: "/places/assi-ghat.jpg",
     waMsg: "Jai Shri Ram 🙏 I want to book the Varanasi Yatra 1N/2D package (₹4,999/person). Please share details."
   }
 ];
