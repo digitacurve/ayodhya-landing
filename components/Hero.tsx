@@ -39,13 +39,13 @@ const slides = [
   },
   {
     id: "ayodhya-1n2d",
-    title: "🪔 Ayodhya Deepotsav Special Yatra (1N/2D)",
+    title: "🪔 Ayodhya Deepotsav Special Yatra",
     description: "Witness 25+ Lakh Diyas World Record illumination at Saryu Ghats & Ram Lalla Darshan in Ayodhya.",
     duration: "2 Days",
     price: 9998,
     priceSuffix: " / Person",
     image: "/places/ram-ki-paidi.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Deepotsav Special Yatra (1N/2D). Please share details."
+    waMsg: "Jai Shri Ram 🙏 I want to book the Ayodhya Deepotsav Special Yatra. Please share details."
   },
   {
     id: "varanasi-1n2d",

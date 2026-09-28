@@ -14,11 +14,10 @@ const WEB3FORMS_KEY      = "91c6129d-ac01-41e8-ae6a-3b04e733c34f";
 const REDIRECT    = "/thank-you";
 
 const TOURS = [
-  "Ayodhya Deepotsav Special Yatra (1N/2D)",
+  "Ayodhya Deepotsav Special Yatra",
   "Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
   "Ayodhya Same Day Tour",
   "Varanasi Same Day Tour",
-  "Ayodhya Yatra (1N/2D)",
   "Varanasi Yatra (1N/2D)",
   "Varanasi Ayodhya Yatra (2N/3D)",
   "Prayagraj Same Day Tour",
@@ -100,7 +99,7 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
       const tourMapping: Record<string, string> = {
         "ayodhya-same-day": "Ayodhya Same Day Tour",
         "varanasi-same-day": "Varanasi Same Day Tour",
-        "ayodhya-1n2d": "Ayodhya Deepotsav Special Yatra (1N/2D)",
+        "ayodhya-1n2d": "Ayodhya Deepotsav Special Yatra",
         "varanasi-1n2d": "Varanasi Yatra (1N/2D)",
         "varanasi-ayodhya-2n3d": "Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
         "prayagraj-same-day": "Prayagraj Same Day Tour",

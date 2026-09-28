@@ -85,7 +85,7 @@ export const packages: PackageItem[] = [
   },
   {
     id: "ayodhya-1n2d",
-    name: "Ayodhya Deepotsav Special Yatra (1N/2D)",
+    name: "Ayodhya Deepotsav Special Yatra",
     subtitle: "Experience 25+ Lakh Diyas World Record Illumination at Ram Ki Paidi & Ram Mandir Darshan",
     duration: "2 Days",
     cities: ["Ayodhya"],
