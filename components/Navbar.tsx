@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X, MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { packages } from "@/data/packagesData";
+import { siteConfig } from "@/data/siteConfig";
 
-const WA_NUMBER   = "919235222399";
-const PHONE       = "+91 9235222399";
-const PHONE_TEL   = "tel:+919235222399";
+const WA_NUMBER   = siteConfig.whatsappNumber;
+const PHONE       = siteConfig.phoneDisplay;
+const PHONE_TEL   = `tel:${siteConfig.telephone}`;
 const WA_MESSAGE  = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );

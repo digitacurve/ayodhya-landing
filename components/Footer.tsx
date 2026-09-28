@@ -4,13 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Youtube, ChevronDown, AlertCircle, CreditCard, RefreshCw, Ban, Clock } from "lucide-react";
 import Image from "next/image";
+import { siteConfig } from "@/data/siteConfig";
 
-const WA_NUMBER    = "919235222399";
+const WA_NUMBER    = siteConfig.whatsappNumber;
 const WA_MESSAGE   = encodeURIComponent(
   "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
 );
-const EMAIL        = "contact@ayodhyadharsha.com";
-const PHONE_DISPLAY = "+91 9235222399";
+const EMAIL        = siteConfig.email;
+const PHONE_DISPLAY = siteConfig.phoneDisplay;
 
 const socialLinks = [
   {

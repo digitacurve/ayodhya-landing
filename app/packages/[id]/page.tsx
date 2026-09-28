@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { packages, itineraries } from "@/data/packagesData";
+import { siteConfig, getBreadcrumbSchema } from "@/data/siteConfig";
 import { Clock, MapPin, Check, Phone, ArrowLeft, ShieldCheck, BadgeCheck, Star, Users, Sun, Sunset, Moon } from "lucide-react";
 import LeadCapture from "@/components/LeadCapture";
 import Footer from "@/components/Footer";
@@ -19,15 +21,37 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   const pkg = packages.find((p) => p.id === params.id);
   if (!pkg) {
     return {
-      title: "Package Not Found",
+      title: "Package Not Found | Ayodhya Dharshan",
     };
   }
 
   return {
-    title: `${pkg.name} Tour Package (${pkg.duration}) | Ayodhya Dharshan`,
-    description: `${pkg.subtitle}. Covers ${pkg.cities.join(", ")}. Book our premium, government registered yatra with comfortable hotels, private AC transport, and pre-arranged darshan.`,
+    title: `${pkg.name} (${pkg.duration}) — ₹${pkg.price.toLocaleString("en-IN")} | ${siteConfig.name}`,
+    description: `${pkg.subtitle}. Covers ${pkg.cities.join(", ")}. Includes 3-star hotel stay, private AC transport, airport/railway pickup, and Ram Mandir darshan support. Govt. Registered Agency (GSTIN: ${siteConfig.gstin}).`,
     alternates: {
-      canonical: `https://www.ayodhyadarshantourpackages.com/packages/${pkg.id}`,
+      canonical: `${siteConfig.baseUrl}/packages/${pkg.id}`,
+    },
+    openGraph: {
+      title: `${pkg.name} (${pkg.duration}) — Ayodhya Dharshan`,
+      description: `${pkg.subtitle}. Hotel + AC transport + darshan support. Book on WhatsApp in 2 minutes.`,
+      url: `${siteConfig.baseUrl}/packages/${pkg.id}`,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.baseUrl}${pkg.image}`,
+          width: 1200,
+          height: 630,
+          alt: pkg.name,
+        },
+      ],
+      locale: "en_IN",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${pkg.name} (${pkg.duration}) — Ayodhya Dharshan`,
+      description: `${pkg.subtitle}. Includes hotel, AC transport & darshan support.`,
+      images: [`${siteConfig.baseUrl}${pkg.image}`],
     },
   };
 }
@@ -496,6 +520,53 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
       {/* Booking Form Anchor */}
       <div id="book-now" />
       <LeadCapture />
+
+      {/* ── JSON-LD Structured Data for AI & Search Engines ── */}
+      <Script
+        id={`product-schema-${pkg.id}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": ["Product", "Trip"],
+            name: pkg.name,
+            description: pkg.subtitle,
+            image: `${siteConfig.baseUrl}${pkg.image}`,
+            offers: {
+              "@type": "Offer",
+              price: pkg.price.toString(),
+              priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.baseUrl}/packages/${pkg.id}`,
+              seller: {
+                "@type": "TravelAgency",
+                name: siteConfig.name,
+                telephone: siteConfig.telephone,
+              },
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "312",
+              bestRating: "5",
+              worstRating: "1",
+            },
+          }),
+        }}
+      />
+      <Script
+        id={`breadcrumb-schema-${pkg.id}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            getBreadcrumbSchema([
+              { name: "Home", url: "/" },
+              { name: "Packages", url: "/#packages" },
+              { name: pkg.name, url: `/packages/${pkg.id}` },
+            ])
+          ),
+        }}
+      />
 
       <Footer />
     </div>

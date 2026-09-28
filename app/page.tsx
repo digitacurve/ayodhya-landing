@@ -21,66 +21,12 @@ import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
 import OfferPopup from "@/components/OfferPopup";
 import { faqData } from "@/lib/faqData";
+import { siteConfig, getOrganizationSchema } from "@/data/siteConfig";
 
 // ─── JSON-LD Schemas ──────────────────────────────────────────────────────────
 
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": ["TourOperator", "LocalBusiness"],
-  name: "Ayodhya Dharshan",
-  alternateName: ["Ayodhya Darshan Tours", "Ayodhya Dharshan Tours & Travels"],
-  url: "https://www.ayodhyadarshantourpackages.com",
-  logo: "https://www.ayodhyadarshantourpackages.com/logo.png",
-  image: "https://www.ayodhyadarshantourpackages.com/logo.png",
-  description:
-    "Ayodhya Dharshan is a specialist pilgrimage tour operator based in Ayodhya, Uttar Pradesh. We offer complete Ayodhya tour packages including comfortable hotel stays and AC transport. Our circuits cover Ayodhya, Varanasi, Prayagraj, Chitrakoot, and Lucknow. Packages start at ₹14,998 for a couple. We have served over 50,000 pilgrims since 2009.",
-  telephone: "+919235222399",
-  email: "contact@ayodhyadharsha.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Second Floor, Plot No 12, Transport Nagar",
-    addressLocality: "Ayodhya",
-    addressRegion: "Uttar Pradesh",
-    postalCode: "224001",
-    addressCountry: "IN",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "26.7922",
-    longitude: "82.1998",
-  },
-  areaServed: [
-    { "@type": "City", name: "Ayodhya" },
-    { "@type": "City", name: "Varanasi" },
-    { "@type": "City", name: "Prayagraj" },
-    { "@type": "City", name: "Lucknow" },
-    { "@type": "City", name: "Chitrakoot" },
-    { "@type": "Country", name: "India" },
-  ],
-  touristType: ["Religious pilgrims", "Family pilgrims", "Senior citizens", "Hindu devotees"],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "312",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Ramesh Gupta" },
-      reviewRating: { "@type": "Rating", ratingValue: "5" },
-      reviewBody:
-        "Ram Mandir darshan was arranged perfectly — no queue, calm atmosphere. Hotels were spotlessly clean. Would highly recommend to all devotees.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Sunita Sharma" },
-      reviewRating: { "@type": "Rating", ratingValue: "5" },
-      reviewBody:
-        "Travelled as a family of 8 including elderly parents. The team made special arrangements — wheelchair access, early darshan slot, ground floor rooms. Our parents were brought to tears at Ram Lalla's feet.",
-    },
-  ],
+  ...getOrganizationSchema(),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Ayodhya Tour Packages",
@@ -93,7 +39,7 @@ const organizationSchema = {
           description: "2 Nights 3 Days Ayodhya tour with Ram Mandir darshan, hotel and transport",
           tripOrigin: { "@type": "TouristAttraction", name: "Ayodhya" },
         },
-        price: "20000",
+        price: "14998",
         priceCurrency: "INR",
       },
       {
@@ -103,7 +49,7 @@ const organizationSchema = {
           name: "Ayodhya Varanasi Tour Package",
           description: "3 Nights 4 Days Ayodhya and Varanasi tour package with Ram Mandir darshan and Ganga Aarti",
         },
-        price: "30000",
+        price: "32000",
         priceCurrency: "INR",
       },
       {
@@ -113,7 +59,7 @@ const organizationSchema = {
           name: "Ayodhya Prayagraj Varanasi Tour Package",
           description: "4 Nights 5 Days complete tirthdham circuit covering Ayodhya, Prayagraj and Varanasi",
         },
-        price: "38000",
+        price: "40000",
         priceCurrency: "INR",
       },
     ],
