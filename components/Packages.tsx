@@ -29,7 +29,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
       initial={{ opacity: 0, y: 44 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex flex-col rounded-3xl overflow-hidden transition-all duration-500 w-full h-full ${
+      className={`relative flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 w-full h-full ${
         isPopular
           ? "bg-divine-dark ring-2 ring-gold-500/80 shadow-gold-glow hover:shadow-[0_28px_80px_rgba(212,175,55,0.3)]"
           : "premium-card shine-effect"
@@ -37,17 +37,18 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
     >
       {/* Popular banner */}
       {isPopular && (
-        <div className="bg-gold-gradient text-divine-dark text-center py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2">
-          <Sparkles size={12} />
-          Most Popular — Best Value
-          <Sparkles size={12} />
+        <div className="bg-gold-gradient text-divine-dark text-center py-1.5 sm:py-2.5 text-[9px] sm:text-[11px] font-bold tracking-wider sm:tracking-[0.2em] uppercase flex items-center justify-center gap-1 sm:gap-2">
+          <Sparkles size={11} className="sm:w-3 sm:h-3" />
+          <span>Most Popular</span>
+          <span className="hidden sm:inline">— Best Value</span>
+          <Sparkles size={11} className="sm:w-3 sm:h-3" />
         </div>
       )}
 
       {/* Featured badge (non-popular) */}
       {pkg.featured && !isPopular && (
         <div
-          className="absolute top-4 right-4 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-[8px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full backdrop-blur-md"
           style={{ backgroundColor: `${pkg.accent}25`, color: pkg.accent, border: `1px solid ${pkg.accent}40` }}
         >
           ✦ Best Value
@@ -55,7 +56,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
       )}
 
       {/* Package Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-gray-100 flex-shrink-0">
+      <div className="relative h-32 sm:h-44 lg:h-48 w-full overflow-hidden bg-gray-100 flex-shrink-0">
         <img
           src={pkg.image}
           alt={pkg.name}
@@ -65,46 +66,46 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
 
-      <div className="flex flex-col flex-1 p-6 sm:p-7">
+      <div className="flex flex-col flex-1 p-3 sm:p-6 lg:p-7">
         {/* Duration + cities */}
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className={`inline-flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 rounded-full ${
+        <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-2 sm:mb-4">
+          <span className={`inline-flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold px-2 py-1 sm:px-3 sm:py-1.5 rounded-full ${
             isPopular ? "bg-white/10 text-gold-300 border border-gold-500/25" : "bg-gray-50 border border-gray-100 text-gray-500"
           }`}>
-            <Clock size={11} />
+            <Clock size={10} className="sm:w-3 sm:h-3" />
             {pkg.duration}
           </span>
-          <span className={`inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full ${
+          <span className={`inline-flex items-center gap-1 text-[9px] sm:text-[11px] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full ${
             isPopular ? "bg-white/8 text-white/55 border border-white/12" : "bg-gray-50 border border-gray-100 text-gray-400"
           }`}>
-            <MapPin size={11} />
+            <MapPin size={10} className="sm:w-3 sm:h-3" />
             {pkg.cities.join(" · ")}
           </span>
         </div>
 
         {/* Name */}
-        <h3 className={`font-playfair font-bold text-xl sm:text-2xl leading-snug mb-1 ${
+        <h3 className={`font-playfair font-bold text-sm sm:text-xl lg:text-2xl leading-tight mb-1 line-clamp-2 ${
           isPopular ? "text-white" : "text-divine-dark"
         }`}>
           {pkg.name}
         </h3>
-        <p className={`text-sm mb-5 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
+        <p className={`text-[10px] sm:text-sm mb-3 sm:mb-5 line-clamp-2 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
           {pkg.subtitle}
         </p>
 
         {/* Core inclusions icons */}
-        <div className={`flex items-center justify-between mb-5 pb-5 border-b ${
+        <div className={`flex items-center justify-between mb-3 pb-3 sm:mb-5 sm:pb-5 border-b ${
           isPopular ? "border-white/10" : "border-gray-100"
         }`}>
           {coreInclusions.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-1.5">
+            <div key={label} className="flex flex-col items-center gap-1">
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center"
                 style={{ backgroundColor: isPopular ? "rgba(212,175,55,0.12)" : `${pkg.accent}12` }}
               >
-                <Icon size={16} style={{ color: isPopular ? "#D4AF37" : pkg.accent }} />
+                <Icon size={13} className="sm:w-4 sm:h-4" style={{ color: isPopular ? "#D4AF37" : pkg.accent }} />
               </div>
-              <span className={`text-[9px] font-medium text-center leading-tight ${
+              <span className={`text-[8px] sm:text-[9px] font-medium text-center leading-tight ${
                 isPopular ? "text-white/60" : "text-gray-400"
               }`}>
                 {label}
@@ -114,7 +115,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         </div>
 
         {/* Price & Lock Section */}
-        <div className={`mb-6 flex items-center justify-between gap-3 border-t border-b py-4 ${
+        <div className={`mb-3 sm:mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 border-t border-b py-2.5 sm:py-4 ${
           isPopular ? "border-white/10" : "border-gray-100"
         }`}>
           {/* Lock Price Pill */}
@@ -126,37 +127,37 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
               });
               window.dispatchEvent(event);
             }}
-            className={`flex items-center gap-1 px-3 py-2 rounded-xl text-[12px] font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm ${
+            className={`flex items-center justify-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-[12px] font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm ${
               isPopular
                 ? "bg-gradient-to-r from-saffron-500/25 to-amber-500/25 text-amber-200 border border-saffron-500/40 hover:from-saffron-500/35 hover:to-amber-500/35"
                 : "bg-gradient-to-r from-amber-50 to-amber-100/60 text-amber-900 border border-amber-200/80 hover:from-amber-100 hover:to-amber-200/50"
             }`}
           >
-            <span className="text-[11px]">🔒</span>
-            <span>Lock Price at ₹{tokenAmount.toLocaleString("en-IN")}</span>
-            <span className="text-[9px] opacity-70">❯</span>
+            <span className="text-[10px] sm:text-[11px]">🔒</span>
+            <span>Lock ₹{tokenAmount.toLocaleString("en-IN")}</span>
+            <span className="text-[8px] sm:text-[9px] opacity-70">❯</span>
           </a>
 
           {/* Pricing */}
-          <div className="text-right">
-            <div className="flex items-baseline justify-end gap-1">
-              <span className={`text-[11px] line-through ${
+          <div className="text-center sm:text-right">
+            <div className="flex items-baseline justify-center sm:justify-end gap-1">
+              <span className={`text-[9px] sm:text-[11px] line-through ${
                 isPopular ? "text-white/35" : "text-gray-400"
               }`}>
                 ₹{(pkg.priceSuffix?.includes("Pax") ? pkg.originalPrice : (pkg.originalPrice / 2)).toLocaleString("en-IN")}
               </span>
-              <span className={`font-playfair font-bold text-2xl sm:text-[1.7rem] leading-none ${
+              <span className={`font-playfair font-bold text-base sm:text-2xl lg:text-[1.7rem] leading-none ${
                 isPopular ? "text-gold-400" : "text-divine-dark"
               }`}>
                 ₹{(pkg.priceSuffix?.includes("Pax") ? pkg.price : (pkg.price / 2)).toLocaleString("en-IN")}
               </span>
-              <span className={`text-[11px] font-medium ${
+              <span className={`text-[9px] sm:text-[11px] font-medium ${
                 isPopular ? "text-white/50" : "text-gray-500"
               }`}>
                 {pkg.priceSuffix || "/ person"}
               </span>
             </div>
-            <p className={`text-[9px] mt-1 font-medium ${
+            <p className={`text-[8px] sm:text-[9px] mt-0.5 sm:mt-1 font-medium ${
               isPopular ? "text-gold-300/80" : "text-saffron-600/90"
             }`}>
               {pkg.priceSuffix?.includes("Pax") 
@@ -168,22 +169,23 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         </div>
 
         {/* Features */}
-        <ul className="space-y-2.5 flex-1 mb-5">
+        <ul className="space-y-1.5 sm:space-y-2.5 flex-1 mb-3 sm:mb-5">
           {pkg.features.map((f) => (
-            <li key={f} className="flex items-start gap-2.5">
+            <li key={f} className="flex items-start gap-1.5 sm:gap-2.5">
               <div
-                className="flex-shrink-0 w-[18px] h-[18px] rounded-full flex items-center justify-center mt-[1px]"
+                className="flex-shrink-0 w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] rounded-full flex items-center justify-center mt-[2px]"
                 style={{
                   backgroundColor: isPopular ? "rgba(212,175,55,0.15)" : `${pkg.accent}18`,
                 }}
               >
                 <Check
-                  size={10}
+                  size={8}
                   strokeWidth={3}
+                  className="sm:w-2.5 sm:h-2.5"
                   style={{ color: isPopular ? "#D4AF37" : pkg.accent }}
                 />
               </div>
-              <span className={`text-[13px] leading-snug ${
+              <span className={`text-[10px] sm:text-[13px] leading-snug line-clamp-2 ${
                 isPopular ? "text-white/80" : "text-gray-600"
               }`}>
                 {f}
@@ -194,7 +196,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
 
         {/* Urgency note */}
         {pkg.note && (
-          <div className={`mb-4 text-[12px] font-medium px-3.5 py-2.5 rounded-xl ${
+          <div className={`mb-3 sm:mb-4 text-[10px] sm:text-[12px] font-medium px-2.5 py-1.5 sm:px-3.5 sm:py-2.5 rounded-lg sm:rounded-xl line-clamp-2 ${
             isPopular
               ? "bg-saffron-500/15 text-saffron-300 border border-saffron-500/20"
               : "bg-amber-50 text-amber-700 border border-amber-100"
@@ -204,27 +206,21 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         )}
 
         {/* Exclusions block inside card */}
-        <div className={`mb-6 pt-4 border-t ${isPopular ? "border-white/10" : "border-gray-100"}`}>
-          <div className={`text-[10px] font-bold uppercase tracking-wider mb-2.5 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
-            Exclusions & Important Notes:
+        <div className={`mb-3 sm:mb-6 pt-2.5 sm:pt-4 border-t ${isPopular ? "border-white/10" : "border-gray-100"}`}>
+          <div className={`text-[8px] sm:text-[10px] font-bold uppercase tracking-wider mb-1.5 sm:mb-2.5 ${isPopular ? "text-gold-300" : "text-gray-400"}`}>
+            Notes:
           </div>
-          <ul className="space-y-2 text-[11px] leading-tight">
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✈️</span>
+          <ul className="space-y-1 sm:space-y-2 text-[9px] sm:text-[11px] leading-tight">
+            <li className="flex items-start gap-1 sm:gap-2">
+              <span className="text-blue-500 font-bold text-[8px] sm:text-[10px] mt-[1px] flex-shrink-0">✈️</span>
               <span className={isPopular ? "text-white/80 font-medium" : "text-gray-600 font-medium"}>
-                Flight/Train/Bus: Self-book OR we arrange at actual cost
+                Flights/Trains: Self OR actual cost
               </span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-red-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">✕</span>
+            <li className="flex items-start gap-1 sm:gap-2">
+              <span className="text-red-500 font-bold text-[8px] sm:text-[10px] mt-[1px] flex-shrink-0">✕</span>
               <span className={isPopular ? "text-white/60" : "text-gray-500"}>
-                5% GST / Service Tax not included in package price
-              </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-500 font-bold text-[10px] mt-[1.5px] flex-shrink-0">⚠️</span>
-              <span className={isPopular ? "text-white/60" : "text-gray-500"}>
-                Darshan pass is ONLY provided with complete package
+                5% GST extra on invoice
               </span>
             </li>
           </ul>
@@ -233,7 +229,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
         {/* CTA */}
         <Link
           href={`/packages/${pkg.id}`}
-          className={`wa-shimmer flex items-center justify-center gap-2.5 w-full py-3.5 rounded-2xl text-white font-bold text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+          className={`wa-shimmer flex items-center justify-center gap-1.5 sm:gap-2.5 w-full py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl text-white font-bold text-[11px] sm:text-[14px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
             isPopular
               ? "bg-gold-gradient text-divine-dark hover:brightness-105"
               : "hover:brightness-110"
@@ -250,15 +246,16 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
           {pkg.ctaText}
         </Link>
 
-        <p className={`text-center text-[11px] mt-2.5 ${
+        <p className={`text-center text-[9px] sm:text-[11px] mt-1.5 sm:mt-2.5 ${
           isPopular ? "text-white/30" : "text-gray-300"
         }`}>
-          Confirm with 25% Advance &nbsp;·&nbsp; Or Lock Rates with ₹{tokenAmount.toLocaleString("en-IN")}
+          Confirm with 25% Advance
         </p>
       </div>
     </motion.div>
   );
 }
+
 export default function Packages() {
   const ref   = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20px" });
@@ -276,29 +273,29 @@ export default function Packages() {
   }, []);
 
   return (
-    <section ref={ref} id="packages" className="py-24 sm:py-32 bg-sacred-cream" data-section="packages">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} id="packages" className="py-16 sm:py-24 lg:py-32 bg-sacred-cream" data-section="packages">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
 
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-10 sm:mb-16 lg:mb-20"
         >
-          <div className="ornament-line max-w-xl mx-auto mb-5">
-            <span className="text-gold-600 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
+          <div className="ornament-line max-w-xl mx-auto mb-3 sm:mb-5">
+            <span className="text-gold-600 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
               Choose Your Journey
             </span>
           </div>
-          <h2 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-[3.4rem] text-divine-dark mb-5 leading-tight">
+          <h2 className="font-playfair font-bold text-3xl sm:text-5xl lg:text-[3.4rem] text-divine-dark mb-3 sm:mb-5 leading-tight">
             Ayodhya Tour{" "}
             <span className="text-gradient-saffron">Packages 2025</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-500 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed">
             Every detail pre-arranged — best hotel stays, comfortable AC transport and seamless logistics — so you arrive and simply pray.
           </p>
-          <div className="inline-flex items-center gap-2 mt-6 text-sm text-gray-500 bg-white border border-gray-100 shadow-sm rounded-full px-5 py-2.5">
+          <div className="inline-flex items-center gap-2 mt-4 sm:mt-6 text-xs sm:text-sm text-gray-500 bg-white border border-gray-100 shadow-sm rounded-full px-4 py-2 sm:px-5 sm:py-2.5">
             <MapPin size={13} className="text-saffron-500" />
             Departures from all major cities across India
           </div>
@@ -309,35 +306,33 @@ export default function Packages() {
           initial={{ opacity: 0, y: 15 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 bg-gradient-to-r from-saffron-50 to-amber-50 border border-saffron-200/60 rounded-3xl p-6 sm:p-7 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left relative overflow-hidden"
+          className="mb-8 sm:mb-12 bg-gradient-to-r from-saffron-50 to-amber-50 border border-saffron-200/60 rounded-2xl sm:rounded-3xl p-4 sm:p-7 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center gap-3 sm:gap-5 text-center sm:text-left relative overflow-hidden"
         >
           {/* Decorative background circle */}
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-saffron-300/10 rounded-full blur-2xl pointer-events-none" />
           
-          <div className="w-14 h-14 rounded-2xl bg-saffron-500/10 flex items-center justify-center flex-shrink-0 text-saffron-600 text-3xl shadow-inner">
+          <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-saffron-500/10 flex items-center justify-center flex-shrink-0 text-xl sm:text-3xl shadow-inner">
             ✈️
           </div>
           <div className="flex-1">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
-              <h4 className="font-playfair font-bold text-divine-dark text-lg">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1 sm:mb-2">
+              <h4 className="font-playfair font-bold text-divine-dark text-base sm:text-lg">
                 Flight & Train Ticket Bookings Available!
               </h4>
-              <span className="bg-saffron-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <span className="bg-saffron-600 text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-2.5 rounded-full uppercase tracking-wider">
                 Yatra Add-on
               </span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               We arrange direct flights, trains, and luxury sleeper buses from any city in India (Delhi, Mumbai, Bengaluru, Chennai, etc.) at <strong>actual market rates</strong>. Prefer booking your own tickets? No problem! Your yatra packages will start directly from your arrival airport/station with our private AC pickup.
             </p>
           </div>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="flex flex-wrap justify-center gap-5 lg:gap-6">
+        {/* Cards grid: 2 cards per row on mobile (grid-cols-2), 3 on desktop (lg:grid-cols-3) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5 lg:gap-6 items-stretch">
           {packages.map((pkg, i) => (
-            <div key={pkg.id} className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] flex">
-              <PackageCard pkg={pkg} index={i} tokenAmount={tokenAmount} />
-            </div>
+            <PackageCard key={pkg.id} pkg={pkg} index={i} tokenAmount={tokenAmount} />
           ))}
         </div>
 
