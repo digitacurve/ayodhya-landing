@@ -29,13 +29,13 @@ const slides = [
   },
   {
     id: "varanasi-ayodhya-2n3d",
-    title: "🪔 Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
+    title: "🪔 Dev Diwali Special: Varanasi Ayodhya Yatra",
     description: "Witness 10 Lakh Diya illumination on Banaras 84 Ghats & sacred Ram Mandir Darshan in Ayodhya.",
     duration: "3 Days",
     price: 13998,
     priceSuffix: " / Person",
     image: "/places/ganga-aarti.jpg",
-    waMsg: "Jai Shri Ram 🙏 I want to book the Dev Diwali Special Varanasi Ayodhya Yatra (2N/3D). Please share details."
+    waMsg: "Jai Shri Ram 🙏 I want to book the Dev Diwali Special Varanasi Ayodhya Yatra. Please share details."
   },
   {
     id: "ayodhya-1n2d",

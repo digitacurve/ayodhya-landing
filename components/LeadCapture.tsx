@@ -15,11 +15,11 @@ const REDIRECT    = "/thank-you";
 
 const TOURS = [
   "Ayodhya Deepotsav Special Yatra",
-  "Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
+  "Dev Diwali Special: Varanasi Ayodhya Yatra",
   "Ayodhya Same Day Tour",
   "Varanasi Same Day Tour",
   "Varanasi Yatra (1N/2D)",
-  "Varanasi Ayodhya Yatra (2N/3D)",
+  "Varanasi Ayodhya Yatra",
   "Prayagraj Same Day Tour",
   "Ayodhya Darshan",
   "Ayodhya Varanasi",
@@ -101,7 +101,7 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
         "varanasi-same-day": "Varanasi Same Day Tour",
         "ayodhya-1n2d": "Ayodhya Deepotsav Special Yatra",
         "varanasi-1n2d": "Varanasi Yatra (1N/2D)",
-        "varanasi-ayodhya-2n3d": "Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
+        "varanasi-ayodhya-2n3d": "Dev Diwali Special: Varanasi Ayodhya Yatra",
         "prayagraj-same-day": "Prayagraj Same Day Tour",
         "ayodhya-darshan": "Ayodhya Darshan",
         "ayodhya-varanasi": "Ayodhya Varanasi",

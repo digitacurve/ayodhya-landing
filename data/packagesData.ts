@@ -133,7 +133,7 @@ export const packages: PackageItem[] = [
   },
   {
     id: "varanasi-ayodhya-2n3d",
-    name: "Dev Diwali Special: Varanasi Ayodhya Yatra (2N/3D)",
+    name: "Dev Diwali Special: Varanasi Ayodhya Yatra",
     subtitle: "Experience 84 Ghats Dev Deepawali Illumination & Ram Lalla Darshan",
     duration: "3 Days",
     cities: ["Varanasi", "Ayodhya"],
