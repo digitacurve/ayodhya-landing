@@ -56,12 +56,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Ayodhya Dharshan",
+    images: [
+      {
+        url: "https://www.ayodhyadarshantourpackages.com/hero/hero-ram-mandir.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shri Ram Mandir Ayodhya Tour Packages",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ayodhya Tour Package with Hotel & Transport — Starting ₹14,998 for Couple",
     description:
       "Hotel + AC transport + railway/airport pickup & drop. Ayodhya–Varanasi, Prayagraj circuits. Book on WhatsApp in 2 minutes.",
+    images: ["https://www.ayodhyadarshantourpackages.com/hero/hero-ram-mandir.jpg"],
   },
   robots: {
     index: true,
