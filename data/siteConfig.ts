@@ -6,7 +6,7 @@ export const siteConfig = {
   domain: "www.ayodhyadarshantourpackages.com",
   baseUrl: "https://www.ayodhyadarshantourpackages.com",
   logoUrl: "https://www.ayodhyadarshantourpackages.com/logo.png",
-  ogImageUrl: "https://www.ayodhyadarshantourpackages.com/logo.png",
+  ogImageUrl: "https://www.ayodhyadarshantourpackages.com/hero/hero-ram-mandir.jpg",
   
   // Contact Information
   telephone: "+919235222399",
