@@ -159,21 +159,21 @@ export default function Itinerary() {
           </p>
         </motion.div>
 
-        {/* Destination Tabs */}
+        {/* Destination Tabs — 2 per line on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="flex flex-wrap gap-2 justify-center mb-8"
+          className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-2.5 mb-8 max-w-4xl mx-auto"
         >
           {itineraries.map((item, i) => (
             <button
               key={item.id}
               onClick={() => setActiveTab(i)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+              className={`w-full sm:w-auto px-2.5 py-2.5 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 text-center truncate ${
                 activeTab === i
                   ? "bg-saffron-600 text-white shadow-md"
-                  : "bg-gray-50 text-gray-600 border border-gray-100 hover:border-saffron-200 hover:text-saffron-600"
+                  : "bg-gray-50 text-gray-700 border border-gray-200/80 hover:border-saffron-200 hover:text-saffron-600"
               }`}
             >
               {item.destination} ({item.duration})
