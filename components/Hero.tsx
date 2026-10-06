@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Star, ShieldCheck, Users, Headphones, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, Star, ShieldCheck, Users, Headphones } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 
 const PHONE       = siteConfig.phoneDisplay;
@@ -72,27 +72,21 @@ export default function Hero() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isHovered, setIsHovered]   = useState(false);
 
-  // Auto-slide every 4 seconds
+  // Continuous auto-slide every 3.5 seconds
   useEffect(() => {
-    if (isHovered) return;
     const interval = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % heroSlides.length);
-    }, 4000);
+    }, 3500);
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, []);
 
   const slide = heroSlides[currentIdx];
-
-  const handleNext = () => setCurrentIdx((prev) => (prev + 1) % heroSlides.length);
-  const handlePrev = () => setCurrentIdx((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   return (
     <section
       className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden bg-[#0A0300] pt-28 pb-8"
       id="home"
       data-section="hero"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* ── Dynamic Background Image with Crystal Clear Visibility & Crossfade ── */}
       <AnimatePresence mode="wait">
@@ -121,22 +115,7 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Side Navigation Arrows ── */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 hover:bg-black/80 border border-white/20 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl"
-        aria-label="Previous Package"
-      >
-        <ChevronLeft size={22} />
-      </button>
 
-      <button
-        onClick={handleNext}
-        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 hover:bg-black/80 border border-white/20 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl"
-        aria-label="Next Package"
-      >
-        <ChevronRight size={22} />
-      </button>
 
       {/* ── Main Hero Content Slide ── */}
       <div className="relative z-20 w-full max-w-4xl mx-auto px-6 text-center my-auto flex-1 flex flex-col justify-center items-center">
