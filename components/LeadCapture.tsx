@@ -396,7 +396,7 @@ export default function LeadCapture() {
         }}
       />
 
-      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <motion.div
           id="get-quote"
           initial={{ opacity: 0, y: 28 }}
@@ -404,28 +404,67 @@ export default function LeadCapture() {
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="scroll-mt-24"
         >
-          <div className="liquid-glass-dark rounded-3xl p-6 sm:p-10 border border-gold-500/25 shadow-2xl">
-            {/* Form header */}
-            <div className="mb-7 pb-6 border-b border-white/[0.08] text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center gap-3">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, rgba(255,107,0,0.25) 0%, rgba(212,175,55,0.15) 100%)" }}
-                >
-                  <span className="font-playfair text-gold-400 text-xl font-bold leading-none">ॐ</span>
-                </div>
-                <div>
-                  <h3 className="font-playfair font-bold text-white text-2xl sm:text-3xl leading-tight">
-                    Get Your Free Tour Quote
-                  </h3>
-                  <p className="text-white/60 text-xs sm:text-sm mt-1">
-                    Fill details below for a personalized itinerary & best pricing within 2 hours
-                  </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Left Column — Section Info & Proof Points (Kashi Darshan Format) */}
+            <div className="lg:col-span-5 space-y-6 lg:pr-4 pt-2 text-center lg:text-left">
+              <div className="inline-flex items-center gap-1.5 bg-saffron-500/10 border border-saffron-500/25 px-3 py-1 rounded-full text-saffron-400 text-xs font-semibold uppercase tracking-wider">
+                ⚡ Quick Enquiry
+              </div>
+
+              <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-white leading-tight">
+                Plan Your Divine <span className="text-saffron-400">Ayodhya Yatra</span>
+              </h2>
+
+              <p className="text-white/75 text-sm sm:text-base font-inter leading-relaxed">
+                Fill in your details below. Our pilgrimage expert will call you within 2 hours with a personalised itinerary and the best available price.
+              </p>
+
+              {/* Four Inclusions Checklist */}
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3.5 backdrop-blur-md">
+                {inclusions.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-left">
+                    <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 size={14} className="text-emerald-400" />
+                    </div>
+                    <span className="text-white/90 text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Devotee Quote */}
+              <div className="border-l-2 border-saffron-500 pl-4 py-1 text-left hidden sm:block">
+                <p className="text-white/70 italic text-xs leading-relaxed">
+                  “Everything was arranged perfectly — hotel, darshan, transport. We just came with devotion and they handled everything else.”
+                </p>
+                <div className="text-gold-400 text-[11px] font-semibold mt-1">
+                  ⭐ 4.9/5 Rating from 50,000+ Yatris
                 </div>
               </div>
             </div>
 
-            <LeadForm />
+            {/* Right Column — Main Form Card */}
+            <div className="lg:col-span-7">
+              <div className="liquid-glass-dark rounded-3xl p-6 sm:p-8 lg:p-9 border border-gold-500/30 shadow-2xl">
+                {/* Form header */}
+                <div className="mb-6 pb-5 border-b border-white/[0.1] text-center sm:text-left">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+                    <h3 className="font-playfair font-bold text-white text-2xl sm:text-3xl leading-tight">
+                      Get Your Free Tour Quote
+                    </h3>
+                    <span className="text-xs text-saffron-300 bg-saffron-500/15 border border-saffron-500/30 px-3 py-1 rounded-full font-medium">
+                      ⏱️ Call within 2 hrs
+                    </span>
+                  </div>
+                  <p className="text-white/60 text-xs sm:text-sm mt-1">
+                    Confirm Travel This Month (25% Adv) OR Lock Future Rates (₹1,999)
+                  </p>
+                </div>
+
+                <LeadForm />
+              </div>
+            </div>
+
           </div>
         </motion.div>
       </div>
