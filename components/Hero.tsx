@@ -12,12 +12,12 @@ const heroSlides = [
   {
     id: "ayodhya-darshan",
     badge: "AYODHYA",
-    title: "Ayodhya Darshan",
+    title: "Ayodhya Ram Mandir Darshan",
     subtitle: "Seek blessings at Shri Ram Janmabhoomi Mandir, witness evening Saryu Aarti, and explore Ayodhya Dham.",
     duration: "2 NIGHTS / 3 DAYS",
     price: "₹7,499",
     priceSuffix: "/ Person",
-    image: "/places/ram-mandir.jpg",
+    image: "/hero/ram-mandir-carved-interior.jpg",
   },
   {
     id: "ayodhya-varanasi",
@@ -27,37 +27,37 @@ const heroSlides = [
     duration: "3 NIGHTS / 4 DAYS",
     price: "₹12,999",
     priceSuffix: "/ Person",
-    image: "/places/ganga-aarti.jpg",
+    image: "/hero/ganga-aarti-priest.jpg",
   },
   {
     id: "ayodhya-prayagraj-varanasi",
     badge: "AYODHYA · PRAYAGRAJ · VARANASI",
     title: "Ayodhya Prayagraj Varanasi",
-    subtitle: "Complete tirthdham circuit with holy Triveni Sangam dip, Ram Mandir darshan, and Kashi Vishwanath corridor.",
+    subtitle: "Complete tirthdham circuit with 25+ Lakh Diyas Deepotsav, holy Triveni Sangam dip, and Ram Mandir darshan.",
     duration: "4 NIGHTS / 5 DAYS",
     price: "₹15,999",
     priceSuffix: "/ Person",
-    image: "/places/ram-ki-paidi.jpg",
+    image: "/hero/ayodhya-deepotsav-aerial.jpg",
   },
   {
     id: "lucknow-ayodhya",
     badge: "LUCKNOW & AYODHYA",
     title: "Lucknow & Ayodhya Heritage Tour",
-    subtitle: "Experience Bara Imambara, Awadhi culture, and heritage monuments combined with sacred Ram Mandir darshan.",
+    subtitle: "Experience Awadhi culture, Jai Shri Ram mandir illumination, and heritage monuments combined with sacred darshan.",
     duration: "3 NIGHTS / 4 DAYS",
     price: "₹14,999",
     priceSuffix: "/ Person",
-    image: "/places/bara-imambara.jpg",
+    image: "/hero/jai-shri-ram-lighting.jpg",
   },
   {
     id: "full-circuit",
     badge: "FULL RAMAYANA CIRCUIT",
     title: "Full Ramayana Circuit Yatra",
-    subtitle: "Trace Lord Ram's sacred journey covering Ayodhya, Prayagraj, Chitrakoot, and Varanasi.",
+    subtitle: "Trace Lord Ram's sacred journey covering Ayodhya, Prayagraj, Chitrakoot, and Ganga cruise fireworks at Kashi.",
     duration: "5 NIGHTS / 6 DAYS",
     price: "₹18,499",
     priceSuffix: "/ Person",
-    image: "/places/chitrakoot-ramghat.jpg",
+    image: "/hero/ganga-fireworks-cruise.jpg",
   },
 ];
 
@@ -94,18 +94,18 @@ export default function Hero() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ── Dynamic Background Image with Smooth Crossfade ── */}
+      {/* ── Dynamic Background Image with Soft Blur & Crossfade ── */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1.02 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0 z-0"
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 z-0 overflow-hidden"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-45 blur-[3px] scale-105 transition-all duration-1000"
             style={{ backgroundImage: `url('${slide.image}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#080200]/85 via-[#100500]/75 to-[#0A0300]" />
