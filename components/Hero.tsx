@@ -99,22 +99,22 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── 4 Trust / USP Badges Grid (4 Separate Boxes) ── */}
+      {/* ── 4 Trust / USP Badges Grid (4 Distinct Card Boxes) ── */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-4 flex-shrink-0">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
           {trustBadges.map((badge, i) => (
             <div
               key={i}
-              className="liquid-glass-dark rounded-2xl p-3.5 sm:p-4 border border-white/12 shadow-xl flex flex-col md:flex-row items-center gap-2.5 md:gap-3 text-white/75 justify-center md:justify-start text-center md:text-left hover:border-gold-500/30 transition-all"
+              className="bg-[#180A04]/90 backdrop-blur-md rounded-2xl p-4 border border-gold-500/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)] flex flex-col items-center justify-center text-center gap-2.5 hover:border-gold-400 transition-all duration-300"
             >
-              <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                <badge.icon size={16} className="text-gold-400" />
+              <div className="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center flex-shrink-0">
+                <badge.icon size={18} className="text-gold-400" />
               </div>
               <div>
-                <div className="text-white/95 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider leading-tight">
+                <div className="text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider leading-tight">
                   {badge.label}
                 </div>
-                <div className="text-white/55 text-[10px] sm:text-[11px] mt-0.5 leading-tight">
+                <div className="text-white/60 text-[10px] sm:text-[11px] mt-1 leading-tight">
                   {badge.sub}
                 </div>
               </div>
