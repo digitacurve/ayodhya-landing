@@ -396,83 +396,38 @@ export default function LeadCapture() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-
-          {/* ── Left: Value Proposition ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 lg:pt-4"
-          >
-            {/* Label */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-8 bg-saffron-500/40" />
-              <span className="text-saffron-400 text-[10px] font-bold tracking-[0.35em] uppercase">
-                Quick Enquiry
-              </span>
-            </div>
-
-            <h2 className="font-playfair font-bold text-white leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.85rem, 4vw, 2.8rem)" }}
-            >
-              Plan Your Divine{" "}
-              <span className="text-gradient-gold">Ayodhya Yatra</span>
-            </h2>
-
-            <p className="text-white/50 text-[15px] leading-relaxed mb-8 max-w-sm">
-              Fill in your details. Our pilgrimage expert will call you within 2 hours
-              with a personalised itinerary and the best available price.
-            </p>
-
-            {/* Inclusions */}
-            {/* Inclusions */}
-            <ul className="space-y-3">
-              {inclusions.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-saffron-500/15 border border-saffron-400/25 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 size={11} className="text-saffron-400" />
-                  </div>
-                  <span className="text-white/65 text-[14px]">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* ── Right: Form Card ── */}
-          <motion.div
-            id="get-quote"
-            initial={{ opacity: 0, x: 28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 scroll-mt-24"
-          >
-            <div className="liquid-glass-dark rounded-3xl p-6 sm:p-8 border border-gold-500/25 shadow-2xl">
-              {/* Form header */}
-              <div className="mb-7 pb-6 border-b border-white/[0.08]">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "linear-gradient(135deg, rgba(255,107,0,0.25) 0%, rgba(212,175,55,0.15) 100%)" }}
-                  >
-                    <span className="font-playfair text-gold-400 text-lg font-bold leading-none">ॐ</span>
-                  </div>
-                  <div>
-                    <h3 className="font-playfair font-bold text-white text-[1.25rem] leading-tight">
-                      Get Your Free Tour Quote
-                    </h3>
-                    <p className="text-white/40 text-[12px] mt-0.5">
-                      Personalised itinerary and transparent pricing within 2 hours
-                    </p>
-                  </div>
+      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <motion.div
+          id="get-quote"
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="scroll-mt-24"
+        >
+          <div className="liquid-glass-dark rounded-3xl p-6 sm:p-10 border border-gold-500/25 shadow-2xl">
+            {/* Form header */}
+            <div className="mb-7 pb-6 border-b border-white/[0.08] text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "linear-gradient(135deg, rgba(255,107,0,0.25) 0%, rgba(212,175,55,0.15) 100%)" }}
+                >
+                  <span className="font-playfair text-gold-400 text-xl font-bold leading-none">ॐ</span>
+                </div>
+                <div>
+                  <h3 className="font-playfair font-bold text-white text-2xl sm:text-3xl leading-tight">
+                    Get Your Free Tour Quote
+                  </h3>
+                  <p className="text-white/60 text-xs sm:text-sm mt-1">
+                    Fill details below for a personalized itinerary & best pricing within 2 hours
+                  </p>
                 </div>
               </div>
-
-              <LeadForm />
             </div>
-          </motion.div>
-        </div>
+
+            <LeadForm />
+          </div>
+        </motion.div>
       </div>
 
       {/* Bottom separator */}
