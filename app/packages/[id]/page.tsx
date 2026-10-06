@@ -318,12 +318,10 @@ export default function PackageDetailPage({ params }: { params: { id: string } }
           <div className="flex items-center gap-3">
 
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 hover:shadow-emerald-glow"
+              href="#book-now"
+              className="bg-saffron-600 hover:bg-saffron-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5"
             >
-              <span>💬</span> Custom Quote
+              Custom Quote
             </a>
           </div>
         </div>

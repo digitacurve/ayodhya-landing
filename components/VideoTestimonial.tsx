@@ -268,14 +268,10 @@ export default function VideoTestimonial() {
 
                   {/* Quick Inquiry CTA button */}
                   <a
-                    href={`https://wa.me/919235222399?text=${encodeURIComponent(
-                      `Jai Shri Ram 🙏 I watched ${activeVideo.name}'s video review. I want details for the ${activeVideo.yatra} package.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/#get-quote"
+                    onClick={() => setActiveVideo(null)}
                     className="flex items-center justify-center gap-2.5 w-full bg-saffron-gradient text-white py-3.5 rounded-2xl font-bold text-xs uppercase tracking-wider transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <MessageCircle size={15} className="fill-white" />
                     Inquire for this package
                   </a>
                 </div>
