@@ -301,12 +301,19 @@ export default function Packages() {
           </div>
         </motion.div>
 
-        {/* Prominent Flight/Train Booking Assistance Banner */}
+        {/* Cards grid: 2 cards per row on mobile (grid-cols-2), 3 on desktop (lg:grid-cols-3) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5 lg:gap-6 items-stretch">
+          {packages.map((pkg, i) => (
+            <PackageCard key={pkg.id} pkg={pkg} index={i} tokenAmount={tokenAmount} />
+          ))}
+        </div>
+
+        {/* Prominent Flight/Train Booking Assistance Banner — Positioned right below package cards */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8 sm:mb-12 bg-gradient-to-r from-saffron-50 to-amber-50 border border-saffron-200/60 rounded-2xl sm:rounded-3xl p-4 sm:p-7 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center gap-3 sm:gap-5 text-center sm:text-left relative overflow-hidden"
+          className="mt-10 sm:mt-12 bg-gradient-to-r from-saffron-50 to-amber-50 border border-saffron-200/60 rounded-2xl sm:rounded-3xl p-4 sm:p-7 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center gap-3 sm:gap-5 text-center sm:text-left relative overflow-hidden"
         >
           {/* Decorative background circle */}
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-saffron-300/10 rounded-full blur-2xl pointer-events-none" />
@@ -328,13 +335,6 @@ export default function Packages() {
             </p>
           </div>
         </motion.div>
-
-        {/* Cards grid: 2 cards per row on mobile (grid-cols-2), 3 on desktop (lg:grid-cols-3) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5 lg:gap-6 items-stretch">
-          {packages.map((pkg, i) => (
-            <PackageCard key={pkg.id} pkg={pkg} index={i} tokenAmount={tokenAmount} />
-          ))}
-        </div>
 
         {/* General Exclusions and Guidelines Disclaimer Block */}
         <motion.div
