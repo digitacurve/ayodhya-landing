@@ -471,11 +471,11 @@ export default function Home() {
         {/* 3. Packages — tour options */}
         <Packages />
 
-        {/* 4. Trust Metrics — compact dark liquid glass trust numbers */}
-        <TrustMetrics />
-
-        {/* 5. Trust Strip — 5 key trust badges */}
+        {/* 4. Trust Strip — 5 key trust badges (placed above Trust Metrics) */}
         <TrustStrip />
+
+        {/* 5. Trust Metrics — compact dark liquid glass trust numbers */}
+        <TrustMetrics />
 
         {/* 6. Yatra Photo Marquee — live devotee batch memories */}
         <YatraPhotoMarquee />
