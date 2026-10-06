@@ -94,22 +94,22 @@ export default function Hero() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ── Dynamic Background Image with Soft Blur & Crossfade ── */}
+      {/* ── Dynamic Background Image with Crystal Clear Visibility & Crossfade ── */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1.02 }}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           className="absolute inset-0 z-0 overflow-hidden"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-45 blur-[3px] scale-105 transition-all duration-1000"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70 blur-[0.5px] transition-all duration-1000"
             style={{ backgroundImage: `url('${slide.image}')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080200]/85 via-[#100500]/75 to-[#0A0300]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0300]/90 via-transparent to-[#0A0300]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080200]/70 via-[#100500]/50 to-[#0A0300]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0300]/80 via-transparent to-[#0A0300]/80" />
         </motion.div>
       </AnimatePresence>
 
