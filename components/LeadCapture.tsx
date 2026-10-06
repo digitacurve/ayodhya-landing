@@ -73,27 +73,19 @@ function getLocalDateString(d: Date) {
 }
 
 // ─── Form Component ───────────────────────────────────────────────────────────
-function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTokenAmount: React.Dispatch<React.SetStateAction<number>> }) {
+function LeadForm() {
   const [fields, setFields] = useState({
-    name: "", phone: "", tour: "", email: "", request: "", packageType: "",
+    name: "", phone: "", tour: "", request: "", packageType: "",
   });
-  const [date,    setDate]    = useState<Date | undefined>(undefined);
-  const [errors,  setErrors]  = useState<Record<string, string>>({});
-  const [status,  setStatus]  = useState<"idle" | "submitting" | "error">("idle");
-  const [bookingType, setBookingType] = useState<"confirm" | "lock">("confirm");
-  const [flexMonth, setFlexMonth] = useState("");
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
-  // Auto-select package on select-tour event & handle discount
+  // Auto-select package on select-tour event
   useEffect(() => {
-    const handleApplyDiscount = () => {
-      setBookingType("lock");
-      setTokenAmount(1749);
-    };
-
     const handleSelectTour = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       const tourId = typeof detail === "string" ? detail : detail?.tourId;
-      const mode = typeof detail === "object" ? detail?.mode : undefined;
 
       const tourMapping: Record<string, string> = {
         "ayodhya-same-day": "Ayodhya Same Day Tour",
@@ -115,46 +107,36 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
       if (tourName) {
         setFields(f => ({ ...f, tour: tourName }));
       }
-      if (mode === "lock") {
-        setBookingType("lock");
-      } else if (mode === "confirm") {
-        setBookingType("confirm");
-      }
     };
 
     window.addEventListener("select-tour", handleSelectTour);
-    window.addEventListener("apply-discount", handleApplyDiscount);
     return () => {
       window.removeEventListener("select-tour", handleSelectTour);
-      window.removeEventListener("apply-discount", handleApplyDiscount);
     };
-  }, [setTokenAmount]);
+  }, []);
 
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFields(f => ({ ...f, [k]: e.target.value }));
     if (errors[k]) setErrors(er => { const n = { ...er }; delete n[k]; return n; });
   };
 
-
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!fields.name.trim())  e.name  = "Please enter your name";
+    if (!fields.name.trim()) e.name = "Please enter your name";
     
     const phoneTrimmed = fields.phone.trim();
     if (!phoneTrimmed) {
       e.phone = "Please enter your phone number";
     } else {
-      // Allow valid international numbers by stripping spaces, hyphens, brackets, and +
       const cleanPhone = phoneTrimmed.replace(/[\s\-()+]/g, "");
       if (!/^\d{7,15}$/.test(cleanPhone)) {
         e.phone = "Please enter a valid phone number (7-15 digits)";
       }
     }
     
-    if (!fields.tour)         e.tour  = "Please select a tour";
-    if (!fields.packageType)  e.packageType = "Please select package class / budget preference";
-    if (bookingType === "confirm" && !date) e.date  = "Please select your travel date";
-    if (bookingType === "lock" && !flexMonth) e.flexMonth = "Please select tentative travel month";
+    if (!fields.tour) e.tour = "Please select a tour";
+    if (!fields.packageType) e.packageType = "Please select package class / budget preference";
+    if (!date) e.date = "Please select your travel date";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -164,23 +146,18 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
     if (!validate()) return;
     setStatus("submitting");
 
-    const travelDateString = bookingType === "lock" ? `Flexible - ${flexMonth}` : (date ? fmtDate(date) : "");
+    const travelDateString = date ? fmtDate(date) : "";
 
     try {
       const payload: Record<string, string> = {
-        access_key:     WEB3FORMS_KEY,
-        name:           fields.name,
-        phone:          fields.phone,
-        tour:           fields.tour,
-        package_type:   fields.packageType,
-        travel_date:    travelDateString,
-        booking_type:   bookingType === "confirm" ? "Direct Confirmation (25% Advance)" : `Flexi-Date Price Lock (₹${tokenAmount})`,
-        special_request:fields.request || "(none)",
+        access_key: WEB3FORMS_KEY,
+        name: fields.name,
+        phone: fields.phone,
+        tour: fields.tour,
+        package_type: fields.packageType,
+        travel_date: travelDateString,
+        special_request: fields.request || "(none)",
       };
-
-      if (fields.email.trim()) {
-        payload.email = fields.email.trim();
-      }
 
       const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
@@ -197,7 +174,6 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
               form_name: "lead_capture",
               tour_selected: fields.tour,
               travel_date: travelDateString,
-              booking_type: bookingType,
             });
           }
         }
@@ -212,9 +188,6 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
           tour: fields.tour,
           package_type: fields.packageType,
           date: travelDateString,
-          booking_type: bookingType,
-          is_flexible: bookingType === "lock" ? "true" : "false",
-          token_amount: tokenAmount.toString(),
         }).toString();
         window.location.href = `${REDIRECT}?${queryParams}`;
       } else {
@@ -301,113 +274,27 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
         </Field>
       </div>
 
-      {/* Row 3: Booking Type & Date Selection */}
-      <div className="space-y-3">
-        <label className="block text-white/60 text-[11px] font-semibold tracking-[0.14em] uppercase">
-          Select Booking Type & Timeline
-        </label>
-        
-        {/* Tab Toggle */}
-        <div className="grid grid-cols-2 gap-2 bg-white/[0.04] p-1.5 rounded-xl border border-white/[0.08]">
-          <button
-            type="button"
-            onClick={() => {
-              setBookingType("confirm");
-              setFlexMonth("");
-              if (errors.flexMonth || errors.date) {
-                setErrors(er => { const n = { ...er }; delete n.date; delete n.flexMonth; return n; });
-              }
-            }}
-            className={`py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
-              bookingType === "confirm"
-                ? "bg-saffron-600 text-white shadow-[0_2px_8px_rgba(255,107,0,0.3)]"
-                : "text-white/50 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            Direct Confirm (25% Adv)
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setBookingType("lock");
-              setDate(undefined);
-              if (errors.flexMonth || errors.date) {
-                setErrors(er => { const n = { ...er }; delete n.date; delete n.flexMonth; return n; });
-              }
-            }}
-            className={`py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
-              bookingType === "lock"
-                ? "bg-saffron-600 text-white shadow-[0_2px_8px_rgba(255,107,0,0.3)]"
-                : "text-white/50 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            Flexi-Price Lock (₹{tokenAmount})
-          </button>
-        </div>
-
-        {/* Date Input */}
-        <div>
-          {bookingType === "lock" ? (
-            <div className="relative">
-              <select
-                value={flexMonth}
-                onChange={(e) => {
-                  setFlexMonth(e.target.value);
-                  if (errors.flexMonth) setErrors(er => { const n = { ...er }; delete n.flexMonth; return n; });
-                }}
-                className={`${inputClass} pr-10 ${errors.flexMonth ? "border-red-400/60" : ""} cursor-pointer`}
-                style={{ background: "rgba(255,255,255,0.06)" }}
-              >
-                <option value="" disabled style={{ background: "#160800" }}>Select tentative travel month</option>
-                <option value="June 2026" style={{ background: "#160800" }}>June 2026</option>
-                <option value="July 2026" style={{ background: "#160800" }}>July 2026</option>
-                <option value="August 2026" style={{ background: "#160800" }}>August 2026</option>
-                <option value="September 2026" style={{ background: "#160800" }}>September 2026</option>
-                <option value="October 2026" style={{ background: "#160800" }}>October 2026 (Festive Season)</option>
-                <option value="November 2026" style={{ background: "#160800" }}>November 2026</option>
-                <option value="December 2026" style={{ background: "#160800" }}>December 2026</option>
-                <option value="Later / Undecided" style={{ background: "#160800" }}>Later / Undecided</option>
-              </select>
-              <ChevronDown size={15} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
-              {errors.flexMonth && <p className="text-red-400 text-[11px] mt-1.5">{errors.flexMonth}</p>}
-            </div>
-          ) : (
-            <div className="relative">
-              <CalendarDays size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/25 pointer-events-none z-10" />
-              <input
-                type="date"
-                value={date ? getLocalDateString(date) : ""}
-                min={getLocalDateString(new Date())}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setDate(val ? new Date(val) : undefined);
-                  if (errors.date) setErrors(er => { const n = { ...er }; delete n.date; return n; });
-                }}
-                className={`${inputClass} pl-10 cursor-pointer text-white`}
-                style={{ colorScheme: "dark" }}
-              />
-              {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Row 4: Email */}
-      <Field label="Email Address">
+      {/* Row 3: Travel Date Selection */}
+      <Field label="Travel Date" required>
         <div className="relative">
-          <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/25 pointer-events-none" />
+          <CalendarDays size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/25 pointer-events-none z-10" />
           <input
-            type="email"
-            value={fields.email}
-            onChange={set("email")}
-            placeholder="your@email.com (optional)"
-            className={`${inputClass} pl-10`}
-            autoComplete="email"
+            type="date"
+            value={date ? getLocalDateString(date) : ""}
+            min={getLocalDateString(new Date())}
+            onChange={(e) => {
+              const val = e.target.value;
+              setDate(val ? new Date(val) : undefined);
+              if (errors.date) setErrors(er => { const n = { ...er }; delete n.date; return n; });
+            }}
+            className={`${inputClass} pl-10 cursor-pointer text-white`}
+            style={{ colorScheme: "dark" }}
           />
+          {errors.date && <p className="text-red-400 text-[11px] mt-1.5">{errors.date}</p>}
         </div>
       </Field>
 
-      {/* Row 5: Special Request */}
+      {/* Row 4: Special Request */}
       <Field label="Special Request">
         <div className="relative">
           <MessageSquare size={15} className="absolute left-3.5 top-4 text-white/25 pointer-events-none" />
@@ -444,31 +331,15 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
             <Loader2 size={17} className="animate-spin" />
             Sending your request…
           </span>
-        ) : bookingType === "confirm" ? (
-          "Submit & Confirm Booking (25% Advance)"
         ) : (
-          `Submit & Lock Today's Rates (₹${tokenAmount})`
+          "Submit & Get Free Tour Quote"
         )}
       </button>
 
       {/* Trust line */}
       <p className="text-center text-[13px] font-medium" style={{ color: "rgba(255,200,80,0.75)" }}>
-        ⏱️ We will call you within 2 hours
+        ⏱️ We will call you within 2 hours with best available pricing
       </p>
-
-      {/* Micro-trust strip */}
-      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 pt-1">
-        {[
-          bookingType === "confirm" ? "25% Advance Payment" : "Price Lock Guarantee",
-          bookingType === "confirm" ? "Exact Dates Confirmed" : "Flexible Dates",
-          "100% secure tirth yatra",
-        ].map(t => (
-          <span key={t} className="text-white/70 text-[11px] whitespace-nowrap flex items-center gap-1">
-            <CheckCircle2 size={10} className="text-emerald-400/80" />
-            {t}
-          </span>
-        ))}
-      </div>
     </form>
   );
 }
@@ -556,7 +427,8 @@ export default function LeadCapture() {
             </p>
 
             {/* Inclusions */}
-            <ul className="space-y-3 mb-10">
+            {/* Inclusions */}
+            <ul className="space-y-3">
               {inclusions.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-saffron-500/15 border border-saffron-400/25 flex items-center justify-center flex-shrink-0">
@@ -566,45 +438,6 @@ export default function LeadCapture() {
                 </li>
               ))}
             </ul>
-
-            {/* Proof grid */}
-            <div className="grid grid-cols-2 gap-3">
-              {proofPoints.map(({ icon: Icon, text, sub }) => (
-                <div
-                  key={text}
-                  className="bg-white/[0.04] border border-white/[0.07] rounded-2xl p-4"
-                >
-                  <Icon size={16} className="text-saffron-400 mb-2.5" />
-                  <div className="text-white font-semibold text-[13px] leading-tight">{text}</div>
-                  <div className="text-white/35 text-[11px] mt-0.5 leading-tight">{sub}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Testimonial snippet */}
-            <div
-              className="mt-8 rounded-2xl p-5 border border-white/[0.08]"
-              style={{ background: "rgba(255,255,255,0.03)" }}
-            >
-              <div className="flex items-center gap-0.5 mb-2.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={12} className="text-[#FBBC05] fill-[#FBBC05]" />
-                ))}
-              </div>
-              <p className="text-white/55 text-[13px] leading-relaxed italic mb-3">
-                &ldquo;Everything was arranged perfectly — hotel, darshan, transport. We just
-                came with devotion and they handled everything else. Priceless experience.&rdquo;
-              </p>
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-saffron-500/20 flex items-center justify-center text-saffron-400 text-[11px] font-bold flex-shrink-0">
-                  RS
-                </div>
-                <div>
-                  <div className="text-white/60 text-[12px] font-medium">Ramesh Sharma</div>
-                  <div className="text-white/30 text-[10px]">Delhi · Verified pilgrim</div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           {/* ── Right: Form Card ── */}
@@ -630,13 +463,13 @@ export default function LeadCapture() {
                       Get Your Free Tour Quote
                     </h3>
                     <p className="text-white/40 text-[12px] mt-0.5">
-                      Confirm Travel This Month (25% Adv) OR Lock Future Rates (₹{tokenAmount})
+                      Personalised itinerary and transparent pricing within 2 hours
                     </p>
                   </div>
                 </div>
               </div>
 
-              <LeadForm tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+              <LeadForm />
             </div>
           </motion.div>
         </div>
