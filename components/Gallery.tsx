@@ -110,7 +110,7 @@ export default function Gallery() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setActivePhotoIndex(index)}
-                className="group relative cursor-pointer overflow-hidden rounded-lg sm:rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 aspect-[4/3] flex items-center justify-center"
+                className="group relative cursor-pointer overflow-hidden rounded-lg sm:rounded-2xl liquid-glass border border-white/60 shadow-md hover:-translate-y-1 hover:shadow-xl transition-all duration-300 aspect-[4/3] flex items-center justify-center"
               >
                 <img
                   src={item.src}
@@ -120,7 +120,7 @@ export default function Gallery() {
                 />
 
                 {/* Glassmorphism details footer */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-1 sm:p-3.5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-1 sm:p-3.5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex justify-between items-center gap-1 mb-0.5 sm:mb-1">
                     <span className="bg-saffron-600 text-white text-[7px] sm:text-[10px] font-semibold px-1 sm:px-2 py-0.5 rounded-full uppercase tracking-wider line-clamp-1">
                       {item.tag}
@@ -134,9 +134,9 @@ export default function Gallery() {
                   </p>
                 </div>
 
-                {/* Subtle camera icon on hover for desktop */}
+                {/* Camera icon on hover */}
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300">
                     <ImageIcon size={18} />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export default function Gallery() {
         <div className="text-center mt-12 sm:mt-16">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-divine-dark text-white hover:bg-saffron-700 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            className="liquid-glass-btn-primary inline-flex items-center justify-center px-8 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase text-white cursor-pointer"
           >
             {expanded ? "Show Less Memories" : `View All Yatra Memories (${galleryItems.length - 8}+)`}
           </button>

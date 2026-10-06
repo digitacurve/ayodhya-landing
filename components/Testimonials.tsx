@@ -150,7 +150,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="inline-flex items-center gap-3 bg-white border border-gray-100 shadow-sm rounded-2xl px-5 py-3"
+            className="inline-flex items-center gap-3 liquid-glass border border-white/60 shadow-md rounded-2xl px-5 py-3"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" aria-hidden>
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -167,7 +167,7 @@ export default function Testimonials() {
                   ))}
                 </div>
               </div>
-              <div className="text-gray-400 text-[11px] mt-0.5">312 Google Reviews</div>
+              <div className="text-gray-500 text-[11px] mt-0.5">312 Google Reviews</div>
             </div>
           </motion.div>
         </motion.div>
@@ -178,7 +178,7 @@ export default function Testimonials() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          <div className="relative bg-divine-dark rounded-3xl overflow-hidden">
+          <div className="relative liquid-glass-dark rounded-3xl overflow-hidden border border-gold-500/25 shadow-2xl">
             {/* Decorative gradient */}
             <div
               className="absolute inset-0 pointer-events-none"

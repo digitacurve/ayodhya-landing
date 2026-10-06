@@ -147,8 +147,8 @@ export default function HotelShowcase() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className={`rounded-2xl sm:rounded-3xl overflow-hidden border ${hotel.borderColor} shadow-sm hover:shadow-lg transition-shadow duration-500 flex flex-col ${
-                hotel.dark ? "bg-divine-dark text-white" : "bg-white"
+              className={`rounded-2xl sm:rounded-3xl overflow-hidden border transition-all duration-500 flex flex-col ${
+                hotel.dark ? "liquid-glass-dark border-gold-500/30 shadow-2xl" : "liquid-glass border-white/60 shadow-lg"
               }`}
             >
               {/* Visual Header — High-Quality Hotel Image */}

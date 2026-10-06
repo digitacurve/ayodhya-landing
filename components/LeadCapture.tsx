@@ -58,7 +58,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
 }
 
 const inputClass =
-  "w-full bg-white/[0.06] border border-white/[0.12] rounded-xl px-4 py-3.5 text-white placeholder-white/25 text-[14px] focus:outline-none focus:border-saffron-400/70 focus:bg-white/[0.09] focus:ring-2 focus:ring-saffron-400/15 transition-all duration-200 appearance-none";
+  "w-full liquid-glass-input rounded-xl px-4 py-3.5 text-white placeholder-white/35 text-[14px] appearance-none";
 
 // ─── Format date ────────────────────────────────────────────────────────────
 function fmtDate(d: Date) {
@@ -435,15 +435,9 @@ function LeadForm({ tokenAmount, setTokenAmount }: { tokenAmount: number; setTok
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="wa-shimmer w-full py-4 rounded-2xl font-bold text-[15px] text-white relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(255,107,0,0.4)] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+        className="liquid-glass-btn-primary w-full py-4 rounded-2xl font-bold text-[15px] text-white flex items-center justify-center cursor-pointer"
         data-cta="form-submit"
         data-source="lead-capture"
-        style={{
-          background: status === "submitting"
-            ? "rgba(255,107,0,0.6)"
-            : "linear-gradient(135deg, #FF6B00 0%, #FF8C00 50%, #D4AF37 100%)",
-          boxShadow: "0 4px 24px rgba(255,107,0,0.3)",
-        }}
       >
         {status === "submitting" ? (
           <span className="flex items-center justify-center gap-2">
@@ -621,18 +615,7 @@ export default function LeadCapture() {
             transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 scroll-mt-24"
           >
-            <div
-              className="rounded-3xl p-6 sm:p-8 border"
-              style={{
-                background:
-                  "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.04) 100%)",
-                backdropFilter: "blur(32px)",
-                WebkitBackdropFilter: "blur(32px)",
-                borderColor: "rgba(212,175,55,0.2)",
-                boxShadow:
-                  "0 32px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
-              }}
-            >
+            <div className="liquid-glass-dark rounded-3xl p-6 sm:p-8 border border-gold-500/25 shadow-2xl">
               {/* Form header */}
               <div className="mb-7 pb-6 border-b border-white/[0.08]">
                 <div className="flex items-center gap-3">

@@ -17,7 +17,7 @@ function FAQItem({ item, index }: { item: (typeof faqData)[0]; index: number }) 
     >
       <details
         name="faq-accordion"
-        className="group rounded-2xl overflow-hidden border border-gray-100 bg-white hover:border-gray-200 open:shadow-[0_4px_24px_rgba(0,0,0,0.07)] open:border-saffron-100 transition-all duration-300"
+        className="group rounded-2xl overflow-hidden border border-white/60 liquid-glass hover:border-saffron-300 open:shadow-md transition-all duration-300"
       >
         <summary
           className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none"
@@ -25,14 +25,14 @@ function FAQItem({ item, index }: { item: (typeof faqData)[0]; index: number }) 
           <span className="font-playfair font-semibold text-base sm:text-lg leading-snug text-divine-dark group-open:text-saffron-700 transition-colors duration-300">
             {item.question}
           </span>
-          <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gray-50 group-open:bg-saffron-100 transition-all duration-300">
-            <Plus size={15} className="text-gray-400 group-open:hidden" />
+          <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-white/40 group-open:bg-saffron-100 transition-all duration-300">
+            <Plus size={15} className="text-gray-500 group-open:hidden" />
             <Minus size={15} className="text-saffron-600 hidden group-open:block" />
           </div>
         </summary>
 
         <div className="px-5 sm:px-6 pb-6">
-          <div className="h-px bg-saffron-100 mb-4" />
+          <div className="h-px bg-saffron-200/50 mb-4" />
           <p className="text-gray-600 text-sm sm:text-[15px] leading-relaxed">
             {item.answer}
           </p>
@@ -83,7 +83,7 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 bg-divine-dark rounded-3xl p-8 sm:p-10 text-center"
+          className="mt-10 liquid-glass-dark rounded-3xl p-8 sm:p-10 text-center border border-gold-500/25 shadow-2xl"
         >
           <div className="text-3xl mb-3" aria-hidden>🙏</div>
           <h3 className="font-playfair font-bold text-white text-2xl mb-2">
@@ -94,7 +94,7 @@ export default function FAQ() {
           </p>
           <a
             href="/#get-quote"
-            className="wa-shimmer inline-flex items-center justify-center bg-saffron-600 hover:bg-saffron-700 text-white px-8 py-4 rounded-full font-semibold text-[15px] transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] shadow-lg"
+            className="liquid-glass-btn-primary inline-flex items-center justify-center text-white px-8 py-4 rounded-full font-semibold text-[15px]"
           >
             Enquire Now
           </a>

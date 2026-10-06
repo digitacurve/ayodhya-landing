@@ -159,14 +159,14 @@ export default function Hero() {
       {/* ── Navigation Arrows ── */}
       <button
         onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 hover:border-white/50 text-white/70 hover:text-white bg-black/25 hover:bg-black/45 flex items-center justify-center transition-all duration-200 hidden md:flex"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 liquid-glass-btn-secondary w-11 h-11 rounded-full text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 hidden md:flex"
         aria-label="Previous Slide"
       >
         <ChevronLeft size={22} />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 hover:border-white/50 text-white/70 hover:text-white bg-black/25 hover:bg-black/45 flex items-center justify-center transition-all duration-200 hidden md:flex"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 liquid-glass-btn-secondary w-11 h-11 rounded-full text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 hidden md:flex"
         aria-label="Next Slide"
       >
         <ChevronRight size={22} />
@@ -184,7 +184,7 @@ export default function Hero() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-1.5 mb-5 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full text-emerald-400 font-inter text-[11px] font-medium tracking-wide uppercase shadow-[0_2px_12px_rgba(16,185,129,0.08)]">
+            <div className="inline-flex items-center gap-1.5 mb-5 bg-emerald-500/10 border border-emerald-500/25 backdrop-blur-md px-3 py-1 rounded-full text-emerald-400 font-inter text-[11px] font-medium tracking-wide uppercase shadow-[0_2px_12px_rgba(16,185,129,0.08)]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Govt. Registered Agency (GSTIN: 09CJPPJ6346G1ZR)
             </div>
@@ -193,12 +193,12 @@ export default function Hero() {
               {activeSlide.title}
             </h1>
 
-            <p className="text-white/75 text-sm sm:text-base lg:text-lg font-inter font-light max-w-2xl mx-auto leading-relaxed mb-6">
+            <p className="text-white/80 text-sm sm:text-base lg:text-lg font-inter font-light max-w-2xl mx-auto leading-relaxed mb-6">
               {activeSlide.description}
             </p>
 
-            {/* Price badge formatted according to instructions */}
-            <div className="inline-flex items-center justify-center gap-2 bg-black/45 border border-white/10 backdrop-blur-md rounded-full px-5 py-3.5 mb-8 shadow-inner select-none text-xs sm:text-sm">
+            {/* Price badge with Liquid Glass Dark material */}
+            <div className="inline-flex items-center justify-center gap-2 liquid-glass-dark border border-gold-500/25 rounded-full px-5 py-3 mb-8 shadow-2xl select-none text-xs sm:text-sm">
               <span className="text-white/60 font-semibold uppercase tracking-wider pr-3 border-r border-white/15">
                 {activeSlide.duration}
               </span>
@@ -213,7 +213,7 @@ export default function Hero() {
               <a
                 href="/#get-quote"
                 onClick={() => handleSelectPackage(activeSlide.id)}
-                className="wa-shimmer bg-saffron-gradient hover:brightness-105 text-white px-7 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center text-center shadow-[0_4px_24px_rgba(255,107,0,0.25)] flex items-center"
+                className="liquid-glass-btn-primary text-white px-7 py-3.5 rounded-full font-bold text-[14px] sm:text-base w-full sm:w-auto justify-center text-center flex items-center"
                 data-cta="scroll-quote"
                 data-source="hero-slide"
               >
@@ -221,7 +221,7 @@ export default function Hero() {
               </a>
               <a
                 href="tel:+919235222399"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3.5 rounded-full font-bold text-[14px] sm:text-base transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto justify-center text-center backdrop-blur-md flex items-center gap-2"
+                className="liquid-glass-btn-secondary text-white px-6 py-3.5 rounded-full font-bold text-[14px] sm:text-base w-full sm:w-auto justify-center text-center flex items-center gap-2"
                 data-cta="call-hero"
               >
                 <Phone size={16} className="text-saffron-400" />
@@ -245,25 +245,26 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex-shrink-0 flex flex-col items-center">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6 w-full max-w-4xl justify-center text-center md:text-left mb-6">
-          {trustBadges.map((badge, i) => (
-            <div key={i} className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-white/70 justify-center md:justify-start">
-              <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.12] flex items-center justify-center flex-shrink-0">
-                <badge.icon size={14} className="text-gold-400" />
-              </div>
-              <div className="text-center md:text-left">
-                <div className="text-white/90 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider leading-tight">
-                  {badge.label}
+      {/* Trust Badges Bar in Liquid Glass container */}
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-8 flex-shrink-0 flex flex-col items-center">
+        <div className="w-full liquid-glass-dark rounded-2xl p-4 sm:p-5 border border-white/10 shadow-2xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6 w-full justify-center text-center md:text-left">
+            {trustBadges.map((badge, i) => (
+              <div key={i} className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-white/75 justify-center md:justify-start">
+                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                  <badge.icon size={14} className="text-gold-400" />
                 </div>
-                <div className="text-white/40 text-[9px] sm:text-[10px] mt-0.5 leading-tight">
-                  {badge.sub}
+                <div className="text-center md:text-left">
+                  <div className="text-white/95 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider leading-tight">
+                    {badge.label}
+                  </div>
+                  <div className="text-white/50 text-[9px] sm:text-[10px] mt-0.5 leading-tight">
+                    {badge.sub}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -31,8 +31,8 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: (typeof packages)[0]; i
       transition={{ duration: 0.7, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className={`relative flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 w-full h-full ${
         isPopular
-          ? "bg-divine-dark ring-2 ring-gold-500/80 shadow-gold-glow hover:shadow-[0_28px_80px_rgba(212,175,55,0.3)]"
-          : "premium-card shine-effect"
+          ? "liquid-glass-dark border border-gold-500/50 shadow-2xl hover:-translate-y-1"
+          : "liquid-glass border border-white/60 shadow-lg hover:-translate-y-1"
       }`}
     >
       {/* Popular banner */}

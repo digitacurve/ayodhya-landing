@@ -122,8 +122,8 @@ function StarRow({ rating, size = 16 }: { rating: number; size?: number }) {
 function ReviewCard({ review, active }: { review: (typeof reviews)[0]; active: boolean }) {
   return (
     <div
-      className={`relative flex-shrink-0 w-[calc(100vw-64px)] sm:w-[360px] lg:w-[380px] bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.07)] border transition-all duration-400 ${
-        active ? "border-gold-300/60 shadow-[0_8px_32px_rgba(212,175,55,0.12)]" : "border-gray-100"
+      className={`relative flex-shrink-0 w-[calc(100vw-64px)] sm:w-[360px] lg:w-[380px] liquid-glass rounded-2xl p-6 shadow-md border transition-all duration-400 ${
+        active ? "border-gold-400/80 shadow-[0_8px_32px_rgba(212,175,55,0.18)]" : "border-white/60"
       }`}
     >
       {/* Quote mark */}
