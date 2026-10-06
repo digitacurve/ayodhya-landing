@@ -170,16 +170,12 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="relative flex-shrink-0 w-[60px] h-[60px] sm:w-[72px] sm:h-[72px]">
-                <Image
-                  src="/logo.png"
-                  alt="Ayodhya Dharshan"
-                  fill
-                  sizes="72px"
-                  className="object-contain"
-                />
-              </div>
+            <div className="flex items-center gap-3.5 mb-4">
+              <img
+                src="/logo.png"
+                alt="Ayodhya Dharshan"
+                className="w-14 h-14 sm:w-16 sm:h-16 object-contain flex-shrink-0"
+              />
               <div>
                 <div className="font-playfair font-bold text-white text-lg sm:text-xl leading-tight tracking-wide">
                   Ayodhya Dharshan
