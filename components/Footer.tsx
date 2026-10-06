@@ -2,14 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Youtube, ChevronDown, AlertCircle, CreditCard, RefreshCw, Ban, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ChevronDown, AlertCircle, CreditCard, RefreshCw, Ban } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/data/siteConfig";
 
-const WA_NUMBER    = siteConfig.whatsappNumber;
-const WA_MESSAGE   = encodeURIComponent(
-  "Jai Shri Ram 🙏 I want to book an Ayodhya tour package. Please share full details."
-);
 const EMAIL        = siteConfig.email;
 const PHONE_DISPLAY = siteConfig.phoneDisplay;
 
@@ -36,24 +32,25 @@ const socialLinks = [
 
 const footerLinks = {
   packages: [
-    { label: "Ayodhya Darshan Package",   href: "#packages" },
-    { label: "Ayodhya Varanasi Package",  href: "#packages" },
-    { label: "Prayagraj Varanasi Circuit",href: "#packages" },
-    { label: "Custom Group Tours",        href: "#packages" },
-    { label: "Senior Citizen Special",    href: "#packages" },
+    { label: "Ayodhya Darshan (2N/3D)",           href: "/packages/ayodhya-darshan-2n3d" },
+    { label: "Ayodhya Varanasi (3N/4D)",          href: "/packages/ayodhya-varanasi-3n4d" },
+    { label: "Ayodhya Prayagraj (4N/5D)",         href: "/packages/ayodhya-prayagraj-varanasi-4n5d" },
+    { label: "Lucknow Ayodhya (3N/4D)",           href: "/packages/lucknow-ayodhya-3n4d" },
+    { label: "Varanasi Chitrakoot (4N/5D)",        href: "/packages/ayodhya-varanasi-chitrakoot-4n5d" },
+    { label: "Ramayana Circuit (5N/6D)",          href: "/packages/ayodhya-prayagraj-varanasi-chitrakoot-5n6d" },
   ],
   destinations: [
-    { label: "Ram Mandir Darshan",  href: "#" },
-    { label: "Hanuman Garhi",       href: "#" },
-    { label: "Kanak Bhawan",        href: "#" },
-    { label: "Saryu River Ghat",    href: "#" },
-    { label: "Naimisharanya",       href: "#" },
+    { label: "Ram Mandir Darshan",  href: "/#packages" },
+    { label: "Hanuman Garhi",       href: "/#packages" },
+    { label: "Kanak Bhawan",        href: "/#packages" },
+    { label: "Saryu River Ghat",    href: "/#packages" },
+    { label: "Naimisharanya",       href: "/#packages" },
   ],
   company: [
-    { label: "About Us",       href: "#" },
-    { label: "Why Choose Us",  href: "#why-us" },
-    { label: "Testimonials",   href: "#testimonials" },
-    { label: "FAQ",            href: "#faq" },
+    { label: "About Us",       href: "/#why-us" },
+    { label: "Why Choose Us",  href: "/#why-us" },
+    { label: "Testimonials",   href: "/#testimonials" },
+    { label: "FAQ",            href: "/#faq" },
   ],
 };
 
@@ -63,9 +60,9 @@ const policyItems = [
     title: "Advance Payment",
     color: "#D4AF37",
     points: [
-      "Pay 20% as an advance to reserve your seat.",
-      "Remaining balance must be paid after check-in at hotel or on the first day of the trip.",
-      "Any flight bookings must be paid 100% in advance.",
+      "Pay 20% advance to reserve your seat.",
+      "Balance paid after check-in at hotel.",
+      "Flight bookings require 100% advance.",
     ],
   },
   {
@@ -73,25 +70,24 @@ const policyItems = [
     title: "Credit Card Charges",
     color: "#60A5FA",
     points: [
-      "2.5% gateway charge applies for Indian credit cards.",
-      "4.5% gateway charge applies for international credit cards.",
+      "2.5% gateway charge for Indian cards.",
+      "4.5% gateway charge for international cards.",
     ],
   },
   {
     icon: RefreshCw,
     title: "Rescheduling",
     color: "#FB923C",
-    points: ["25% rescheduling charges will be applicable."],
+    points: ["25% rescheduling charges applicable."],
   },
   {
     icon: Ban,
     title: "Cancellation Policy",
     color: "#F87171",
     points: [
-      "Booking amount is strictly non-refundable.",
-      "Applicable cancellation charges will be levied on cancellation.",
-      "Any cancellation request must be informed at least 7 days prior to arrival.",
-      "Cancellations made within 7 days of arrival: 100% of total tour cost will be charged.",
+      "Booking amount is non-refundable.",
+      "Inform at least 7 days prior to arrival.",
+      "Within 7 days: 100% tour cost charged.",
     ],
   },
 ];
@@ -100,7 +96,7 @@ function PolicyAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="space-y-2">
+    <div className="grid grid-cols-2 gap-2">
       {policyItems.map((item, i) => {
         const isOpen = openIndex === i;
         const Icon   = item.icon;
@@ -109,27 +105,27 @@ function PolicyAccordion() {
             key={item.title}
             className={`rounded-xl border transition-all duration-300 overflow-hidden ${
               isOpen
-                ? "border-white/[0.14] bg-white/[0.06]"
-                : "border-white/[0.06] bg-white/[0.02] hover:border-white/[0.1]"
+                ? "col-span-2 border-white/[0.14] bg-white/[0.06]"
+                : "col-span-1 border-white/[0.06] bg-white/[0.02] hover:border-white/[0.1]"
             }`}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left"
+              className="w-full flex items-center justify-between gap-1.5 px-3 py-2.5 text-left"
               aria-expanded={isOpen}
             >
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2 min-w-0">
                 <div
                   className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: `${item.color}18` }}
                 >
                   <Icon size={12} style={{ color: item.color }} />
                 </div>
-                <span className="text-white/70 text-[13px] font-medium">{item.title}</span>
+                <span className="text-white/80 text-[11px] sm:text-xs font-medium truncate">{item.title}</span>
               </div>
               <ChevronDown
-                size={14}
-                className={`text-white/30 transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
+                size={12}
+                className={`text-white/40 transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -141,16 +137,16 @@ function PolicyAccordion() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <div className="px-4 pb-4">
-                    <div className="h-px bg-white/[0.06] mb-3" />
-                    <ul className="space-y-2">
+                  <div className="px-3 pb-3">
+                    <div className="h-px bg-white/[0.06] mb-2.5" />
+                    <ul className="space-y-1.5">
                       {item.points.map((point, j) => (
                         <li key={j} className="flex items-start gap-2">
                           <span
                             className="mt-[5px] w-1.5 h-1.5 rounded-full flex-shrink-0"
                             style={{ backgroundColor: item.color }}
                           />
-                          <span className="text-white/60 text-[12px] leading-relaxed">{point}</span>
+                          <span className="text-white/70 text-[11px] leading-relaxed">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -168,14 +164,14 @@ function PolicyAccordion() {
 export default function Footer() {
   return (
     <footer className="bg-[#0D0400] border-t border-white/5">
-      {/* Main footer grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      {/* Main footer section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
 
-          {/* Brand column — 4 cols */}
+          {/* Brand column */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="relative flex-shrink-0 w-[72px] h-[72px]">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="relative flex-shrink-0 w-[60px] h-[60px] sm:w-[72px] sm:h-[72px]">
                 <Image
                   src="/logo.png"
                   alt="Ayodhya Dharshan"
@@ -185,48 +181,44 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <div className="font-playfair font-bold text-white text-xl leading-tight tracking-wide">
+                <div className="font-playfair font-bold text-white text-lg sm:text-xl leading-tight tracking-wide">
                   Ayodhya Dharshan
                 </div>
-                <div className="text-saffron-500 text-[10px] tracking-[0.24em] uppercase mt-0.5">
+                <div className="text-saffron-500 text-[9px] sm:text-[10px] tracking-[0.24em] uppercase mt-0.5">
                   Premium Pilgrimage Specialists
                 </div>
               </div>
             </div>
 
-            <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-sm">
+            <p className="text-white/40 text-xs sm:text-sm leading-relaxed mb-4 max-w-sm">
               India&apos;s most trusted Ayodhya pilgrimage specialists. Serving 50,000+ devotees
               since 2009 with premium yatra experiences, VIP darshan arrangements, and
               unforgettable spiritual journeys.
             </p>
 
             {/* Contact */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-white/50 text-sm select-all">
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
-                  <Phone size={14} className="text-saffron-500" />
+            <div className="space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2.5 text-white/50 text-xs sm:text-sm select-all">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <Phone size={13} className="text-saffron-500" />
                 </div>
                 {PHONE_DISPLAY}
               </div>
               <a
                 href={`mailto:${EMAIL}`}
-                className="flex items-center gap-3 text-white/50 hover:text-white text-sm transition-colors group"
+                className="flex items-center gap-2.5 text-white/50 hover:text-white text-xs sm:text-sm transition-colors group"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-saffron-600/20 transition-colors flex-shrink-0">
-                  <Mail size={14} className="text-saffron-500" />
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-saffron-600/20 transition-colors flex-shrink-0">
+                  <Mail size={13} className="text-saffron-500" />
                 </div>
                 {EMAIL}
               </a>
-              <div className="flex items-start gap-3 text-white/50 text-sm">
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin size={14} className="text-saffron-500" />
+              <div className="flex items-start gap-2.5 text-white/50 text-xs sm:text-sm">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin size={13} className="text-saffron-500" />
                 </div>
                 <span>
-                  Second Floor, Plot No 12,
-                  <br />
-                  Transport Nagar, Ayodhya,
-                  <br />
-                  Uttar Pradesh — 224001
+                  Second Floor, Plot No 12, Transport Nagar, Ayodhya, UP — 224001
                 </span>
               </div>
             </div>
@@ -234,7 +226,7 @@ export default function Footer() {
             {/* Quote CTA */}
             <a
               href="/#get-quote"
-              className="inline-flex items-center justify-center gap-2 mt-6 bg-saffron-600 hover:bg-saffron-700 text-white px-6 py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 mt-5 bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all hover:scale-105 active:scale-95"
               data-cta="scroll-quote"
               data-source="footer"
             >
@@ -242,91 +234,102 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Quick Links — 2 cols */}
-          <div className="lg:col-span-2">
-            <h4 className="text-white font-semibold text-xs tracking-[0.2em] uppercase mb-5">
-              Our Packages
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.packages.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/40 hover:text-saffron-400 text-sm transition-colors leading-snug"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Temples — 2 cols */}
-          <div className="lg:col-span-2">
-            <h4 className="text-white font-semibold text-xs tracking-[0.2em] uppercase mb-5">
-              Temples We Cover
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.destinations.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/40 hover:text-saffron-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company + Social — 2 cols */}
-          <div className="lg:col-span-2">
-            <h4 className="text-white font-semibold text-xs tracking-[0.2em] uppercase mb-5">
-              Company
-            </h4>
-            <ul className="space-y-3 mb-8">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/40 hover:text-saffron-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <h4 className="text-white font-semibold text-xs tracking-[0.2em] uppercase mb-4">
-              Follow Us
-            </h4>
-            <div className="flex gap-2.5">
-              {socialLinks.map(({ Icon, label, href, hoverColor }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 transition-all duration-250 ${hoverColor}`}
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Payment & Cancellation Policy — 2 cols */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-5">
-              <AlertCircle size={13} className="text-saffron-400 flex-shrink-0" />
-              <h4 className="text-white font-semibold text-xs tracking-[0.2em] uppercase">
-                Booking Policy
+          {/* 3 Columns Row on Mobile: Packages | Temples | Company */}
+          <div className="lg:col-span-8 grid grid-cols-3 gap-2 sm:gap-6">
+            
+            {/* Packages */}
+            <div>
+              <h4 className="text-white font-semibold text-[11px] sm:text-xs tracking-wider uppercase mb-3">
+                Our Packages
               </h4>
+              <ul className="space-y-2">
+                {footerLinks.packages.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-white/50 hover:text-saffron-400 text-[11px] sm:text-xs transition-colors leading-tight block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <PolicyAccordion />
+
+            {/* Temples */}
+            <div>
+              <h4 className="text-white font-semibold text-[11px] sm:text-xs tracking-wider uppercase mb-3">
+                Temples
+              </h4>
+              <ul className="space-y-2">
+                {footerLinks.destinations.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-white/50 hover:text-saffron-400 text-[11px] sm:text-xs transition-colors leading-tight block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-white font-semibold text-[11px] sm:text-xs tracking-wider uppercase mb-3">
+                Company
+              </h4>
+              <ul className="space-y-2">
+                {footerLinks.company.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-white/50 hover:text-saffron-400 text-[11px] sm:text-xs transition-colors leading-tight block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
+
+          {/* Social + Booking Policy Container */}
+          <div className="lg:col-span-12 pt-4 border-t border-white/5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+              <div>
+                <h4 className="text-white font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-2">
+                  Follow Us
+                </h4>
+                <div className="flex gap-2">
+                  {socialLinks.map(({ Icon, label, href, hoverColor }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className={`w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 transition-all duration-250 ${hoverColor}`}
+                    >
+                      <Icon size={15} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex-1 sm:max-w-xl sm:ml-auto">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertCircle size={13} className="text-saffron-400 flex-shrink-0" />
+                  <h4 className="text-white font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase">
+                    Booking Policy
+                  </h4>
+                </div>
+                <PolicyAccordion />
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -339,14 +342,14 @@ export default function Footer() {
       />
 
       {/* Bottom bar */}
-      <div className="py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="text-white/25 text-xs">
+      <div className="py-4 sm:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <p className="text-white/30 text-[11px]">
             © 2025 Ayodhya Dharshan. All rights reserved. |{" "}
-            <span className="text-saffron-600/50">Jai Shri Ram 🙏</span>
+            <span className="text-saffron-600/70 font-medium">Jai Shri Ram 🙏</span>
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-white/25 text-xs">
-            <span className="text-white/40 font-medium">GSTIN: 09CJPPJ6346G1ZR</span>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-white/30 text-[11px]">
+            <span className="text-white/50 font-medium">GSTIN: 09CJPPJ6346G1ZR</span>
             <span className="text-white/10">•</span>
             <span>IATA Certified</span>
             <span className="text-white/10">•</span>
