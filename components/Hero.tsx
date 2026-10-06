@@ -76,7 +76,7 @@ export default function Hero() {
             <span className="text-white/50 font-medium">/ person (₹14,998 per couple)</span>
           </div>
 
-          {/* CTAs: Primary + WhatsApp + Call */}
+          {/* CTAs: Primary + Call */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xl mx-auto mb-6">
             <a
               href="#get-quote"
@@ -85,17 +85,6 @@ export default function Hero() {
               data-source="hero"
             >
               Get Free Itinerary & Quote
-            </a>
-
-            <a
-              href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 rounded-full font-bold text-[14px] sm:text-base w-full sm:w-auto justify-center text-center flex items-center gap-2 transition-all duration-200 shadow-lg"
-              data-cta="whatsapp-hero"
-            >
-              <MessageCircle size={18} />
-              <span>WhatsApp Us</span>
             </a>
 
             <a
@@ -110,26 +99,27 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── 4 Trust / USP Badges Grid (Exact Kashi Darshan Format) ── */}
+      {/* ── 4 Trust / USP Badges Grid (4 Separate Boxes) ── */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-4 flex-shrink-0">
-        <div className="w-full liquid-glass-dark rounded-2xl p-4 sm:p-5 border border-white/12 shadow-2xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 w-full justify-center text-center md:text-left">
-            {trustBadges.map((badge, i) => (
-              <div key={i} className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-white/75 justify-center md:justify-start">
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                  <badge.icon size={14} className="text-gold-400" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full">
+          {trustBadges.map((badge, i) => (
+            <div
+              key={i}
+              className="liquid-glass-dark rounded-2xl p-3.5 sm:p-4 border border-white/12 shadow-xl flex flex-col md:flex-row items-center gap-2.5 md:gap-3 text-white/75 justify-center md:justify-start text-center md:text-left hover:border-gold-500/30 transition-all"
+            >
+              <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                <badge.icon size={16} className="text-gold-400" />
+              </div>
+              <div>
+                <div className="text-white/95 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider leading-tight">
+                  {badge.label}
                 </div>
-                <div className="text-center md:text-left">
-                  <div className="text-white/95 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider leading-tight">
-                    {badge.label}
-                  </div>
-                  <div className="text-white/50 text-[9px] sm:text-[10px] mt-0.5 leading-tight">
-                    {badge.sub}
-                  </div>
+                <div className="text-white/55 text-[10px] sm:text-[11px] mt-0.5 leading-tight">
+                  {badge.sub}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

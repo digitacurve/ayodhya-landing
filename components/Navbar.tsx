@@ -38,7 +38,7 @@ export default function Navbar() {
     <>
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 px-3 sm:px-6 ${
-          scrolled ? "top-2 sm:top-3" : "top-3 sm:top-5"
+          scrolled ? "top-2 sm:top-3" : "top-[38px] sm:top-[42px]"
         }`}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
