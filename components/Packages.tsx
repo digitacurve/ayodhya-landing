@@ -371,12 +371,12 @@ export default function Packages() {
           </div>
         </motion.div>
 
-        {/* Early bird price lock warning card */}
+        {/* Early bird price lock warning card — Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="mt-8 bg-amber-500/10 border border-amber-500/20 rounded-3xl p-5 sm:p-6 max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
+          className="hidden lg:flex mt-8 bg-amber-500/10 border border-amber-500/20 rounded-3xl p-5 sm:p-6 max-w-4xl mx-auto flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
         >
           <span className="text-2xl">💡</span>
           <div>
@@ -387,12 +387,12 @@ export default function Packages() {
           </div>
         </motion.div>
 
-        {/* Custom nudge */}
+        {/* Custom nudge — Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 text-center"
+          className="hidden lg:block mt-12 text-center"
         >
           <p className="text-gray-400 text-sm">
             Need a custom group tour, senior citizen plan or a different itinerary?{" "}
