@@ -29,7 +29,7 @@ export default function Navbar() {
   const [mobilePackagesOpen, setMobilePackagesOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 48);
+    const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -37,8 +37,8 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 px-3 sm:px-6 ${
-          scrolled ? "top-2 sm:top-3" : "top-[38px] sm:top-[42px]"
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 px-2 sm:px-6 ${
+          scrolled ? "top-2 sm:top-3" : "top-[32px] sm:top-[38px]"
         }`}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
