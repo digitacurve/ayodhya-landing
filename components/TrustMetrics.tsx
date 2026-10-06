@@ -2,49 +2,37 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Users, Star, Award, Heart } from "lucide-react";
+import { Users, Star, Award, Heart, CheckCircle2 } from "lucide-react";
 
 const metrics = [
   {
     icon: Users,
     end: 50000,
     suffix: "+",
-    label: "Happy Pilgrims",
+    title: "50,000+ HAPPY PILGRIMS",
     sub: "Families served since 2009",
-    color: "#FF6B00",
-    bg: "rgba(255,107,0,0.08)",
-    border: "rgba(255,107,0,0.15)",
   },
   {
     icon: Star,
     end: 4.9,
     suffix: "★",
-    label: "Google Rating",
+    title: "4.9/5 GOOGLE RATED",
     sub: "312 verified reviews",
-    color: "#D4AF37",
-    bg: "rgba(212,175,55,0.08)",
-    border: "rgba(212,175,55,0.2)",
     isDecimal: true,
   },
   {
     icon: Award,
     end: 15,
     suffix: "+",
-    label: "Years of Excellence",
+    title: "15+ YEARS EXCELLENCE",
     sub: "Ministry of Tourism certified",
-    color: "#8B0000",
-    bg: "rgba(139,0,0,0.07)",
-    border: "rgba(139,0,0,0.15)",
   },
   {
     icon: Heart,
     end: 100,
     suffix: "%",
-    label: "Satisfaction Rate",
+    title: "100% SATISFACTION RATE",
     sub: "Money-back guaranteed",
-    color: "#059669",
-    bg: "rgba(5,150,105,0.08)",
-    border: "rgba(5,150,105,0.18)",
   },
 ];
 
@@ -71,96 +59,88 @@ function CountUp({ end, isDecimal, inView }: { end: number; isDecimal?: boolean;
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.96 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
 export default function TrustMetrics() {
-  const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section ref={ref} className="py-20 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} className="py-10 sm:py-14 bg-divine-dark relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(255,140,0,0.08) 0%, transparent 70%)",
+          filter: "blur(50px)",
+        }}
+      />
 
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65 }}
-          className="text-center mb-12 sm:mb-14"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8 sm:mb-10"
         >
-          <div className="ornament-line max-w-xl mx-auto mb-4">
-            <span className="text-gold-600 text-[11px] tracking-[0.32em] uppercase font-semibold whitespace-nowrap px-4">
-              Trusted Across India
-            </span>
+          <div className="inline-flex items-center gap-1.5 bg-saffron-500/10 border border-saffron-500/25 px-3 py-1 rounded-full text-saffron-400 text-[11px] font-semibold uppercase tracking-wider mb-2.5">
+            Trusted Across India
           </div>
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-divine-dark">
-            Numbers That{" "}
-            <span className="text-gradient-saffron">Speak for Themselves</span>
+          <h2 className="font-playfair font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+            Numbers That <span className="text-saffron-400">Speak for Themselves</span>
           </h2>
         </motion.div>
 
-        {/* Grid */}
+        {/* Compact 4 Dark Glass Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
         >
           {metrics.map((m, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl p-6 sm:p-8 text-center shine-effect overflow-hidden"
-              style={{
-                background: m.bg,
-                border: `1px solid ${m.border}`,
-              }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className="relative rounded-2xl p-4 sm:p-5 bg-[#141722]/90 border border-white/10 hover:border-saffron-500/35 transition-all shadow-lg backdrop-blur-md overflow-hidden text-left"
             >
-              {/* Icon */}
-              <div
-                className="inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4"
-                style={{ background: m.bg, border: `1px solid ${m.border}` }}
-              >
-                <m.icon size={20} style={{ color: m.color }} />
+              {/* Gradient Icon Badge */}
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white mb-3 shadow-md shadow-orange-500/20 flex-shrink-0">
+                <m.icon size={18} />
               </div>
 
-              {/* Number */}
-              <div
-                className="font-playfair font-bold text-4xl sm:text-5xl leading-none mb-1.5"
-                style={{ color: m.color }}
-              >
-                <CountUp end={m.end} isDecimal={m.isDecimal} inView={inView} />
-                <span className="text-2xl sm:text-3xl">{m.suffix}</span>
-              </div>
+              {/* Bold Title */}
+              <h3 className="font-inter font-bold text-white text-xs sm:text-sm tracking-wide mb-1 leading-snug">
+                {m.title}
+              </h3>
 
-              <div className="font-semibold text-divine-dark text-sm sm:text-[15px] mb-1">{m.label}</div>
-              <div className="text-gray-400 text-[11px] sm:text-xs">{m.sub}</div>
+              {/* Subtext */}
+              <p className="text-white/60 text-[11px] sm:text-xs leading-normal">
+                {m.sub}
+              </p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Certifications */}
+        {/* Certifications row */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-white/70 text-xs sm:text-sm"
         >
           {["IATA Certified", "Ministry of Tourism Approved", "UP Tourism Registered", "GST Verified"].map(cert => (
-            <div key={cert} className="flex items-center gap-2 text-gray-400">
-              <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0">
-                <svg className="w-3 h-3 text-emerald-600" viewBox="0 0 12 12" fill="none">
-                  <path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <span className="text-xs sm:text-[13px] font-medium">{cert}</span>
+            <div key={cert} className="flex items-center gap-1.5">
+              <CheckCircle2 size={14} className="text-emerald-400" />
+              <span>{cert}</span>
             </div>
           ))}
         </motion.div>

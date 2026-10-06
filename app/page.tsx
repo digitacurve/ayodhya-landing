@@ -465,25 +465,25 @@ export default function Home() {
         {/* 1. Hero — above-the-fold conversion section */}
         <Hero />
 
-        {/* 2. Lead Capture — form immediately after hero for Google Ads conversion */}
+        {/* 2. Lead Capture — quick enquiry form */}
         <LeadCapture />
 
-        {/* 3. Trust Strip — immediate social proof */}
-        <TrustStrip />
-
-        {/* 3b. Yatra Photo Marquee — sliding track of real devotee group photos */}
-        <YatraPhotoMarquee />
-
-        {/* 3c. Trust Metrics — animated numbers */}
-        <TrustMetrics />
-
-        {/* 4. Luxury Partners Strip — luxury 5-star brand trust strip */}
-        <LuxuryPartnersStrip />
-
-        {/* 5. Packages — 6 destination packages */}
+        {/* 3. Packages — tour options */}
         <Packages />
 
-        {/* 6. Why Choose Us — USP grid */}
+        {/* 4. Trust Metrics — compact dark liquid glass trust numbers */}
+        <TrustMetrics />
+
+        {/* 5. Trust Strip — 5 key trust badges */}
+        <TrustStrip />
+
+        {/* 6. Yatra Photo Marquee — live devotee batch memories */}
+        <YatraPhotoMarquee />
+
+        {/* 7. Luxury Partners Strip — luxury 5-star brand trust strip */}
+        <LuxuryPartnersStrip />
+
+        {/* 8. Why Choose Us — USP grid */}
         <WhyChooseUs />
 
         {/* 7. Itinerary — day-wise expandable plans */}

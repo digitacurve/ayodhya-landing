@@ -55,22 +55,18 @@ export default function YatraPhotoMarquee() {
   const doubleItems = [...marqueeItems, ...marqueeItems];
 
   return (
-    <section className="relative bg-[#fffaf5] py-10 overflow-hidden border-b border-gray-100">
-      
-      {/* Decorative Warm Accent Gradient */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold-500/10 to-transparent" />
-      
+    <section className="relative bg-divine-dark py-12 sm:py-16 overflow-hidden border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <span className="text-saffron-600 text-[10px] font-bold uppercase tracking-widest block mb-1">
+            <span className="text-saffron-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest block mb-1">
               ✨ Live Yatra Moments
             </span>
-            <h3 className="font-playfair font-bold text-xl sm:text-2xl text-divine-dark">
+            <h3 className="font-playfair font-bold text-2xl sm:text-3xl text-white">
               Our Recent Devotee Batches
             </h3>
           </div>
-          <p className="text-gray-400 text-xs sm:text-sm max-w-md sm:text-right leading-relaxed">
+          <p className="text-white/70 text-xs sm:text-sm max-w-md sm:text-right leading-relaxed">
             Real families, senior citizens, and groups enjoying their journeys. Click any photo to see it full-size.
           </p>
         </div>
@@ -78,21 +74,19 @@ export default function YatraPhotoMarquee() {
 
       {/* Scrolling Track */}
       <div className="relative w-full overflow-hidden select-none">
-        
         {/* Left & Right overlay gradient to hide edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#fffaf5] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#fffaf5] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-divine-dark to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-divine-dark to-transparent z-10 pointer-events-none" />
 
         <div className="w-full flex">
           <div className="animate-marquee flex gap-4 pr-4">
             {doubleItems.map((item, index) => {
-              // Map index to corresponding original item index for lightbox reference
               const originalIndex = index % marqueeItems.length;
               return (
                 <div
                   key={`${item.id}-${index}`}
                   onClick={() => setActivePhotoIndex(originalIndex)}
-                  className="relative w-[210px] h-[140px] sm:w-[240px] sm:h-[160px] rounded-xl overflow-hidden shadow-sm border border-gray-100/50 bg-white cursor-pointer group flex-shrink-0"
+                  className="relative w-[210px] h-[140px] sm:w-[240px] sm:h-[160px] rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer group flex-shrink-0 hover:border-gold-500/40 transition-colors shadow-lg"
                 >
                   <img
                     src={item.src}
@@ -100,8 +94,8 @@ export default function YatraPhotoMarquee() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  {/* Subtle info bottom bar */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-90 group-hover:opacity-100 transition-opacity">
+                  {/* Info bottom bar */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-3 opacity-90 group-hover:opacity-100 transition-opacity">
                     <div className="flex justify-between items-center gap-1.5">
                       <span className="bg-saffron-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">
                         {item.tag}
@@ -155,7 +149,6 @@ export default function YatraPhotoMarquee() {
 
             {/* Main Image Container */}
             <div className="relative flex-1 w-full flex items-center justify-center my-4 overflow-hidden">
-              {/* Prev Button */}
               <button
                 onClick={() => setActivePhotoIndex((activePhotoIndex - 1 + marqueeItems.length) % marqueeItems.length)}
                 className="absolute left-2 sm:left-4 z-10 w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 border border-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors"
@@ -164,7 +157,6 @@ export default function YatraPhotoMarquee() {
                 <ChevronLeft size={24} />
               </button>
 
-              {/* Image Frame */}
               <motion.img
                 key={activeItem.id}
                 src={activeItem.src}
@@ -176,7 +168,6 @@ export default function YatraPhotoMarquee() {
                 className="max-w-full max-h-[72vh] sm:max-h-[76vh] object-contain rounded-xl shadow-2xl"
               />
 
-              {/* Next Button */}
               <button
                 onClick={() => setActivePhotoIndex((activePhotoIndex + 1) % marqueeItems.length)}
                 className="absolute right-2 sm:right-4 z-10 w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 border border-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors"
