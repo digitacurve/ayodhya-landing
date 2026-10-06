@@ -407,7 +407,7 @@ export default function LeadCapture() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Left Column — Section Info & Proof Points (Kashi Darshan Format) */}
-            <div className="lg:col-span-5 space-y-6 lg:pr-4 pt-2 text-center lg:text-left">
+            <div className="hidden lg:block lg:col-span-5 space-y-6 lg:pr-4 pt-2 text-center lg:text-left">
               <div className="inline-flex items-center gap-1.5 bg-saffron-500/10 border border-saffron-500/25 px-3 py-1 rounded-full text-saffron-400 text-xs font-semibold uppercase tracking-wider">
                 ⚡ Quick Enquiry
               </div>
