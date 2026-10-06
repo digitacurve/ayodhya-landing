@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Check, Clock, MapPin, Hotel, Car, Compass, Headphones, Sparkles } from "lucide-react";
+import { Check, Clock, MapPin, Hotel, Car, Compass, Headphones } from "lucide-react";
 import Link from "next/link";
 import { packages, PackageItem } from "@/data/packagesData";
 
@@ -15,10 +15,7 @@ const filterCategories = [
   { id: "gaya", label: "Gaya" },
 ];
 
-function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: number; tokenAmount: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const inView  = useInView(cardRef, { once: true, margin: "-40px" });
-
+function PackageCard({ pkg, tokenAmount }: { pkg: PackageItem; tokenAmount: number }) {
   const isPopular = pkg.popular;
   const isFeatured = pkg.featured;
 
@@ -26,16 +23,12 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: num
   const discountPercent = Math.round(((pkg.originalPrice - pkg.price) / pkg.originalPrice) * 100);
 
   return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white rounded-3xl shadow-xl border border-gray-100/90 overflow-hidden flex flex-col justify-between h-full w-[84vw] max-w-[340px] sm:w-[380px] lg:w-full flex-shrink-0 snap-center text-left"
+    <div
+      className="bg-white rounded-3xl shadow-xl border border-gray-100/90 overflow-hidden flex flex-col justify-between h-full w-[84vw] max-w-[340px] sm:w-[380px] lg:w-full flex-shrink-0 snap-center text-left transition-all duration-300 hover:shadow-2xl"
     >
       <div>
         {/* Top Image Section */}
-        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
+        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100 flex-shrink-0">
           <img
             src={pkg.image}
             alt={pkg.name}
@@ -46,25 +39,25 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: num
 
           {/* Top Left Badge */}
           {isPopular && (
-            <div className="absolute top-3 left-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-[10px] sm:text-xs px-3 py-1 rounded-r-full shadow-md flex items-center gap-1">
+            <div className="absolute top-3 left-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-[10px] sm:text-xs px-3 py-1 rounded-r-full shadow-md flex items-center gap-1 z-10">
               <span>⭐</span> MOST POPULAR
             </div>
           )}
           {!isPopular && isFeatured && (
-            <div className="absolute top-3 left-0 bg-gradient-to-r from-orange-600 to-red-500 text-white font-bold text-[10px] sm:text-xs px-3 py-1 rounded-r-full shadow-md flex items-center gap-1">
+            <div className="absolute top-3 left-0 bg-gradient-to-r from-orange-600 to-red-500 text-white font-bold text-[10px] sm:text-xs px-3 py-1 rounded-r-full shadow-md flex items-center gap-1 z-10">
               <span>🔥</span> BEST SELLER
             </div>
           )}
 
           {/* Bottom Right Duration Badge */}
-          <div className="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-white font-semibold text-xs px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+          <div className="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-white font-semibold text-xs px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5 z-10">
             <Clock size={12} className="text-amber-400" />
             {pkg.duration}
           </div>
         </div>
 
         {/* Content Body */}
-        <div className="p-4 sm:p-5">
+        <div className="p-4 sm:p-5 flex flex-col flex-1">
           {/* City Location Pills */}
           <div className="flex flex-wrap gap-1.5 mb-2">
             {pkg.cities.map((city) => (
@@ -79,7 +72,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: num
           </div>
 
           {/* Package Title & Subtitle */}
-          <h3 className="font-playfair font-bold text-xl text-divine-dark leading-tight mb-0.5">
+          <h3 className="font-playfair font-bold text-xl text-divine-dark leading-tight mb-0.5 min-h-[28px]">
             {pkg.name}
           </h3>
           <p className="text-gray-500 text-xs italic line-clamp-1 mb-3">
@@ -175,7 +168,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: num
       </div>
 
       {/* Bottom CTA Block */}
-      <div className="p-4 sm:p-5 border-t border-gray-100 bg-gray-50/50 flex flex-col gap-2">
+      <div className="p-4 sm:p-5 border-t border-gray-100 bg-gray-50/50 flex flex-col gap-2 flex-shrink-0">
         <a
           href="/#get-quote"
           onClick={() => {
@@ -193,7 +186,7 @@ function PackageCard({ pkg, index, tokenAmount }: { pkg: PackageItem; index: num
           View Full Itinerary &amp; Details
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -296,8 +289,8 @@ export default function Packages() {
             onScroll={handleScroll}
             className="flex lg:grid lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory scrollbar-none pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 items-stretch"
           >
-            {filteredPackages.map((pkg, i) => (
-              <PackageCard key={pkg.id} pkg={pkg} index={i} tokenAmount={tokenAmount} />
+            {filteredPackages.map((pkg) => (
+              <PackageCard key={pkg.id} pkg={pkg} tokenAmount={tokenAmount} />
             ))}
           </div>
 
