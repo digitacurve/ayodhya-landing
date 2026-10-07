@@ -131,7 +131,7 @@ const customItineraries: Record<
   "ayodhya-1n2d": {
     days: [
       {
-        title: "Day 1 — Arrival, Ram Mandir & Deepotsav Celebration",
+        title: "Day 1 — Arrival, Ram Mandir & Saryu Aarti",
         activities: [
           {
             time: "Morning",
@@ -143,7 +143,7 @@ const customItineraries: Record<
           },
           {
             time: "Evening",
-            activity: "🪔 Grand Ayodhya Deepotsav Festival: Visit Hanuman Garhi temple. Walk along Ram Ki Paidi and Saryu River Ghats to witness the World Record 25+ Lakh Diyas illumination and spectacular laser light show.",
+            activity: "Visit Hanuman Garhi temple. Walk along Ram Ki Paidi and Saryu River Ghats to witness the grand evening Saryu Aarti and diya lighting ceremony.",
           },
         ],
       },
@@ -160,7 +160,7 @@ const customItineraries: Record<
           },
           {
             time: "Evening",
-            activity: "Transfer to Ayodhya Railway Station / Airport for your onward journey, carrying the radiant blessings of Ayodhya Deepotsav & Ram Lalla.",
+            activity: "Transfer to Ayodhya Railway Station / Airport for your onward journey, carrying the divine blessings of Shri Ram Lalla & Ayodhya.",
           },
         ],
       },
